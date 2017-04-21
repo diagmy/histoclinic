@@ -1,0 +1,102 @@
+{% extends 'base1.html' %}
+{% load staticfiles %}
+{% block login %}
+    <!-- END HEAD -->
+
+    <body class=" login">
+    <!-- BEGIN LOGO -->
+    <div class="logo">
+        <a href="">
+            <img src="{% static 'assets/pages/img/logo-big.png' %}" alt="" /> </a>
+    </div>
+    <!-- END LOGO -->
+    <!-- BEGIN LOGIN -->
+    <div class="content">
+        {% block messages %}
+            <div class="messages-holder" style="position: relative;">
+                {% include "messages.html" %}
+            </div>
+        {% endblock %}
+        <!-- BEGIN LOGIN FORM -->
+        <form>
+            {% csrf_token %}
+            <h3 class="form-title font-green">Iniciar Sesion</h3>
+            <div class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>
+                <span> Ingrese su nombre y clave. </span>
+            </div>
+            <div class="form-group">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9">Usuario</label>
+                <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" id="username" placeholder="Usuario" name="username" /></div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Clave</label>
+                <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" id="password" placeholder="Clave" name="password" /></div>
+            <div class="form-actions">
+                <button type="submit"   class="btn green uppercase">Entrar</button>
+                
+                <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+            </div>
+            
+
+        </form>
+        <!-- END LOGIN FORM -->
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+
+        <!-- END FORGOT PASSWORD FORM -->
+        <!-- BEGIN REGISTRATION FORM -->
+
+        <!-- END REGISTRATION FORM -->
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+
+            // process the form
+            $('form').submit(function (event) {
+
+                // get the form data
+                // there are many ways to get this data using jQuery (you can use the class or id also)
+                var formData = {
+                    'username': $('input[name=username]').val(),
+                    'password': $('input[name=password]').val()
+                };
+
+                // process the form
+                $.ajax({
+                    type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url: '/accounts/signin', // the url where we want to POST
+                    data: formData, // our data object
+                    dataType: 'json', // what type of data do we expect back from the server
+                    encode: true
+                })
+                // using the done promise callback
+                        .done(function (data) {
+                            if(data.access_token){
+                                cooki = data.access_token;
+                                window.localStorage.setItem('access_token', cooki)
+                                window.localStorage.setItem('username',data.username)
+                                window.localStorage.setItem('state',data.state)
+                                window.localStorage.setItem('user',data.is_superuser)
+                                window.location.href = "{% url 'landing_page' %}";
+                            }
+
+
+
+
+
+
+                            // here we will handle errors and validation messages
+                        });
+
+                // stop the form from submitting the normal way and refreshing the page
+                event.preventDefault();
+
+            });
+        });
+
+
+    </script>
+    </body>
+
+{% endblock %}

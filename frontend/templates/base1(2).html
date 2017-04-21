@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Historial Clinico{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Preview page of Metronic Admin Theme #5 for blank page layout" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN LAYOUT FIRST STYLES -->
+    <link href="//fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css" />
+    <!-- END LAYOUT FIRST STYLES -->
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    {#        <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />#}
+    <link href="{% static  'assets/global/plugins/font-awesome/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css" />
+
+    <link href="{% static 'assets/global/plugins/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/global/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="{% static 'assets/global/css/components.min.css' %}" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="{% static 'assets/global/css/plugins.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <link href="{% static 'assets/pages/css/profile.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/pages/css/login.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="{% static 'assets/layouts/layout5/css/layout.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/layouts/layout5/css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+
+
+
+<!--[if lt IE 9]>
+<script src="../assets/global/plugins/respond.min.js"></script>/static
+<script src="../assets/global/plugins/excanvas.min.js"></script>
+<script src="../assets/global/plugins/ie8.fix.min.js"></script>
+<![endif]-->
+<!-- BEGIN CORE PLUGINS -->
+<script src="{% static 'assets/global/plugins/jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/js.cookie.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/jquery.blockui.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="{% static 'assets/global/plugins/jquery-validation/js/jquery.validate.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/jquery-validation/js/additional-methods.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/select2/js/select2.full.min.js' %}" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="{% static 'assets/global/scripts/app.min.js' %}" type="text/javascript"></script>
+
+<link href="{% static 'assets/global/plugins/datatables/datatables.min.css'  %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css' %}" rel="stylesheet" type="text/css" />
+<script src="{% static 'assets/global/scripts/datatable.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/datatables/datatables.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/pages/scripts/table-datatables-managed.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/pages/scripts/form-wizard.min.js' %}" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script src="{% static 'assets/layouts/layout5/scripts/layout.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/layouts/global/scripts/quick-sidebar.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/layouts/global/scripts/quick-nav.min.js' %}" type="text/javascript"></script>
+
+<!-- END THEME LAYOUT SCRIPTS -->
+<script src="{% static 'assets/pages/scripts/login.min.js' %}" type="text/javascript"></script>
+</head>
+<!-- END HEAD -->
+{% block login %}
+    <body class="page-header-fixed page-sidebar-closed-hide-logo">
+
+    <!-- BEGIN CONTAINER -->
+    <div class="wrapper">
+        <!-- BEGIN HEADER -->
+        <header class="page-header">
+            <nav class="navbar mega-menu" role="navigation">
+                <div class="container-fluid">
+                    <div class="clearfix navbar-fixed-top">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="toggle-icon">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </span>
+                        </button>
+                        <!-- End Toggle Button -->
+                        <!-- BEGIN LOGO -->
+                        <a  class="page-logo" href="{% url 'landing_page' %}">
+                            <img src="{% static 'assets/layouts/layout5/img/logo.png' %}" alt="Logo"> </a>
+                        <!-- END LOGO -->
+                        <!-- BEGIN SEARCH -->
+                        <form class="search" action="extra_search.html" method="GET">
+                            <input type="name" class="form-control" name="query" placeholder="Buscar Paciente...">
+                            <a href="javascript:;" class="btn submit md-skip">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </form>
+                        <!-- END SEARCH -->
+                        <!-- BEGIN TOPBAR ACTIONS -->
+                        <div class="topbar-actions">
+                            <!-- BEGIN GROUP NOTIFICATION -->
+                            <div class="btn-group-notification btn-group" id="header_notification_bar">
+                                <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <i class="icon-bell"></i>
+                                    <span class="badge">7</span>
+                                </button>
+                                <ul class="dropdown-menu-v2">
+                                    <li class="external">
+                                        <h3>
+                                            <span class="bold">12 pending</span> notifications</h3>
+                                        <a href="#">view all</a>
+                                    </li>
+                                    <li>
+                                        <ul class="dropdown-menu-list scroller" style="height: 250px; padding: 0;" data-handle-color="#637283">
+                                            <li>
+                                                <a href="javascript:;">
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-success md-skip">
+                                                                <i class="fa fa-plus"></i>
+                                                            </span> New user registered. </span>
+                                                    <span class="time">just now</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-danger md-skip">
+                                                                <i class="fa fa-bolt"></i>
+                                                            </span> Server #12 overloaded. </span>
+                                                    <span class="time">3 mins</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-warning md-skip">
+                                                                <i class="fa fa-bell-o"></i>
+                                                            </span> Server #2 not responding. </span>
+                                                    <span class="time">10 mins</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-info md-skip">
+                                                                <i class="fa fa-bullhorn"></i>
+                                                            </span> Application error. </span>
+                                                    <span class="time">14 hrs</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-danger md-skip">
+                                                                <i class="fa fa-bolt"></i>
+                                                            </span> Database overloaded 68%. </span>
+                                                    <span class="time">2 days</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-danger md-skip">
+                                                                <i class="fa fa-bolt"></i>
+                                                            </span> A user IP blocked. </span>
+                                                    <span class="time">3 days</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-warning md-skip">
+                                                                <i class="fa fa-bell-o"></i>
+                                                            </span> Storage Server #4 not responding dfdfdfd. </span>
+                                                    <span class="time">4 days</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-info md-skip">
+                                                                <i class="fa fa-bullhorn"></i>
+                                                            </span> System Error. </span>
+                                                    <span class="time">5 days</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-danger md-skip">
+                                                                <i class="fa fa-bolt"></i>
+                                                            </span> Storage server failed. </span>
+                                                    <span class="time">9 days</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END GROUP NOTIFICATION -->
+                            <!-- BEGIN GROUP INFORMATION -->
+                            <div class="btn-group-red btn-group">
+
+
+                            </div>
+                            <!-- END GROUP INFORMATION -->
+                            <!-- BEGIN USER PROFILE -->
+                            <div class="btn-group-img btn-group">
+                                <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <span>{{ request.user.first_name }}</span>
+                                    <img src="{% static 'assets/layouts/layout5/img/avatar1.jpg' %}" alt=""> </button>
+                                <ul class="dropdown-menu-v2" role="menu">
+                                    <li>
+                                        <a href="page_user_profile_1.html">
+                                            <i class="icon-user"></i> Mi Perfil
+                                        </a>
+                                    </li>
+
+                                    <li class="divider"> </li>
+                                    <li>
+                                        <a href="page_user_lock_1.html">
+                                            <i class="icon-lock"></i> Bloquear </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'logout' %}">
+                                            <i class="icon-key"></i> Salir</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END USER PROFILE -->
+                            <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                            {% if request.user.is_superuser == True %}
+                                <div class="btn-group btn-group-red"><a href="{% url 'add_user' %}" id="register-btn">
+                                    <button type="button" class="btn btn-sm md-skip" >
+                                        <i class="fa fa-plus "></i>
+                                    </button></a>
+                                </div>
+                            {% endif %}
+
+
+                            <!-- END QUICK SIDEBAR TOGGLER -->
+                        </div>
+                        <!-- END TOPBAR ACTIONS -->
+                    </div>
+                    <!-- BEGIN HEADER MENU -->
+
+                    <!-- END HEADER MENU -->
+                </div>
+                <!--/container-->
+            </nav>
+        </header>
+        <!-- END HEADER -->
+        <div class="container-fluid">
+
+            <div class="page-content">
+                <!-- BEGIN BREADCRUMBS -->
+                <div class="breadcrumbs">
+                    <h1>{% block breadcrumbs_title %} {% endblock %}</h1>
+
+                    <!-- Sidebar Toggle Button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".page-sidebar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </span>
+                    </button>
+                    <!-- Sidebar Toggle Button -->
+                </div>
+                <!-- END BREADCRUMBS -->
+                <!-- BEGIN SIDEBAR CONTENT LAYOUT -->
+                <div class="page-content-container">
+                    <div class="page-content-row">
+                        <!-- BEGIN PAGE SIDEBAR -->
+                        <div class="page-sidebar">
+                            <nav class="navbar" role="navigation">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <ul class="nav navbar-nav margin-bottom-35">
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-home"></i> Inicio </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'paciente' %}">
+                                            <i class="icon-note "></i> Pacientes </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'formulario-paciente' %}">
+                                            <i class="icon-user"></i>  Agregar Paciente </a>
+                                    </li>
+                                    <!--  <li>
+                                         <a href="#">
+                                             <i class="icon-basket "></i> Marketplace </a>
+                                     </li>
+                                     <li>
+                                         <a href="#">
+                                             <i class="icon-bell"></i> Templates </a>
+                                     </li> -->
+                                </ul>
+                                <h3>Agregar</h3>
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a href="#signos_vitalesmodal" data-toggle="modal">
+                                            <i class="icon-pin "></i> Signos Vitales
+
+                                        </a>
+                                    </li>
+                                    {% if request.user.userprofile.state == 'doctor' %}
+                                    <li>
+                                        <a href="#medicamentomodal" data-toggle="modal">
+                                            <i class="icon-pin "></i> Medicamentos </a>
+                                    </li>
+                                    {% endif %}
+                                    <li>
+                                        <a href="#antecedente-Personalmodal" data-toggle="modal">
+                                            <i class="icon-pin"></i>Antecedente Personales</a>
+                                    </li>
+                                    <li>
+                                        <a href="#antecedente-Familiarmodal" data-toggle="modal">
+                                            <i class="icon-pin"></i> Antecedentes Familiares
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#alergiamodal" data-toggle="modal">
+                                            <i class="icon-pin"></i> Alergias
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#vacunamodal" data-toggle="modal">
+                                            <i class="icon-pin"></i> Vacunas
+
+                                        </a>
+                                    </li>
+                                     {% if request.user.userprofile.state == 'doctor' %}
+                                    <li>
+                                        <a href="#otrasordernesmodal" data-toggle="modal">
+                                            <i class="icon-pin"></i> Otras Ordenes Terapeuticas
+
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                    <li>
+                                        <a href="#seguromodal" data-toggle="modal">
+                                            <i class="icon-pin"></i> Seguro
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#evolucionmodal" data-toggle="modal">
+                                            <i class="icon-pin"></i> Evolucion
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#revisionmodal" data-toggle="modal">
+                                            <i class="icon-pin"></i> Revision por Sistema
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="modal fade" id="signos_vitalesmodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Signos Vitales</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="alert alert-success hide" id="success-alertsignos">
+                                                <button type="button" class="close" data-dismiss="alert">x</button>
+                                                Los datos fueron actualizados!
+
+                                            </div>
+                                            <form class="form-horizontal" role="form" id="signosmodal" enctype="text/plain">
+                                                 {% csrf_token %}
+                                                <div class="form-group">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="tensionArterial">Tension Arterial</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="tensionArterial">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="frecuenciaCardiaca">Frecuencia Cardiaca</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="frecuenciaCardiaca">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="frecuenciaRespiratoria" >Frecuencia Respiratoria</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="frecuenciaRespiratoria" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="temperaturaPaciente" >Temperatura</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="temperaturaPaciente" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="notasSignosVitales" >Notas</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="notasSignosVitales" />
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" id="signosvitales_form" class="btn green">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <div class="modal fade" id="medicamentomodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Medicamento</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form" id="extend_model" enctype="text/plain">
+                                                 {% csrf_token %}
+                                                <div class="form-group">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="medicamentonombre">Medicamento</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="medicamentonombre">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="medicamentoTipo">Tipo medicamento</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="medicamentoTipo">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="medicamentoVia" >Via</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="medicamentoVia" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label"
+                                                           for="temperaturaPaciente" >Nota</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="temperaturaPaciente" />
+                                                    </div>
+                                                </div>
+
+
+                                            </form>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn green">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <div class="modal fade" id="antecedente-Personalmodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Antecedentes Personales Patologicos</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form" id="antepersonalesmodal" enctype="text/plain">
+ {% csrf_token %}
+                                                <div class="form-group">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="antepersonalesdescripcion">Descripcion</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="antepersonalesdescripcion">
+                                                    </div>
+                                                </div>
+
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn green">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+
+                            <div class="modal fade" id="antecedente-Familiarmodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Antecedentes Familiares Patologicos</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form" id="antefamiliarmodal" enctype="text/plain">
+{% csrf_token %}
+                                                <div class="form-group">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="antefamiliarenfermedad">Enfermedad</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="antefamiliarparentesco">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Parentesco
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="checkbox-list">
+                                                            <label>
+                                                                <input type="checkbox" name="parentesco" id="parentesco" value="1" data-title="padre." /> Padre </label>
+
+                                                            <label>
+                                                                <input type="checkbox" name="parentesco" id="parentesco" value="2" data-title="padre." /> Madre </label>
+                                                            <label>
+
+                                                                <input type="checkbox" name="parentesco" id="parentesco" value="3" data-title="hermanos." />Hermanos</label>
+                                                            <label>
+
+                                                                <input type="checkbox" name="parentesco" id="parentesco" value="4" data-title="abuelos." />Abuelos</label>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn green">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <div class="modal fade" id="alergiamodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Alergia</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form" id="signosmodal" enctype="text/plain">
+{% csrf_token %}
+                                                <div class="form-group ">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="alergia">Alergia</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="alergia">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="frecuenciaCardiaca">Tipo de Alergia</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="frecuenciaCardiaca">
+                                                    </div>
+                                                </div>
+
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn green">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <div class="modal fade" id="vacunamodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Vacuna</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form" id="vacunamodal" enctype="text/plain">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Tarjeta de Vacuna
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="radio-list">
+                                                            <label>
+                                                                <input type="radio" name="tarjetavacuna" id="tarjetavacuna" value="Si" data-title="Si" /> Si </label>
+                                                            <label>
+                                                                <input type="radio" name="tarjetavacuna" id= "tarjetavacuna" value="No" data-title="No" /> No </label>
+                                                        </div>
+                                                        <div id="form_vacuna_error"> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Vacuna
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="vacuna" id="vacuna" />
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Dosis
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="dosisvacuna" id="dosisvacuna" />
+
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn green">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+
+                            <div class="modal fade" id="otrasordernesmodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Otras Ordenes Terapeuticas</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form" id="vacunamodal" enctype="text/plain">
+                                                {% csrf_token %}
+                                                <div class="form-group hide">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="id">ID</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="id">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Dieta
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="dieta" id="dieta" />
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Curas
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="curas" id="curas" />
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Fisioterapia Respiratoria
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="fisioterapiarespiratoria" id="fisioterapiarespiratoria" />
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Sondas/Drenajes
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="sondas" id="sondas" />
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Estudios Laboratorio/Diagnostivo
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="estudioslabdiagnostico" id="estudioslabdiagnostico" />
+
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn green" id="otrasordenesform">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <div class="modal fade" id="seguromodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Informacion de Seguro</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form" id="vacunamodal" enctype="text/plain">
+                                                {% csrf_token %}
+                                                <div class="form-group hide">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="id">ID</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="id">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Nombre Seguro
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="nombreseguro" id="nombreseguro" />
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Numero Afiliado
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="numeroafiliado" id="numeroafiliado" />
+
+                                                    </div>
+                                                </div>
+
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn green" id="seguromodalform">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <div class="modal fade" id="evolucionmodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Evolucion</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form" id="vacunamodal" enctype="text/plain">
+                                                {% csrf_token %}
+                                                <div class="form-group hide">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="id">ID</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="id">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Notas Evolucion
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="notaevolucion" id="notaevolucion" />
+
+                                                    </div>
+                                                </div>
+
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn green" id="evolucionform">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <div class="modal fade" id="revisionmodal" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Agregar Revision del Sistema</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form" id="revisionmodal" enctype="text/plain">
+                                                {% csrf_token %}
+                                                <div class="form-group hide">
+                                                    <label  class="col-sm-2 control-label"
+                                                            for="id">ID</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control"
+                                                               id="id">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Revision
+
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="cabeza" id="cabeza" />
+
+                                                    </div>
+                                                </div>
+
+
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn green" id="revisionform">Guardar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+
+
+                        </div>
+                        <!-- END PAGE SIDEBAR -->
+                        <div class="page-content-col">
+                            <!-- BEGIN PAGE BASE CONTENT -->
+                            {% block containter %}
+                            {% endblock %}
+                            <!-- END PAGE BASE CONTENT -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END SIDEBAR CONTENT LAYOUT -->
+            </div>
+            <!-- BEGIN FOOTER -->
+
+            <a href="#index" class="go2top">
+                <i class="icon-arrow-up"></i>
+            </a>
+            <!-- END FOOTER -->
+        </div>
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN QUICK SIDEBAR -->
+
+    <!-- END QUICK SIDEBAR -->
+    <!-- BEGIN QUICK NAV -->
+
+    <!-- END QUICK NAV -->
+
+    </body>
+         <script>
+
+
+     $('#signosvitales_form').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/signos-vitales/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'Tension Arterial': $('#tensionArterial').val(),
+                'Frecuencia Cardiaca': $('#frecuenciaCardiaca').val(),
+                'Frecuencia Respiratoria': $('#frecuenciaRespiratoria').val(),
+                'Temperatura': $('#temperaturaPaciente').val(),
+                'Notas': $('#notasSignosVitales').val(),
+
+
+
+            },
+            success: function (data) {
+                $("#success-alertsignos").removeClass('hide');
+                $("#success-alertsignos").fadeTo(2000, 500).slideUp(500, function () {
+                    $("#success-alertsignos").slideUp(500);
+                });
+                $('#signos_vitalesmodal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+
+   $('#medicamentoform').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/medicamentos/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'Nombre': $('#medicamentoNombre').val(),
+                'Dosis': $('#medicamentoDosis').val(),
+                'Frecuencia': $('#medicamentoFrecuencia').val(),
+                'Via': $('#medicamentoVia').val(),
+                'Nota': $('#medicamentoNota').val(),
+
+
+
+            },
+            success: function (data) {
+                $("#success-alertmedicamento").removeClass('hide');
+                $("#success-alertmedicamento").fadeTo(2000, 500).slideUp(500, function () {
+                    $("#success-alertmedicamento").slideUp(500);
+                });
+                $('#MedicamentosModal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+   $('#antecedente-Personalform').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'antepersopatologico': $('#antepersonalesdescripcion').val(),
+
+
+
+            },
+            success: function (data) {
+                $("#success-alertanteperso").removeClass('hide');
+                $("#success-alertanteperso").fadeTo(2000, 500).slideUp(500, function () {
+                    $("#success-alertanteperso").slideUp(500);
+                });
+                $('#antecedente-Personalmodal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+
+   $('#antecedente-Personalform').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'enfermedad': $('#antefamiliarenfermedad').val(),
+                'parentesco': $('#parentesco').val(),
+                'antefamipatologicos': $('#antefamiliarnota').val(),
+
+
+
+
+            },
+            success: function (data) {
+                $("#success-alertantefami").removeClass('hide');
+                $("#success-alertantefami").fadeTo(2000, 500).slideUp(500, function () {
+                    $("#success-alertantefami").slideUp(500);
+                });
+                $('#antecedente-Familiarmodal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+   $('#alergiaform').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/alergia/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'tipo': $('#tipo').val(),
+                'alergia': $('#Alergia').val(),
+                'activo': $('#activo').val(),
+
+
+            },
+            success: function (data) {
+                $("#success-alertalergiamodal").removeClass('hide');
+                $("#success-alertalergiamodal").fadeTo(2000, 500).slideUp(500, function () {
+                    $("#success-alertalergiamodal").slideUp(500);
+                });
+                $('#Alergia_modal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+      $('#vacunaform').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/vacuna/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'tarjeta_vacunacion': $('#tarjetavacuna').val(),
+                'nombre_vacuna': $('#vacuna').val(),
+                'dosis_aplicadas': $('#dosisvacuna').val(),
+                'edad_aplicacion': $('#edadvacuna').val(),
+
+
+            },
+            success: function (data) {
+                $("#success-alertvacunamodal").removeClass('hide');
+                $("#success-alertvacunamodal").fadeTo(2000, 500).slideUp(500, function () {
+                    $("#success-alertalergiamodal").slideUp(500);
+                });
+                $('#vacuna_modal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+    $('#otrasordenes_form').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/otras-ordenes/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'dieta': $('#dieta').val(),
+                'actividad_fisica': $('#actividadfisica').val(),
+                'curas': $('#curas').val(),
+                'fisioterapia_respiratoria': $('#fisioterapiarespiratoria').val(),
+                'sondas_drenajes': $('#sondas').val(),
+                'estudios_lab_diagnostico': $('#estudioslabdiagnostico').val(),
+
+
+            },
+            success: function (data) {
+                $("#success-alertotrasordenesmodal").removeClass('hide');
+                $("#success-alertotrasordenesmodal").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alertotrasordenesmodal").slideUp(500);
+                });
+                $('#otrasordenes_modal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+
+    $('#seguromodalform').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/seguro/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'nombre_seguro': $('#nombreseguro').val(),
+                'numero_afiliado': $('#numeroafiliado').val(),
+
+
+
+            },
+            success: function (data) {
+                $("#success-alertseguromodal").removeClass('hide');
+                $("#success-alertseguromodal").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alertseguromodal").slideUp(500);
+                });
+                $('#seguromodal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+
+
+    $('#evolucionform').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/evolucion/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'notas': $('#notaevolucion').val(),
+
+            },
+            success: function (data) {
+                $("#success-alertrevisionmodal").removeClass('hide');
+                $("#success-alertrevisionmodal").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alertrevisionmodal").slideUp(500);
+                });
+                $('#evolucionmodal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+
+    $('#revisionform').click( function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/agregar/', //this is the submit URL
+            type: 'POST',
+            data: {
+                'id': $('#id').val(),
+                'cabeza': $('#cabeza').val(),
+
+
+            },
+            success: function (data) {
+                $("#success-alertrevisionmodal").removeClass('hide');
+                $("#success-alertrevisionmodal").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alertrevisionmodal").slideUp(500);
+                });
+                $('#revisionmodal').modal('toggle');
+                location.reload();
+            }
+        });
+    });
+
+
+
+</script>
+{% endblock %}
+
+</html>

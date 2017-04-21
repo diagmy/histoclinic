@@ -1,0 +1,2727 @@
+{#<!DOCTYPE html>#}
+{% extends 'base1.html' %}
+{% load staticfiles %}
+{% block breadcrumbs_title %} {% endblock %}
+{% block containter %}
+    <div class="page-content-col">
+        <!-- BEGIN PAGE BASE CONTENT -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN PROFILE SIDEBAR -->
+                <div class="profile-sidebar">
+                    <!-- PORTLET MAIN -->
+                    <div class="portlet light profile-sidebar-portlet bordered">
+                        <!-- SIDEBAR USERPIC -->
+                        <div class="profile-userpic">
+                            <img src="{% static 'assets/pages/media/profile/profile_user.jpg' %}" class="img-responsive" alt=""> </div>
+                        <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="col-xs-7" style="margin-top:10px;display: block; text-align: center;">
+                            <i id="user_profile" role="button" class="glyphicon glyphicon-edit pull-right"></i>
+                        </div>
+                        <div class="profile-usertitle">
+
+                            <div class="profile-usertitle-name"><span id="nombrePaciente"></span></div>
+                            <div class="profile-usertitle-job"> <div id="edadPaciente"></div></div>
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                        <!-- SIDEBAR BUTTONS -->
+                        <div class="profile-userbuttons">
+                            <p>Expendiente No: <span id="idPaciente"></span></p>
+
+                        </div>
+
+                        <!-- END SIDEBAR BUTTONS -->
+                        <!-- SIDEBAR MENU -->
+
+                        <!-- END MENU -->
+                    </div>
+                    <!-- END PORTLET MAIN -->
+                    <div class="portlet light bordered">
+                        <div>
+                            <h4 class="profile-desc-title">Alergias</h4>
+                            <span class="profile-desc-text"> <span id="alergia"></span> </span>
+
+                        </div>
+                    </div>
+                    <!-- PORTLET MAIN -->
+
+                    <!-- END PORTLET MAIN -->
+                </div>
+                <!-- END BEGIN PROFILE SIDEBAR -->
+                <!-- BEGIN PROFILE CONTENT -->
+                <div class="profile-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="portlet light bordered">
+                                <div class="portlet-title tabbable-line">
+                                    <div class="caption caption-md">
+                                        <i class="icon-globe theme-font hide"></i>
+                                        <span class="caption-subject font-blue-madison bold uppercase">Historial</span>
+                                    </div>
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#tab_1_1" data-toggle="tab">Informacion General</a>
+                                        </li>
+                                        <li>
+                                            <a href="#tab_1_2" data-toggle="tab">Antecedentes</a>
+                                        </li>
+                                        <li>
+                                            <a href="#tab_1_3" data-toggle="tab">Historia</a>
+                                        </li>
+                                        <li>
+                                            <a href="#tab_1_4" data-toggle="tab">Linea de Tiempo</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_1_1">
+                                            <div id="accordion1" class="panel-group">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1"> Datos Personales </a>
+                                                            <span class="glyphicon glyphicon-edit pull-right" role="button" id="myform"></span>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion1_1" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+
+
+                                                                    <strong><i class="fa fa-mars margin-r-5"></i> Sexo:</strong>
+                                                                    <hr>
+
+                                                                    <strong><i class="fa fa-balance-scale margin-r-5"></i> Peso(lbs):</strong>
+                                                                    <hr>
+                                                                    <strong><i class="fa fa-map-marker margin-r-5"></i> Direccion:</strong>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <span class= "sexoPaciente">  </span>
+                                                                    <hr>
+                                                                    <span class="PesoPaciente">  </span>
+                                                                    <hr>
+                                                                    <span class="dirPaciente"> </span>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <strong><i class="fa fa-phone margin-r-5"></i> Telefono: </strong>
+
+                                                                    <hr>
+                                                                    <strong><i class="fa fa-mobile margin-r-5"></i> Celular: </strong>
+                                                                    <hr>
+                                                                    <strong><i class="fa fa-user margin-r-5"></i> Tutor:</strong>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <span class= "telefonoPaciente">  </span>
+                                                                    <hr>
+                                                                    <span class="celularPaciente"> </span>
+                                                                    <hr>
+
+                                                                    <span class="TutorPaciente"> </span>
+                                                                    <hr>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">Seguro</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion1_2" class="panel-collapse collapse">
+                                                        <div class="panel-body" id="sergue1">
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                        <!-- GENERAL QUESTION TAB -->
+                                        <div class="tab-pane" id="tab_1_2">
+                                            <div id="accordion1" class="panel-group">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_1"> Antecedentes Personales </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion2_1" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+                                                            <table id="anteperpat" class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th> Fecha </th>
+                                                                    <th> Detalle </th>
+
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_2"> Antecedentes Familiares</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion2_2" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <table id="antefampat" class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th> Enfermedad </th>
+                                                                    <th> Parentesco </th>
+                                                                    <th> Notas </th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_3"> Padecimientos</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion2_3" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <table id="padecimientotable" class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th> Fecha </th>
+                                                                    <th> Hora </th>
+                                                                    <th> Padecimiento </th>
+
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                        <!-- END GENERAL QUESTION TAB -->
+                                        <!-- MEMBERSHIP TAB -->
+                                        <div class="tab-pane" id="tab_1_3">
+                                            <div id="accordion2" class="panel-group">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_1">Alergias</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion3_1" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+
+                                                            <table id="alergia12" class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th> Tipo</th>
+                                                                    <th> Alergia </th>
+                                                                    <th> Activo </th>
+
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_2"> Inmunizaciones </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion3_2" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <table id="vacunas" class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th> Vacunas </th>
+                                                                    <th> Dosis Aplicadas </th>
+                                                                    <th> Edad Aplicacion </th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_3"> Medicamentos </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion3_3" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <table id="medicamento" class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th> Fecha </th>
+                                                                    <th> Nombre </th>
+                                                                    <th> Dosis</th>
+                                                                    <th> Frecuencia</th>
+                                                                    <th> Via</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_4"> Otras Ordenes Terapeuticas </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion3_4" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <table id="Otras_Ordenes_Terapeuticas" class="table dt-responsive">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th class="all"> Dieta </th>
+                                                                    <th class="min-phone-l"> Actividad Fisica </th>
+                                                                    <th class="none"> Curas</th>
+                                                                    <th class="none"> Oxigeno</th>
+                                                                    <th class="none"> Fisioterapia Respiratoria</th>
+                                                                    <th class="none"> Sondas /  Drenajes</th>
+                                                                    <th class="none"> Estudios Laboratorio / Diagnostico</th>
+                                                                    <th class="none"> Activo</th>
+                                                                    <th class="none">Edit</th>
+
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+
+
+
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_5"> Signos Vitales </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion3_5" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <table class="table dt-responsive" id="sample_123">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th class="all">
+                                                                        Fecha
+                                                                    </th>
+                                                                    <th class="min-phone-l">
+                                                                        Tension Arterial
+                                                                    </th>
+                                                                    <th class="none">
+                                                                        Temperatura
+                                                                    </th>
+                                                                    <th class="none">
+                                                                        Frecuencia Cardiaca
+                                                                    </th>
+                                                                    <th class="none">
+                                                                        Notas
+                                                                    </th>
+                                                                    <th class="none">
+                                                                        Edit
+                                                                    </th>
+
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+
+                                                            </table>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_6"> Revision por Sistema </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion3_6" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <table class="table" id="Revision1">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th >
+                                                                        Fecha
+                                                                    </th>
+                                                                    <th >
+                                                                        Revision
+                                                                    </th>
+
+
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_7"> Evolucion </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="accordion3_7" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <table class="table" id="evolucion1">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th >
+                                                                        Fecha
+                                                                    </th>
+                                                                    <th >
+                                                                        Evolucion
+                                                                    </th>
+
+
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                        <!-- END MEMBERSHIP TAB -->
+                                        <!-- TERMS OF USE TAB -->
+                                        <div class="tab-pane" id="tab_1_4">
+
+                                        </div>
+                                    </div>
+                                    <!-- END TERMS OF USE TAB -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PROFILE CONTENT -->
+        </div>
+    </div>
+    <!-- END PAGE BASE CONTENT -->
+
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Datos Personales</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alert">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Datos Personales Update
+
+                    </div>
+                    <form class="form-horizontal" role="form" enctype="text/plain">
+
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="id">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="sexo">Sexo</label>
+                            <div class="col-sm-10" data-toggle="button">
+
+
+                                <input type="text" class="form-control" id="sexo"
+                                />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Peso" >Peso(lbs)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="peso" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="dirPaciente" >Direccion</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="dirPaciente" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="telefono" >Telefono</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="telefono" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="celularPat" >Celular</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="celularPat" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="TutorPaciente" >Tutor</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="TutorPaciente" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="paciente_form" class="btn btn-default">Submit</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Datos de Paciente</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alert1">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Los datos fueron actualizados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" enctype="text/plain">
+
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="id">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="fname">Nombre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="fname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="lname" >Apellido</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="lname" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="job" >Edad</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="job" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="profile_form" class="btn btn-default">Agregar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Antecedentes Personales</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alert2">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Antecedentes Personales actualizados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" id="extend_model" enctype="text/plain">
+
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="id">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="date">Fecha</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="detail" >Detalle</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="detail" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="Antecedentes_form" class="btn btn-default">Agregar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="myModal3" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Antecedentes Familiares</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alert3">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Antecedentes Familiares actualizados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" id="extend_model" enctype="text/plain">
+
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="id">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="Enfermedad">Enfermedad</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Enfermedad">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Parentesco" >Parentesco</label>
+                            <div class="col-sm-10">
+                                <!--  <input type="text" class="form-control"
+                                        id="Parentesco" /> -->
+                                <select class="form-control" id="Parentesco">
+                                    <option>Padre</option>
+                                    <option>Madre</option>
+                                    <option>Hermanos</option>
+                                    <option>Abuelos</option>
+
+                                </select>
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Notas" >Notas</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Notas" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="Antecedentes_Familiares_form" class="btn btn-default">Agregar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="myModal4" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Inmunizaciones</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alert4">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Los datos fueron actualizados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" id="extend_model" enctype="text/plain">
+
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="id">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="Vacunas">Vacunas</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Vacunas">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Dosis_Aplicadas" >Dosis Aplicadas</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Dosis_Aplicadas" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Edad" >Edad Aplicacion</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Edad" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="vacunas_form" class="btn btn-default">Agregar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal5" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Medicamentos</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alert5">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Los datos fueron actualizados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" id="extend_model" enctype="text/plain">
+
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="id">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="Fecha1">Fecha</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control"
+                                       id="Fecha1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Nombre" >Nombre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Nombre" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Dosis" >Dosis</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Dosis" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Frecuencia" >Frecuencia</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Frecuencia" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Via" >Via</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Via" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="Medicamentos_form" class="btn btn-default">Agregar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal6" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Seguro</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alert6">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Los datos fueron actualizados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" id="extend_model" enctype="text/plain">
+
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="id">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="nombre">Nombre ARS</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="nombre">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="Asegurado" >No. Asegurado</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Asegurado" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="Seguro_form" class="btn btn-default">Agregar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal7" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Alergia</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alert7">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Los datos fueron actualizados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" id="extend_model" enctype="text/plain">
+
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="id">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="Alergia">Alergia</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="Alergia">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="tipo" >Tipo</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="tipo">
+                                    <option>Alimentos</option>
+                                    <option>Ambiente</option>
+                                    <option>Medicamentos</option>
+                                    <option>Otros</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="activo" >Activo</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="activo">
+                                    <option>Si</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="Alergia_form" class="btn btn-default">Agregar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="myModal8" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Alerta</h4>
+                </div>
+                <div class="modal-body">
+                    Solo doctores pueden editar esto
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="padecimientomodal1" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Padecimiento</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alert12">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Los datos fueron actualizados!
+
+                    </div>
+                    <form class="form-horizontal" role="form"  enctype="text/plain">
+
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="idss1">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="idss1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="padecimientopaciente1">Padecimiento</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="padecimientopaciente1">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="padecimiento_form" class="btn btn-default">Agregar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="signos_vitalesmodaledit" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Agregar Signos Vitales</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alertsignos1">
+
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Datos Agregados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" id="signosmodal" enctype="text/plain">
+                        {% csrf_token %}
+                        <div class="form-group hidden">
+                            <label  class="col-sm-2 control-label"
+                                    for="id1">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="id1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="tensionArterial1">Tension Arterial</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="tensionArterial1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="frecuenciaCardiaca1">Frecuencia Cardiaca</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="frecuenciaCardiaca1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="frecuenciaRespiratoria1" >Frecuencia Respiratoria</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="frecuenciaRespiratoria1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="temperaturaPaciente1" >Temperatura</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="temperaturaPaciente1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="notasSignosVitales1" >Notas</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="notasSignosVitales1" />
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                    <button type="button" id="signosvitales_form1" class="btn green">Guardar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="otrasordernesmodal1" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Agregar Otras Ordenes Terapeuticas</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alertotrasordenesmodal1">
+
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Datos Agregados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" id="otrasordernesmodal" enctype="text/plain">{% csrf_token %}
+                        <div class="form-group hide">
+                            <label  class="col-sm-3 control-label"
+                                    for="id2">ID</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control"
+                                       id="id2">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Dieta
+
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="dieta1" id="dieta1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Oxigeno
+
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="Oxigeno1" id="Oxigeno1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Actividad Fisica
+
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="actividadfisica1" id="actividadfisica1" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Curas
+
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="curas1" id="curas1" />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Fisioterapia Respiratoria
+
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="fisioterapiarespiratoria1" id="fisioterapiarespiratoria1" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Sondas/Drenajes
+
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="sondas1" id="sondas1" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Estudios Laboratorio/Diagnostivo
+
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="estudioslabdiagnostico1" id="estudioslabdiagnostico1" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label"
+                                    for="activo21">Activo</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="activo21">
+
+                                    <option>Si</option>
+                                    <option>No</option>
+
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn green" id="otrasordenes_form12">Guardar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="evolucionmodal1" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Agregar Evolucion</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alertrevolucionform">
+
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Datos Agregados!
+
+                    </div>
+                    <form class="form-horizontal" role="form"  enctype="text/plain">
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="ids">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="ids">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Notas Evolucion
+
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="notaevolucion1" id="notaevolucion1" />
+
+                            </div>
+                        </div>
+
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn green" id="evolucionform">Guardar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="revisionmodal1" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Agregar Revision del Sistema</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success hide" id="success-alertrevisionmodal1">
+
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        Datos Agregados!
+
+                    </div>
+                    <form class="form-horizontal" role="form" id="revisionmodal" enctype="text/plain">
+                        <div class="form-group hide">
+                            <label  class="col-sm-2 control-label"
+                                    for="idss">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="idss">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Revision
+
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="cabeza1" id="cabeza1" />
+
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn green" id="revisionform1">Guardar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+    <script>
+
+        $( document ).ready(function () {
+            $('#myform').click(function () {
+                $('#myModal').modal();
+            });
+
+        });
+
+        $('#user_profile').click( function() {
+            $('#myModal1').modal();
+        });
+        $('#signosvitales_form1').click( function() {
+            var tensionArterial1 = CryptoJS.AES.encrypt($('#tensionArterial1').val(), "Secret Passphrase");
+             var frecuenciaCardiaca1 = CryptoJS.AES.encrypt($('#frecuenciaCardiaca1').val(), "Secret Passphrase");
+             var frecuenciaRespiratoria1 = CryptoJS.AES.encrypt($('#frecuenciaRespiratoria1').val(), "Secret Passphrase");
+             var temperaturaPaciente1 = CryptoJS.AES.encrypt($('#temperaturaPaciente1').val(), "Secret Passphrase");
+             var notasSignosVitales1 = CryptoJS.AES.encrypt($('#notasSignosVitales1').val(), "Secret Passphrase");
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/signos-vitales/agregar/edit/',
+                type: 'POST',
+                data: {
+                    'id': $('#id1').val(),
+                    'Tension_Arterial': tensionArterial1.toString(),
+                    'Frecuencia_Cardiaca': frecuenciaCardiaca1.toString(),
+                    'Frecuencia_Respiratoria': frecuenciaRespiratoria1.toString(),
+                    'Temperatura':temperaturaPaciente1.toString(),
+                    'Notas': notasSignosVitales1.toString(),
+                },
+                success: function (data) {
+                    console.log(data);
+                    $("#success-alertsignos1").removeClass('hide');
+                    $("#success-alertsignos1").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alertsignos1").slideUp(500);
+                    });
+                    $('#signos_vitalesmodaledit').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+
+        $('#medicamentoform').click( function() {
+             var medicamentoNombre = CryptoJS.AES.encrypt($('#medicamentoNombre').val(), "Secret Passphrase");
+             var medicamentoDosis = CryptoJS.AES.encrypt($('#medicamentoDosis').val(), "Secret Passphrase");
+             var medicamentoFrecuencia = CryptoJS.AES.encrypt($('#medicamentoFrecuencia').val(), "Secret Passphrase");
+             var medicamentoVia = CryptoJS.AES.encrypt($('#medicamentoVia').val(), "Secret Passphrase");
+             var medicamentoNota = CryptoJS.AES.encrypt($('#medicamentoNota').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/medicamentos/agregar/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'Nombre': medicamentoNombre.toString(),
+                    'Dosis': medicamentoDosis.toString(),
+                    'Frecuencia': medicamentoFrecuencia.toString(),
+                    'Via': medicamentoVia.toString(),
+                    'Nota': medicamentoNota.toString(),
+
+
+
+                },
+                success: function (data) {
+                    $("#success-alertmedicamento").removeClass('hide');
+                    $("#success-alertmedicamento").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alertmedicamento").slideUp(500);
+                    });
+                    $('#MedicamentosModal').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+        $('#antecedente-Personalform').click( function() {
+            var antepersonalesdescripcion = CryptoJS.AES.encrypt($('#antepersonalesdescripcion').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'antepersopatologico': antepersonalesdescripcion.toString(),
+
+
+
+                },
+                success: function (data) {
+                    $("#success-alertanteperso").removeClass('hide');
+                    $("#success-alertanteperso").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alertanteperso").slideUp(500);
+                    });
+                    $('#antecedente-Personalmodal').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+
+        $('#antecedente-Personalform').click( function() {
+            var antefamiliarenfermedad = CryptoJS.AES.encrypt($('#antefamiliarenfermedad').val(), "Secret Passphrase");
+            var parentesco = CryptoJS.AES.encrypt($('#parentesco').val(), "Secret Passphrase");
+            var antefamiliarnota = CryptoJS.AES.encrypt($('#antefamiliarnota').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'enfermedad': antefamiliarenfermedad.toString(),
+                    'parentesco': parentesco.toString(),
+                    'antefamipatologicos': antefamiliarnota.toString(),
+
+
+
+
+                },
+                success: function (data) {
+                    $("#success-alertantefami").removeClass('hide');
+                    $("#success-alertantefami").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alertantefami").slideUp(500);
+                    });
+                    $('#antecedente-Familiarmodal').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+        $('#alergiaform').click( function() {
+              var tipo = CryptoJS.AES.encrypt($('#tipo').val(), "Secret Passphrase");
+              var Alergia = CryptoJS.AES.encrypt($('#Alergia').val(), "Secret Passphrase");
+              var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");
+            console.log( $('#activo').val());
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/alergia/agregar/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'tipo':  tipo.toString(),
+                    'alergia': Alergia.toString(),
+                    'activo': activo.toString(),
+
+
+                },
+                success: function (data) {
+                    $("#success-alertalergiamodal").removeClass('hide');
+                    $("#success-alertalergiamodal").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alertalergiamodal").slideUp(500);
+                    });
+                    $('#Alergia_modal').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+        $('#vacunaform').click( function() {
+             var tarjetavacuna = CryptoJS.AES.encrypt($('#tarjetavacuna').val(), "Secret Passphrase");
+             var vacuna = CryptoJS.AES.encrypt($('#vacuna').val(), "Secret Passphrase");
+{#             var dosisvacuna = CryptoJS.AES.encrypt($('#dosisvacuna').val(), "Secret Passphrase");#}
+{#             var edadvacuna = CryptoJS.AES.encrypt($('#edadvacuna').val(), "Secret Passphrase");#}
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/vacuna/agregar/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'tarjeta_vacunacion': tarjetavacuna.toString(),
+                    'nombre_vacuna': vacuna.toString(),
+                    'dosis_aplicadas': $('#dosisvacuna').val(),
+                    'edad_aplicacion': $('#edadvacuna').val(),
+
+
+                },
+                success: function (data) {
+                    $("#success-alertvacunamodal").removeClass('hide');
+                    $("#success-alertvacunamodal").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alertalergiamodal").slideUp(500);
+                    });
+                    $('#vacuna_modal').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+        $('#otrasordenes_form12').click( function() {
+             var dieta1 = CryptoJS.AES.encrypt($('#dieta1').val(), "Secret Passphrase");
+             var Oxigeno1 = CryptoJS.AES.encrypt($('#Oxigeno1').val(), "Secret Passphrase");
+{#             var activo21 = /CryptoJS.AES.encrypt($('#activo21').val(), "Secret Passphrase");#}
+             var actividadfisica1 = CryptoJS.AES.encrypt($('#actividadfisica1').val(), "Secret Passphrase");
+             var curas1 = CryptoJS.AES.encrypt($('#curas1').val(), "Secret Passphrase");
+             var fisioterapiarespiratoria1 = CryptoJS.AES.encrypt($('#fisioterapiarespiratoria1').val(), "Secret Passphrase");
+             var sondas1 = CryptoJS.AES.encrypt($('#sondas1').val(), "Secret Passphrase");
+            var estudioslabdiagnostico1 = CryptoJS.AES.encrypt($('#estudioslabdiagnostico1').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/otras-ordenes/agregar/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id':$('#id2').val(),
+                    'dieta1':dieta1.toString(),
+                    'Oxigeno1':Oxigeno1.toString(),
+                    'activo21':$('#activo21').val(),
+                    'actividadfisica1':actividadfisica1.toString(),
+                    'curas1':curas1.toString(),
+                    'fisioterapiarespiratoria1':fisioterapiarespiratoria1.toString(),
+                    'sondas1':sondas1.toString(),
+                    'estudioslabdiagnostico1':estudioslabdiagnostico1.toString(),
+
+
+                },
+                success: function (data) {
+                    $("#success-alertotrasordenesmodal1").removeClass('hide');
+                    $("#success-alertotrasordenesmodal1").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alertotrasordenesmodal1").slideUp(500);
+                    });
+                    $('#otrasordenes_modal').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+
+
+        $('#evolucionform').click( function() {
+            var notaevolucion1 = CryptoJS.AES.encrypt($('#notaevolucion1').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/evolucion/agregar/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#ids').val(),
+                    'notas': notaevolucion1.toString(),
+
+                },
+                success: function (data) {
+                    $("#success-alertrevolucionform").removeClass('hide');
+                    $("#success-alertrevolucionform").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alertrevolucionform").slideUp(500);
+                    });
+                    $('#evolucionmodal').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+
+        $('#revisionform1').click( function() {
+            var cabeza1 = CryptoJS.AES.encrypt($('#cabeza1').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#idss').val(),
+                    'cabeza': cabeza1.toString(),
+
+
+                },
+                success: function (data) {
+                    $("#success-alertrevisionmodal").removeClass('hide');
+                    $("#success-alertrevisionmodal").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alertrevisionmodal").slideUp(500);
+                    });
+                    $('#revisionmodal1').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+        $('#padecimiento_form').click( function() {
+            var padecimientopaciente1 = CryptoJS.AES.encrypt($('#padecimientopaciente1').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/padecimiento-actual/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#idss1').val(),
+                    'padecimiento': padecimientopaciente1.toString()
+
+                },
+                success: function (data) {
+                    $("#success-alert12").removeClass('hide');
+                    $("#success-alert12").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alert12").slideUp(500);
+                    });
+                    $('#padecimientomodal1').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+
+        $('#Alergia_form').click( function() {
+            var tipo = CryptoJS.AES.encrypt($('#tipo').val(), "Secret Passphrase");
+            var Alergia = CryptoJS.AES.encrypt($('#Alergia').val(), "Secret Passphrase");
+            var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/alergias/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'Tipo': tipo.toString(),
+                    'Nombre': Alergia.toString(),
+                    'Activo': activo.toString()
+
+
+                },
+                success: function (data) {
+                    $("#success-alert7").removeClass('hide');
+                    $("#success-alert7").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alert7").slideUp(500);
+                    });
+                    $('#myModal7').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+
+        $('#Seguro_form').click( function() {
+             var nombre = CryptoJS.AES.encrypt($('#nombre').val(), "Secret Passphrase");
+            var Asegurado = CryptoJS.AES.encrypt($('#Asegurado').val(), "Secret Passphrase");
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/seguro/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'Nom': nombre.toString(),
+                    'Ase': Asegurado.toString(),
+
+
+                },
+                success: function (data) {
+                    $("#success-alert6").removeClass('hide');
+                    $("#success-alert6").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alert6").slideUp(500);
+
+                    });
+                    $('#myModal6').modal('toggle');
+                    location.reload();
+
+
+
+                }
+            });
+        });
+        $("input[name='gender']").click(function(){
+            $("input[name='gender']").removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $('#Medicamentos_form').click( function() {
+
+             var Nombre = CryptoJS.AES.encrypt($('#Nombre').val(), "Secret Passphrase");
+             var Dosis = CryptoJS.AES.encrypt($('#Dosis').val(), "Secret Passphrase");
+             var Frecuencia = CryptoJS.AES.encrypt($('#Frecuencia').val(), "Secret Passphrase");
+             var Via = CryptoJS.AES.encrypt($('#Via').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/medicamentos/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'Fec': $('#Fecha1').val(),
+                    'Nom': Nombre.toString(),
+                    'Dos': Dosis.toString(),
+                    'Fre': Frecuencia.toString(),
+                    'Via': Via.toString(),
+
+                },
+                success: function (data) {
+                    $("#success-alert5").removeClass('hide');
+                    $("#success-alert5").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alert5").slideUp(500);
+                    });
+                    $('#myModal5').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+
+        $('#vacunas_form').click( function() {
+            var Vacunas = CryptoJS.AES.encrypt($('#Vacunas').val(), "Secret Passphrase");
+{#            var Dosis_Aplicadas = CryptoJS.AES.encrypt($('#Dosis_Aplicadas').val(), "Secret Passphrase");#}
+{#            var Edad = CryptoJS.AES.encrypt($('#Edad').val(), "Secret Passphrase");#}
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/vacunas/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'Vac': Vacunas.toString(),
+                    'Dos': $('#Dosis_Aplicadas').val(),
+                    'Edad': $('#Edad').val(),
+                },
+                success: function (data) {
+                    $("#success-alert4").removeClass('hide');
+                    $("#success-alert4").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alert4").slideUp(500);
+                    });
+                    $('#myModal4').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+
+
+        $('#Antecedentes_Familiares_form').click( function() {
+            var Enfermedad = CryptoJS.AES.encrypt($('#Enfermedad').val(), "Secret Passphrase");
+            var Parentesco = CryptoJS.AES.encrypt($('#Parentesco').val(), "Secret Passphrase");
+            var Notas = CryptoJS.AES.encrypt($('#Notas').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'En': Enfermedad.toString(),
+                    'Pa':Parentesco.toString(),
+                    'Notas': Notas.toString(),
+                },
+                success: function (data) {
+                    $("#success-alert3").removeClass('hide');
+                    $("#success-alert3").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alert3").slideUp(500);
+                    });
+                    $('#myModal3').modal('toggle');
+                    location.reload();
+                }
+            });
+        });
+
+        $('#Antecedentes_form').click( function() {
+
+            var detail = CryptoJS.AES.encrypt($('#detail').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'date': $('#date').val(),
+                    'detail':detail.toString(),
+                },
+                success: function (data) {
+                    $("#success-alert2").removeClass('hide');
+                    $("#success-alert2").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alert2").slideUp(500);
+
+                    });
+                    $('#myModal2').modal('toggle');
+                    location.reload();
+
+                }
+            })
+        });
+
+        $('#profile_form').click( function() {
+            var fname = CryptoJS.AES.encrypt($('#fname').val(), "Secret Passphrase");
+            var lname = CryptoJS.AES.encrypt($('#lname').val(), "Secret Passphrase");
+{#            var job = CryptoJS.AES.encrypt($('#job').val(), "Secret Passphrase");#}
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id': $('#id').val(),
+                    'fname': fname.toString(),
+                    'lname': lname.toString(),
+                    'job': $('#job').val(),
+                    'title': 'profile'
+
+                },
+                success: function (data) {
+                    $("#success-alert1").removeClass('hide');
+                    $("#success-alert1").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alert1").slideUp(500);
+                    });
+                    $('#myModal1').modal('toggle');
+                    location.reload();
+                }
+
+            });
+        });
+
+        $('#paciente_form').click( function(){
+
+
+            var sexo = CryptoJS.AES.encrypt($('#sexo').val(), "Secret Passphrase");
+{#            var peso = CryptoJS.AES.encrypt($('#peso').val(), "Secret Passphrase");#}
+            var dirPaciente = CryptoJS.AES.encrypt($('#dirPaciente').val(), "Secret Passphrase");
+            var telefono = CryptoJS.AES.encrypt($('#telefono').val(), "Secret Passphrase");
+            var celularPat = CryptoJS.AES.encrypt($('#celularPat').val(), "Secret Passphrase");
+            var TutorPaciente = CryptoJS.AES.encrypt($('#TutorPaciente').val(), "Secret Passphrase");
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/edit/', //this is the submit URL
+                type: 'POST',
+                data: {
+                    'id':$('#id').val(),
+                    'sexo':sexo.toString(),
+                    'peso':$('#peso').val(),
+                    'direction':dirPaciente.toString(),
+                    'Telefono':telefono.toString(),
+                    'celular':celularPat.toString(),
+                    'Tutor':TutorPaciente.toString(),
+                    'title': 'detail'
+
+                },
+                success: function(data){
+                    $("#success-alert").removeClass('hide');
+                    $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+                        $("#success-alert").slideUp(500);
+                    });
+                    $('#myModal').modal('toggle');
+                    location.reload();
+
+
+                }
+            });
+        });
+
+
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/paciente/signos_vitales/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+
+
+
+                    success: function (data) {
+
+                        var html1 = '';
+
+                        $.each(data, function (i, item) {
+                            var tension_arterial = CryptoJS.AES.decrypt(item.tension_arterial, "Secret Passphrase");
+                            var frecuencia_cardiaca = CryptoJS.AES.decrypt(item.frecuencia_cardiaca, "Secret Passphrase");
+                            var temperatura = CryptoJS.AES.decrypt(item.temperatura, "Secret Passphrase");
+                            var notas = CryptoJS.AES.decrypt(item.notas, "Secret Passphrase");
+                            html1 += '<tr><td>' + item.fecha + '</td><td>' + tension_arterial.toString(CryptoJS.enc.Utf8) + '</td><td>' + frecuencia_cardiaca.toString(CryptoJS.enc.Utf8) + '</td><td>' + temperatura.toString(CryptoJS.enc.Utf8) + '</td><td>' + notas.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=funct1('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                        });
+                        $('#sample_123').append(html1)
+                        $('#sample_123').dataTable({
+
+                        });
+
+                    },
+
+
+
+                    error: function(res, status, eror) {
+                        console.log(res, status, eror);
+                    }
+                });
+            }
+
+        });
+        function funct1(id) {
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/signos_vitales_get/' + id,
+                method: 'get',
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    var tension_arterial = CryptoJS.AES.decrypt(data[0].tension_arterial, "Secret Passphrase");
+                    var frecuencia_cardiaca = CryptoJS.AES.decrypt(data[0].frecuencia_cardiaca, "Secret Passphrase");
+                    var frecuencia_respiratoria = CryptoJS.AES.decrypt(data[0].frecuencia_respiratoria, "Secret Passphrase");
+                    var temperatura = CryptoJS.AES.decrypt(data[0].temperatura, "Secret Passphrase");
+                    var notas = CryptoJS.AES.decrypt(data[0].notas, "Secret Passphrase");
+
+                    $('#id1').val(data[0].id);
+                    $('#tensionArterial1').val(tension_arterial.toString(CryptoJS.enc.Utf8));
+                    $('#frecuenciaCardiaca1').val(frecuencia_cardiaca.toString(CryptoJS.enc.Utf8));
+                    $('#frecuenciaRespiratoria1').val(frecuencia_respiratoria.toString(CryptoJS.enc.Utf8));
+                    $('#temperaturaPaciente1').val(temperatura.toString(CryptoJS.enc.Utf8));
+                    $('#notasSignosVitales1').val(notas.toString(CryptoJS.enc.Utf8));
+                    $('#signos_vitalesmodaledit').modal();
+                },
+
+
+
+                error: function(res, status, eror) {
+                    console.log(res, status, eror);
+                }
+            });
+
+        }
+
+
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/paciente/otras-ordenes/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+
+
+
+                    success: function (data) {
+                        console.log(data)
+                        var html1 = '';
+
+                        $.each(data, function (i, item) {
+                            var dieta = CryptoJS.AES.decrypt(item.dieta, "Secret Passphrase");
+                             var actividad_fisica = CryptoJS.AES.decrypt(item.actividad_fisica, "Secret Passphrase");
+                             var curas = CryptoJS.AES.decrypt(item.curas, "Secret Passphrase");
+                             var oxigeno = CryptoJS.AES.decrypt(item.oxigeno, "Secret Passphrase");
+                             var fisioterapia_respiratoria = CryptoJS.AES.decrypt(item.fisioterapia_respiratoria, "Secret Passphrase");
+                             var sondas_drenajes = CryptoJS.AES.decrypt(item.sondas_drenajes, "Secret Passphrase");
+                            var estudios_lab_diagnostico = CryptoJS.AES.decrypt(item.estudios_lab_diagnostico, "Secret Passphrase");
+{#                             var activo = CryptoJS.AES.decrypt(, "Secret Passphrase");#}
+                            html1 += '<tr><td>' + dieta.toString(CryptoJS.enc.Utf8) + '</td><td>' + actividad_fisica.toString(CryptoJS.enc.Utf8) + '</td><td>' + curas.toString(CryptoJS.enc.Utf8) + '</td><td>' + oxigeno.toString(CryptoJS.enc.Utf8) + '</td><td>' + fisioterapia_respiratoria.toString(CryptoJS.enc.Utf8) + '</td><td>' + sondas_drenajes.toString(CryptoJS.enc.Utf8) + '</td><td>' + estudios_lab_diagnostico.toString(CryptoJS.enc.Utf8) + '</td><td>' + item.activo + '</td><td><i  role="button" onclick=funct3('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                        });
+                        $('#Otras_Ordenes_Terapeuticas').append(html1)
+                        $('#Otras_Ordenes_Terapeuticas').dataTable({
+
+                        });
+                    },
+
+
+
+                    error: function(res, status, eror) {
+                        console.log(res, status, eror);
+                    }
+                });
+            }
+
+        });
+        function funct3(id) {
+
+                 state = window.localStorage.getItem('state');
+        user_type = window.localStorage.getItem('user');
+             if(state == 'doctor' || user_type == 'true') {
+                 $.ajax({
+                     url: 'http://127.0.0.1:8000/api/paciente/Otras_Ordenes_get/' + id,
+                     method: 'get',
+                     crossDomain: true,
+                     dataType: "json",
+                     success: function (data) {
+                          var dieta = CryptoJS.AES.decrypt(data[0].dieta, "Secret Passphrase");
+                          var oxigeno = CryptoJS.AES.decrypt(data[0].oxigeno, "Secret Passphrase");
+{#                          var activo = CryptoJS.AES.decrypt(data[0].activo, "Secret Passphrase");#}
+                          var actividad_fisica = CryptoJS.AES.decrypt(data[0].actividad_fisica, "Secret Passphrase");
+                          var curas = CryptoJS.AES.decrypt(data[0].curas, "Secret Passphrase");
+                          var fisioterapia_respiratoria = CryptoJS.AES.decrypt(data[0].fisioterapia_respiratoria, "Secret Passphrase");
+                          var sondas_drenajes = CryptoJS.AES.decrypt(data[0].sondas_drenajes, "Secret Passphrase");
+                          var estudios_lab_diagnostico = CryptoJS.AES.decrypt(data[0].estudios_lab_diagnostico, "Secret Passphrase");
+
+                         $('#id2').val(data[0].id);
+                         $('#dieta1').val(dieta.toString(CryptoJS.enc.Utf8));
+                         $('#Oxigeno1').val(oxigeno.toString(CryptoJS.enc.Utf8));
+                         $('#activo21').val(data[0].activo);
+                         $('#actividadfisica1').val(actividad_fisica.toString(CryptoJS.enc.Utf8));
+                         $('#curas1').val(curas.toString(CryptoJS.enc.Utf8));
+                         $('#fisioterapiarespiratoria1').val(fisioterapia_respiratoria.toString(CryptoJS.enc.Utf8));
+                         $('#sondas1').val(sondas_drenajes.toString(CryptoJS.enc.Utf8));
+                         $('#estudioslabdiagnostico1').val(estudios_lab_diagnostico.toString(CryptoJS.enc.Utf8));
+                         $('#otrasordernesmodal1').modal();
+                     },
+
+
+                     error: function (res, status, eror) {
+                         console.log(res, status, eror);
+                     }
+                 });
+             }
+            else{
+                  $('#myModal8').modal();
+             }
+
+
+
+        }
+
+
+
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/paciente/padecimiento-actual/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+
+
+
+                    success: function (data) {
+                        console.log(data);
+                        var html1 = '';
+                        var time =
+                        $.each(data, function (i, item) {
+                            var time1  = item.hora;
+                            var hr = time1.split(':')[0];
+                            var min = time1.split(':')[1];
+                            var padecimiento = CryptoJS.AES.decrypt(item.padecimiento, "Secret Passphrase");
+                            html1 += '<tr><td>' + item.fecha + '</td><td>' + hr+':'+min + '</td><td>' + padecimiento.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=funct6('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                        });
+                        $('#padecimientotable').append(html1)
+
+                    },
+
+
+
+                    error: function(res, status, eror) {
+                        console.log(res, status, eror);
+                    }
+                });
+            }
+
+        });
+        function funct6(id) {
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/padecimiento-actual/get/' + id,
+                method: 'get',
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    var padecimientopaciente1 = CryptoJS.AES.decrypt(data[0].padecimientopaciente1, "Secret Passphrase");
+
+                    $('#idss1').val(data[0].id);
+                    $('#padecimientopaciente1').val(padecimientopaciente1.toString(CryptoJS.enc.Utf8));
+
+                    $('#padecimientomodal1').modal();
+                },
+
+
+
+                error: function(res, status, eror) {
+                    console.log(res, status, eror);
+                }
+            });
+
+        }
+
+
+
+
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+
+
+
+                    success: function (data) {
+                        console.log(data)
+                        var html1 = '';
+                        $.each(data, function (i, item) {
+
+                             var cabeza = CryptoJS.AES.decrypt(item.cabeza, "Secret Passphrase");
+
+                            html1 += '<tr><td>' + item.fecha + '</td><td>' + cabeza.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=funct5('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                        });
+                        $('#Revision1').append(html1)
+
+                    },
+
+
+
+                    error: function(res, status, eror) {
+                        console.log(res, status, eror);
+                    }
+                });
+            }
+
+        });
+        function funct5(id) {
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/get/' + id,
+                method: 'get',
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    var cabeza = CryptoJS.AES.decrypt(data[0].cabeza, "Secret Passphrase");
+
+                    $('#idss').val(data[0].id);
+                    $('#cabeza1').val(cabeza.toString(CryptoJS.enc.Utf8));
+
+                    $('#revisionmodal1').modal();
+                },
+
+
+
+                error: function(res, status, eror) {
+                    console.log(res, status, eror);
+                }
+            });
+
+        }
+
+
+
+
+
+
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+
+                $.ajax({
+                            url: 'http://127.0.0.1:8000/api/paciente/' + id,
+                            method: 'get',
+                            crossDomain: true,
+                            dataType: "json",
+
+
+
+                            success: function (data) {
+                            var nombre = CryptoJS.AES.decrypt(data.nombre, "Secret Passphrase");
+                                var apellido = CryptoJS.AES.decrypt(data.apellido, "Secret Passphrase");
+{#                                var edad = CryptoJS.AES.decrypt(data.edad, "Secret Passphrase");#}
+                                var telefono = CryptoJS.AES.decrypt(data.telefono, "Secret Passphrase");
+                                var celular = CryptoJS.AES.decrypt(data.celular, "Secret Passphrase");
+                                var direccion = CryptoJS.AES.decrypt(data.direccion, "Secret Passphrase");
+                                var sexo = CryptoJS.AES.decrypt(data.sexo, "Secret Passphrase");
+{#                                var peso = CryptoJS.AES.decrypt(data.peso, "Secret Passphrase");#}
+{#                                var fecha_ingreso = CryptoJS.AES.decrypt(data.fecha_ingreso, "Secret Passphrase");#}
+                                var tutor = CryptoJS.AES.decrypt(data.tutor, "Secret Passphrase");
+
+
+
+
+                            $("#id").val(data.id);
+                            $("#nombrePaciente").text(nombre.toString(CryptoJS.enc.Utf8)+' '+apellido.toString(CryptoJS.enc.Utf8));
+                            $("#fname").val(nombre.toString(CryptoJS.enc.Utf8));
+                            $("#lname").val(apellido.toString(CryptoJS.enc.Utf8));
+                            $("#job").val(data.edad);
+{#                            $("#apellido").text(apellido.toString(CryptoJS.enc.Utf8));#}
+                            $("#edadPaciente").text(data.edad+' años');
+                            $(".telefonoPaciente").text(telefono.toString(CryptoJS.enc.Utf8));
+                            $("#telefono").val(telefono.toString(CryptoJS.enc.Utf8));
+                            $("#celularPat").val(celular.toString(CryptoJS.enc.Utf8));
+                            $(".celularPaciente").text(celular.toString(CryptoJS.enc.Utf8));
+                            $("#idPaciente").text(data.id);
+                            $(".dirPaciente").text(direccion.toString(CryptoJS.enc.Utf8));
+                            $("#dirPaciente").val(direccion.toString(CryptoJS.enc.Utf8));
+                            $(".sexoPaciente").text(sexo.toString(CryptoJS.enc.Utf8));
+                            $("#sexo").val(sexo.toString(CryptoJS.enc.Utf8));
+                            $(".PesoPaciente").text(data.peso);
+                            $("#peso").val(data.peso);
+                            $("#FechaIngPaciente").text(data.fecha_ingreso);
+                            $(".TutorPaciente").text(tutor.toString(CryptoJS.enc.Utf8));
+                            $("#TutorPaciente").val(tutor.toString(CryptoJS.enc.Utf8));
+
+            },
+                error: function(res, status, eror) {
+                    console.log(res, status, eror);
+                }
+            });
+            }
+        });
+
+    </script>
+    <script>
+
+
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+                $.ajax({
+                            url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/' + id,
+                            method: 'get',
+                            crossDomain: true,
+                            dataType: "json",
+
+
+
+                            success: (data) => {
+
+                            var trHTML = '';
+                $.each(data, function (i, item) {
+                     var enfermedad = CryptoJS.AES.decrypt(item.enfermedad, "Secret Passphrase");
+                     var parentesco = CryptoJS.AES.decrypt(item.parentesco, "Secret Passphrase");
+                     var antefamipatologicos = CryptoJS.AES.decrypt(item.antefamipatologicos, "Secret Passphrase");
+                    trHTML += '<tr><td>' + enfermedad.toString(CryptoJS.enc.Utf8) + '</td><td>' + parentesco.toString(CryptoJS.enc.Utf8) + '</td><td>' + antefamipatologicos.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=func2('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                });
+
+                $('#antefampat').append(trHTML);
+
+            },
+                error: function(res, status, eror) {
+                    console.log(res, status, eror);
+                }
+            });
+            }
+        });
+
+        function func2(id) {
+            console.log(id);
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-get/' + id,
+                method: 'get',
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                       var enfermedad = CryptoJS.AES.decrypt(data[0].enfermedad, "Secret Passphrase");
+                       var parentesco = CryptoJS.AES.decrypt(data[0].parentesco, "Secret Passphrase");
+                       var antefamipatologicos = CryptoJS.AES.decrypt(data[0].antefamipatologicos, "Secret Passphrase");
+
+                    $('#id').val(data[0].id);
+                    $('#Enfermedad').val(enfermedad.toString(CryptoJS.enc.Utf8));
+                    $('#Parentesco').val(parentesco.toString(CryptoJS.enc.Utf8));
+                    $('#Notas').val(antefamipatologicos.toString(CryptoJS.enc.Utf8));
+
+                    $('#myModal3').modal();
+                }
+
+            })
+
+
+        }
+
+
+    </script>
+
+    <script>
+
+
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+                $.ajax({
+                            url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/' + id,
+                            method: 'get',
+                            crossDomain: true,
+                            dataType: "json",
+
+
+
+                            success: (data) => {
+                            var trHTML = '';
+                $.each(data, function (i, item) {
+
+                     var antepersopatologico = CryptoJS.AES.decrypt(item.antepersopatologico, "Secret Passphrase");
+                    trHTML += '<tr><td>' + item.fecha + '</td><td>' + antepersopatologico.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=func1('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+
+                });
+
+                $('#anteperpat').append(trHTML);
+            },
+                error: function(res, status, eror) {
+                    console.log(res, status, eror);
+                }
+            });
+            }
+        });
+        function func1(id) {
+
+            console.log(id);
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-get/' + id,
+                method: 'get',
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+
+              var antepersopatologico = CryptoJS.AES.decrypt(data[0].antepersopatologico, "Secret Passphrase");
+
+                    console.log()
+                    $('#id').val(data[0].id);
+                    $('#date').val(data[0].fecha);
+                    $('#detail').val(antepersopatologico.toString(CryptoJS.enc.Utf8));
+                    $('#myModal2').modal();
+                }
+
+            })
+
+
+        }
+
+
+
+    </script>
+
+    <script>
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+                $.ajax({
+                            url: 'http://127.0.0.1:8000/api/paciente/vacunas/' + id,
+                            method: 'get',
+                            crossDomain: true,
+                            dataType: "json",
+
+                            success: (data) => {
+                            var trHTML = '';
+                $.each(data, function (i, item) {
+                    var nombre_vacuna = CryptoJS.AES.decrypt(item.nombre_vacuna, "Secret Passphrase");
+{#                     var dosis_aplicadas = CryptoJS.AES.decrypt(item.dosis_aplicadas, "Secret Passphrase");#}
+{#                     var edad_aplicacion = CryptoJS.AES.decrypt(item.edad_aplicacion, "Secret Passphrase");#}
+                    trHTML += '<tr><td>' + nombre_vacuna.toString(CryptoJS.enc.Utf8) + '</td><td>' + item.dosis_aplicadas + '</td><td>' + item.edad_aplicacion + " años" + '</td><td><i  role="button" onclick=func3('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                });
+
+                $('#vacunas').append(trHTML);
+
+            },
+                error: function(res, status, eror) {
+                    console.log(res, status, eror);
+                }
+            });
+            }
+        });
+
+        function func3(id) {
+            console.log(id);
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/vacunas-get/' + id,
+                method: 'get',
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                     var nombre_vacuna = CryptoJS.AES.decrypt(data[0].nombre_vacuna, "Secret Passphrase");
+{#                     var dosis_aplicadas = CryptoJS.AES.decrypt(data[0].dosis_aplicadas, "Secret Passphrase");#}
+{#                     var edad_aplicacion = CryptoJS.AES.decrypt(data[0].edad_aplicacion, "Secret Passphrase");#}
+
+                    $('#id').val(data[0].id);
+                    $('#Vacunas').val(nombre_vacuna.toString(CryptoJS.enc.Utf8));
+                    $('#Dosis_Aplicadas').val(data[0].dosis_aplicadas);
+                    $('#Edad').val(data[0].edad_aplicacion);
+                    $('#myModal4').modal();
+                }
+
+            })
+
+
+        }
+
+    </script>
+
+    <script>
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+                $.ajax({
+                            url: 'http://127.0.0.1:8000/api/paciente/medicamentos/' + id,
+                            method: 'get',
+                            crossDomain: true,
+                            dataType: "json",
+                            success: (data) => {
+                            var trHTML = '';
+                $.each(data, function (i, item) {
+
+                    var nombre = CryptoJS.AES.decrypt(item.nombre, "Secret Passphrase");
+                    var dosis = CryptoJS.AES.decrypt(item.dosis, "Secret Passphrase");
+                    var frecuencia = CryptoJS.AES.decrypt(item.frecuencia, "Secret Passphrase");
+                    var via = CryptoJS.AES.decrypt(item.via, "Secret Passphrase");
+                    trHTML += '<tr><td>' + item.fecha + '</td><td>' + nombre.toString(CryptoJS.enc.Utf8) + '</td><td>' + dosis.toString(CryptoJS.enc.Utf8) + '</td><td>' + frecuencia.toString(CryptoJS.enc.Utf8) + '</td><td>' + via.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=func4('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                });
+                $('#medicamento').append(trHTML);
+
+            },
+                error: function(res, status, eror) {
+                    console.log(res, status, eror);
+                }
+            });
+            }
+        });
+
+        function func4(id) {
+              state = window.localStorage.getItem('state');
+        user_type = window.localStorage.getItem('user');
+             if(state == 'doctor' || user_type == 'true') {
+                 console.log(id);
+
+                 $.ajax({
+                     url: 'http://127   .0.0.1:8000/api/paciente/medicamentos/get/' + id,
+                     method: 'get',
+                     crossDomain: true,
+                     dataType: "json",
+                     success: function (data) {
+
+                          var nombre = CryptoJS.AES.decrypt(data[0].nombre, "Secret Passphrase");
+                          var dosis = CryptoJS.AES.decrypt(data[0].dosis, "Secret Passphrase");
+                          var frecuencia = CryptoJS.AES.decrypt(data[0].frecuencia, "Secret Passphrase");
+                          var via = CryptoJS.AES.decrypt(data[0].via, "Secret Passphrase");
+
+                         console.log(data);
+                         $('#id').val(data[0].id);
+                         $('#Fecha1').val(data[0].fecha);
+                         $('#Nombre').val(nombre.toString(CryptoJS.enc.Utf8));
+                         $('#Dosis').val(dosis.toString(CryptoJS.enc.Utf8));
+                         $('#Frecuencia').val(frecuencia.toString(CryptoJS.enc.Utf8));
+                         $('#Via').val(via.toString(CryptoJS.enc.Utf8));
+
+                         $('#myModal5').modal();
+                     }
+
+                 })
+             }
+             else {
+                 $('#myModal8').modal();
+             }
+
+
+
+
+        }
+
+
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/paciente/seguro/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+
+                    success: function (data) {
+
+                        var html1 = ''
+                        $.each(data, function (i, item) {
+                            var nombre_seguro = CryptoJS.AES.decrypt(item.nombre_seguro, "Secret Passphrase");
+                            var numero_afiliado = CryptoJS.AES.decrypt(item.numero_afiliado, "Secret Passphrase");
+                            html1+= '<ul class="list-group"><li class="list-group-item"> <span> Nombre ARS: </span><span >'+nombre_seguro.toString(CryptoJS.enc.Utf8)+' </span><i onclick=func5('+item.id+') role="button" class="glyphicon glyphicon-edit pull-right"></i> </li> <li class="list-group-item"> <span>No. Asegurado: </span> <p id="NumAfiliado"> '+ numero_afiliado.toString(CryptoJS.enc.Utf8) +' </p> </li> </ul>'
+                        });
+                        $('#sergue1').append(html1);
+
+
+
+                    },
+                    error: function(res, status, eror) {
+                        console.log(res, status, eror);
+                    }
+                });
+            }
+        });
+
+        function func5(id) {
+            console.log(id);
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/seguro/get/' + id,
+                method: 'get',
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                     var nombre_seguro = CryptoJS.AES.decrypt(data[0].nombre_seguro, "Secret Passphrase");
+                     var numero_afiliado = CryptoJS.AES.decrypt(data[0].numero_afiliado, "Secret Passphrase");
+                    $('#id').val(data[0].id);
+                    $('#nombre').val(nombre_seguro.toString(CryptoJS.enc.Utf8));
+                    $('#Asegurado').val(numero_afiliado.toString(CryptoJS.enc.Utf8));
+
+
+                    $('#myModal6').modal();
+                }
+
+            })
+
+
+        }
+
+
+
+    </script>
+
+
+    <script>
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/paciente/evolucion/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+
+                    success: function (data) {
+
+
+
+                        var html1 = '';
+                        $.each(data, function (i, item) {
+                            var notas = CryptoJS.AES.decrypt(item.notas, "Secret Passphrase");
+                            html1+= '<tr><td>' + item.fecha + '</td><td>' + notas.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=funct4('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                        });
+                        $('#evolucion1').append(html1);
+
+
+
+                    },
+                    error: function(res, status, eror) {
+                        console.log(res, status, eror);
+                    }
+                });
+            }
+        });
+
+        function funct4(id) {
+            console.log(id);
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/evolucion/get/' + id,
+                method: 'get',
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                     var notas = CryptoJS.AES.decrypt(data[0].notas, "Secret Passphrase");
+
+                    console.log(data);
+                    $('#ids').val(data[0].id);
+                    $('#notaevolucion1').val(notas.toString(CryptoJS.enc.Utf8));
+
+
+                    $('#evolucionmodal1').modal();
+                }
+
+            })
+
+
+        }
+
+
+
+    </script>
+
+    <script>
+
+
+        $( document ).ready(function() {
+            var id = location.href.split('#')[1];
+            getData(id);
+
+            function getData(id){
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/paciente/alergias/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+
+                    success: function (data) {
+                        console.log(data)
+                        var alergiastest = '';
+
+                        $.each(data, function (i, item) {
+                             var tipo = CryptoJS.AES.decrypt(item.tipo, "Secret Passphrase");
+                            var nombre_alergia = CryptoJS.AES.decrypt(item.nombre_alergia, "Secret Passphrase");
+                            var activo = CryptoJS.AES.decrypt(item.activo, "Secret Passphrase");
+
+                                alergiastest += '<tr><td>' + tipo.toString(CryptoJS.enc.Utf8) + '</td><td>' + nombre_alergia.toString(CryptoJS.enc.Utf8) + '</td><td>' + activo.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=func6(' + item.id + ') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+
+                            });
+                        $('#alergia12').append(alergiastest);
+
+                    },
+                    error: function(res, status, eror) {
+                        console.log(res, status, eror);
+                    },
+
+                });
+            }
+        });
+
+        function func6(id) {
+            console.log(id);
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/paciente/alergias/get/' + id,
+                method: 'get',
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    var tipo = CryptoJS.AES.decrypt(data[0].tipo, "Secret Passphrase");
+                    var nombre_alergia = CryptoJS.AES.decrypt(data[0].nombre_alergia, "Secret Passphrase");
+                    var activo = CryptoJS.AES.decrypt(data[0].activo, "Secret Passphrase");
+
+                    $('#id').val(data[0].id);
+                    $('#tipo').val(tipo.toString(CryptoJS.enc.Utf8));
+                    $('#Alergia').val(nombre_alergia.toString(CryptoJS.enc.Utf8));
+                    $('#activo').val(activo.toString(CryptoJS.enc.Utf8));
+
+
+                    $('#myModal7').modal();
+                }
+
+            })
+
+
+        }
+
+    </script>
+    <script type="text/javascript">
+
+    </script>
+
+
+{% endblock %}
