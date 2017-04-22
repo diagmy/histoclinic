@@ -12,13 +12,15 @@
                     <!-- PORTLET MAIN -->
                     <div class="portlet light profile-sidebar-portlet bordered">
                         <!-- SIDEBAR USERPIC -->
+                        <div class ="row">
                         <div class="profile-userpic">
                             <img src="{% static 'assets/pages/media/profile/profile_user.jpg' %}" class="img-responsive" alt=""> </div>
+                           
                         <!-- END SIDEBAR USERPIC -->
                         <!-- SIDEBAR USER TITLE -->
                         <div class="col-xs-7" style="margin-top:10px;display: block; text-align: center;">
                             <i id="user_profile" role="button" class="glyphicon glyphicon-edit pull-right"></i>
-                        </div>
+                        </div></div>
                         <div class="profile-usertitle">
 
                             <div class="profile-usertitle-name"><span id="nombrePaciente"></span></div>
@@ -340,7 +342,7 @@
                                                                     <th class="none"> Sondas /  Drenajes</th>
                                                                     <th class="none"> Estudios Laboratorio / Diagnostico</th>
                                                                     <th class="none"> Activo</th>
-                                                                    <th class="none">Edit</th>
+                                                                    <th class="none">Editar</th>
 
                                                                 </tr>
                                                                 </thead>
@@ -386,7 +388,7 @@
                                                                         Notas
                                                                     </th>
                                                                     <th class="none">
-                                                                        Edit
+                                                                        Editar
                                                                     </th>
 
                                                                 </tr>
@@ -566,8 +568,8 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" id="paciente_form" class="btn btn-default">Submit</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" id="paciente_form" class="btn btn-default">Agregar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
                     </form>
@@ -1947,6 +1949,15 @@
                         });
                         $('#sample_123').append(html1)
                         $('#sample_123').dataTable({
+                               "language": {
+            "lengthMenu": "Mostrar _MENU_ por pagina",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay data que mostrar",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Buscar",
+        }
+                            
 
                         });
 
@@ -2025,6 +2036,14 @@
                         });
                         $('#Otras_Ordenes_Terapeuticas').append(html1)
                         $('#Otras_Ordenes_Terapeuticas').dataTable({
+                                                    "language": {
+            "lengthMenu": "Mostrar _MENU_ por pagina",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay data que mostrar",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Buscar",
+        }
 
                         });
                     },

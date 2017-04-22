@@ -175,7 +175,7 @@ var FormWizard = function () {
                 var total = navigation.find('li').length;
                 var current = index + 1;
                 // set wizard title
-                $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
+                $('.step-title', $('#form_wizard_1')).text('Paso ' + (index + 1) + ' de ' + total);
                 // set done steps
                 jQuery('li', $('#form_wizard_1')).removeClass("done");
                 var li_list = navigation.find('li');
