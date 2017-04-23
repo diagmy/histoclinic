@@ -6,5 +6,10 @@ if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "front.settings")
 
     from django.core.management import execute_from_command_line
-
-    execute_from_command_line(sys.argv)
+    # print(sys.argv)
+    a = sys.argv
+    l = len(a)
+    if l < 2:
+    	a.append('runserver')
+    print(a)
+    execute_from_command_line(a)
