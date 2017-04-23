@@ -242,10 +242,9 @@ var FormWizard = function () {
             });
 
             $('#form_wizard_1').find('.button-previous').hide();
-            $('#form_wizard_1 .button-submit').click(function () {
-                alert('Finished! Hope you like it :)');
-            }).hide();
+            
 
+            
             //apply validation on select2 dropdown value change, this only needed for chosen dropdown integration.
             $('#country_list', form).change(function () {
                 form.validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
