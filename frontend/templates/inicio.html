@@ -4,42 +4,98 @@
 <div class="page-content-col">
     <!-- BEGIN PAGE BASE CONTENT -->
     <div class="search-page search-content-2">
-        <div class="search-bar bordered">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Buscar Pacientes...">
-                        <span class="input-group-btn">
-                            <button class="btn blue uppercase bold" type="button">  Buscar</button>
-                        </span>
+        <form>
+            <div class="search-bar bordered">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+
+                            <input type="text" value="" class="form-control" placeholder="Buscar Pacientes..." name="search" id="search">
+                            <span class="input-group-btn">
+                                <button class="btn blue uppercase bold" type="submit">  Buscar</button>
+                            </span>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="search-container bordered">
-                    <ul class="search-container">
-                        <li class="search-item clearfix">
-                            <div class="search-content text-left">
-                                <h2 class="search-title">
-                                    <a href="javascript:;">Resultados</a>
-                                </h2>
-                                <p class="search-desc"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur pellentesque auctor. Morbi lobortis, leo in tristique scelerisque, mauris quam volutpat nunc </p>
-                            </div>
-                        </li>
-                        
-                    </ul>
-                 
+        </form>
+        <div class="search-result-cnt">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="search-container bordered">
+                        <ul class="search-container">
+                            <li class="search-item clearfix">
+                                <div class="search-content text-left">
+                                    <h2 class="search-title">
+                                        <a href="javascript:;">Resultados</a>
+                                    </h2>
+                                    <p class="search-desc"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur pellentesque auctor. Morbi lobortis, leo in tristique scelerisque, mauris quam volutpat nunc </p>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
                 </div>
+
             </div>
-         
         </div>
+
+
     </div>
       
                                 <!-- END PAGE BASE CONTENT -->
                             </div>
+    <script>
+        $(document).ready(function () {
 
+            $('input[name=search]').val('');
+
+            function Search(){
+                var formData = {
+                    'query' : $('input[name=search]').val()
+                };
+
+                if (formData['query'] == ''){
+                    $('.search-result-cnt').empty().append("<div class='search-result-cnt'> <div class='row'> <div class='col-md-12'> <div class='search-container bordered'><ul class='search-container'><li class='search-item clearfix'><div class='search-content text-left'><h2 class='search-title'><a href='javascript:;'>Resultados</a></h2><p class='search-desc'> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur pellentesque auctor. Morbi lobortis, leo in tristique scelerisque, mauris quam volutpat nunc </p></div></li> </ul> </div> </div> </div></div>");
+                    return;
+                }
+
+                var html = "";
+                $.ajax({
+                    type: 'GET',
+                    url: '/search/?q=' + formData['query'],
+                    encode: true
+                })
+                .done(function (data) {
+                    console.log(data);
+                    $.each(data, function (i, user) {
+                        console.log(user);
+                        html += "<div class='row'> <div class='col-md-12'> <div class='search-container bordered'> <ul class='search-container'>  <li class='search-item clearfix'> <div class='search-content text-left'> <h2 class='search-title'> <a href='/profile/page/help/#"+ user.id +"'>" + user.first_name + " " + user.last_name + "</a> </h2> <p class='search-desc'> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur pellentesque auctor. Morbi lobortis, leo in tristique scelerisque, mauris quam volutpat nunc </p>  </div> </li> </ul> </div> </div> </div>"
+                        //console.log(html);
+                    });
+                    //console.log(html);
+                    $('.search-result-cnt').empty().append(html);
+
+                });
+            }
+
+            $("#search").keyup(function () {
+                Search();
+            });
+
+            $('form').submit(function (event) {
+
+                Search();
+
+
+
+                //console.log(formData);
+                event.preventDefault();
+            })
+        })
+    </script>
 
 {% endblock %}
 

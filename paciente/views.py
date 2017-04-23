@@ -17,7 +17,7 @@ from .models import Paciente, MotivoConsultas, PadecimientoActuales, Alergias, S
 from .serializers import PacienteSerializer, MotivoConsultaSerializer, PadecimientoActualSerializer, AlergiaSerializer, \
     SignoVitalSerializer, MedicamentoSerializer, OtraOrdenTerapeuticaSerializer, EvolucionSerializer, \
     InmunizacionSerializer, SeguroSerializer, AntecendentePersonalPatologicoSerializer, \
-    AntecendenteFamiliarPatologicoSerializer, RevisionPorSistemaSerializer
+    AntecendenteFamiliarPatologicoSerializer, RevisionPorSistemaSerializer, UserSerializer
 from rest_framework import generics
 import json
 from django.views.generic.edit import FormView, BaseDetailView,View
@@ -122,6 +122,49 @@ class LogoutView(View):
         request.session.clear()
         logout(request)
         return HttpResponse('success')
+
+
+class Search(APIView):
+
+    def get(self, request):
+        data = request.GET.get('q')
+        # data = '%' + data + '%'
+        splitted = data.split(' ')
+        l = len(splitted)
+
+        # by_firstname = User.objects.filter(firstname__contains=data)
+        by_fullname = []
+        by_firstname = []
+        by_lastname = []
+        by_username = []
+
+        by_firstname = User.objects.filter(first_name__contains=splitted[0])
+        if l > 1:
+            by_fullname = by_firstname.filter(last_name__contains=splitted[1])
+            by_lastname = User.objects.filter(last_name__contains=splitted[1])
+        else:
+            by_lastname = User.objects.filter(last_name__contains=splitted[0])
+
+        by_username = User.objects.filter(username__contains=splitted[0])
+        exact_user = by_username.filter(username=data)
+
+        # print("firstname", by_firstname)
+        # print ("lastname", by_lastname)
+        # print ("fullname", by_fullname)
+        # print ("username", by_username)
+        # print ("exact user", exact_user)
+
+        all = []
+        if l > 1:
+            all = exact_user | by_fullname | by_firstname | by_username | by_lastname
+        else:
+            all = exact_user | by_firstname | by_username | by_lastname
+
+        serializer = UserSerializer(all, many=True)
+
+        print (serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class PacienteLista(APIView):
     def get(self, request):
