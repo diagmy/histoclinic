@@ -10,7 +10,7 @@
                     <div class="caption">
                         <i class=" icon-layers font-red"></i>
                         <span class="caption-subject font-red bold uppercase"> Agregar Paciente -
-                            <span class="step-title"> Paso 1 de 4 </span>
+                            <span class="step-title"> Paso 1 de 2 </span>
                         </span>
                     </div>
 
@@ -407,8 +407,10 @@
                             },
 
                             success: function(success) {
+                              location.href = "{% url 'paciente' %}"
 {#                                console.log(success);#}
 {#                                postDataAlergia(success.id);#}
+
                             },
                             error: function(error) {
                                 console.log(error);
