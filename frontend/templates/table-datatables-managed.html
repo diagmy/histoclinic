@@ -358,7 +358,7 @@ function postData(){
 };
   console.log(data);
 $.ajax({
-  url: 'http://localhost:8000/api/paciente/agregar/',
+  url: '/api/paciente/agregar/',
   method: 'POST',
   crossDomain: true,
   data: JSON.stringify(data),
@@ -386,7 +386,7 @@ function postDataConsulta(pacienteId){
     };
     console.log(data);
     $.ajax({
-        url: 'http://localhost:8000/api/paciente/motivoconsultas/agregar/',
+        url: '/api/paciente/motivoconsultas/agregar/',
         method: 'POST',
         crossDomain: true,
         data: JSON.stringify(data),
@@ -409,7 +409,7 @@ function postDataAlergia(){
 };
   console.log(data);
 $.ajax({
-  url: 'http://localhost:8000/api/paciente/alergia/agregar/',
+  url: '/api/paciente/alergia/agregar/',
   method: 'POST',
   crossDomain: true,
   data: JSON.stringify(data),
@@ -434,7 +434,7 @@ function postDataSeguro(){
 };
   console.log(data);
 $.ajax({
-  url: 'http://localhost:8000/api/paciente/seguro/agregar/',
+  url: '/api/paciente/seguro/agregar/',
   method: 'POST',
   crossDomain: true,
   data: JSON.stringify(data),
@@ -461,7 +461,7 @@ function postDataAntePersonales(){
 };
   console.log(data);
 $.ajax({
-  url: 'http://localhost:8000/api/paciente/antecendentes-personales-patologicos/agregar/',
+  url: '/api/paciente/antecendentes-personales-patologicos/agregar/',
   method: 'POST',
   crossDomain: true,
   data: JSON.stringify(data),
@@ -488,7 +488,7 @@ function postDataAnteFamiliares(){
 };
   console.log(data);
 $.ajax({
-  url: 'http://localhost:8000/api/paciente/antecendentes-familiares-patologicos/agregar/',
+  url: '/api/paciente/antecendentes-familiares-patologicos/agregar/',
   method: 'POST',
   crossDomain: true,
   data: JSON.stringify(data),
@@ -517,7 +517,7 @@ function postDataVacuna(){
 };
   console.log(data);
 $.ajax({
-  url: 'http://localhost:8000/api/paciente/vacunas/agregar/',
+  url: '/api/paciente/vacunas/agregar/',
   method: 'POST',
   crossDomain: true,
   data: JSON.stringify(data),

@@ -64,6 +64,8 @@
     <script src="{% static 'assets/pages/scripts/table-datatables-managed.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'assets/pages/scripts/form-wizard.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/pages/scripts/formwizard.js' %}" type="text/javascript"></script>
+   
     <!-- END THEME GLOBAL SCRIPTS -->
     <!-- BEGIN THEME LAYOUT SCRIPTS -->
 
@@ -87,7 +89,7 @@
         else {
             console.log(window.localStorage.getItem('access_token'));
             {#                ev.preventDefault();#}
-            window.location.href="http://127.0.0.1:8000/accounts/login/";
+            window.location.href="/accounts/login/";
         }
     </script>
     <body class="page-header-fixed page-sidebar-closed-hide-logo">
@@ -107,114 +109,17 @@
                             <img src="{% static 'assets/layouts/layout5/img/logo.png' %}" alt="Logo"> </a>
                         <!-- END LOGO -->
                         <!-- BEGIN SEARCH -->
-                        <form class="search" action="extra_search.html" method="GET">
+                   <!--      <form class="search" action="extra_search.html" method="GET">
                             <input type="name" class="form-control" name="query" placeholder="Buscar Paciente...">
                             <a href="javascript:;" class="btn submit md-skip">
                                 <i class="fa fa-search"></i>
                             </a>
-                        </form>
+                        </form> -->
                         <!-- END SEARCH -->
                         <!-- BEGIN TOPBAR ACTIONS -->
                         <div class="topbar-actions">
                             <!-- BEGIN GROUP NOTIFICATION -->
-                            <div class="btn-group-notification btn-group" id="header_notification_bar">
-                                <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <i class="icon-bell"></i>
-                                    <span class="badge">7</span>
-                                </button>
-                                <ul class="dropdown-menu-v2">
-                                    <li class="external">
-                                        <h3>
-                                            <span class="bold">12 pending</span> notifications</h3>
-                                        <a href="#">view all</a>
-                                    </li>
-                                    <li>
-                                        <ul class="dropdown-menu-list scroller" style="height: 250px; padding: 0;" data-handle-color="#637283">
-                                            <li>
-                                                <a href="javascript:;">
-                                                        <span class="details">
-                                                            <span class="label label-sm label-icon label-success md-skip">
-                                                                <i class="fa fa-plus"></i>
-                                                            </span> New user registered. </span>
-                                                    <span class="time">just now</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                        <span class="details">
-                                                            <span class="label label-sm label-icon label-danger md-skip">
-                                                                <i class="fa fa-bolt"></i>
-                                                            </span> Server #12 overloaded. </span>
-                                                    <span class="time">3 mins</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                        <span class="details">
-                                                            <span class="label label-sm label-icon label-warning md-skip">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </span> Server #2 not responding. </span>
-                                                    <span class="time">10 mins</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                        <span class="details">
-                                                            <span class="label label-sm label-icon label-info md-skip">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </span> Application error. </span>
-                                                    <span class="time">14 hrs</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                        <span class="details">
-                                                            <span class="label label-sm label-icon label-danger md-skip">
-                                                                <i class="fa fa-bolt"></i>
-                                                            </span> Database overloaded 68%. </span>
-                                                    <span class="time">2 days</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                        <span class="details">
-                                                            <span class="label label-sm label-icon label-danger md-skip">
-                                                                <i class="fa fa-bolt"></i>
-                                                            </span> A user IP blocked. </span>
-                                                    <span class="time">3 days</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                        <span class="details">
-                                                            <span class="label label-sm label-icon label-warning md-skip">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </span> Storage Server #4 not responding dfdfdfd. </span>
-                                                    <span class="time">4 days</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                        <span class="details">
-                                                            <span class="label label-sm label-icon label-info md-skip">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </span> System Error. </span>
-                                                    <span class="time">5 days</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                        <span class="details">
-                                                            <span class="label label-sm label-icon label-danger md-skip">
-                                                                <i class="fa fa-bolt"></i>
-                                                            </span> Storage server failed. </span>
-                                                    <span class="time">9 days</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+             <!--  -->
                             <!-- END GROUP NOTIFICATION -->
                             <!-- BEGIN GROUP INFORMATION -->
                             <div class="btn-group-red btn-group">
@@ -228,17 +133,14 @@
                                     <span id="username1"></span>
                                     <img src="{% static 'assets/layouts/layout5/img/avatar1.jpg' %}" alt=""> </button>
                                 <ul class="dropdown-menu-v2" role="menu">
-                                    <li>
-                                        <a href="page_user_profile_1.html">
+                           <!--          <li>
+                                        <a href="{% url 'perfil-usuario' %}">
                                             <i class="icon-user"></i> Mi Perfil
                                         </a>
-                                    </li>
+                                    </li> -->
 
                                     <li class="divider"> </li>
-                                    <li>
-                                        <a href="page_user_lock_1.html">
-                                            <i class="icon-lock"></i> Bloquear </a>
-                                    </li>
+                               
                                     <li>
                                         <a id="logoutuser">
                                             <i class="icon-key"></i> Salir</a>
@@ -295,10 +197,10 @@
                             <nav class="navbar" role="navigation">
                                 <!-- Brand and toggle get grouped for better mobile display -->
                                 <!-- Collect the nav links, forms, and other content for toggling -->
-
+{% block navbasic1 %}
                                 <ul class="nav navbar-nav margin-bottom-35">
                                     <li>
-                                        <a href="#">
+                                        <a href="{% url 'landing_page' %}">
                                             <i class="icon-home"></i> Inicio </a>
                                     </li>
                                     <li>
@@ -306,10 +208,10 @@
                                             <i class="icon-note "></i> Pacientes </a>
                                     </li>
 
-                                    <li id="Agregar_Paciente" class="hide">
+                                    <li>
                                         <a href="{% url 'formulario-paciente' %}">
                                             <i class="icon-user"></i>  Agregar Paciente </a>
-                                    </li>
+                                    </li>{% endblock %}
 
                                     <!--  <li>
                                          <a href="#">
@@ -323,20 +225,10 @@
                                 <h3>Agregar</h3>
                                 <ul class="nav navbar-nav">
                                     <li>
-                                        <a href="#signos_vitalesmodal" data-toggle="modal">
-                                           Signos Vitales
+                                        <a href="#alergiamodal" data-toggle="modal">
+                                            Alergias
 
                                         </a>
-                                    </li>
-
-                                    <li>
-                                        <a  id="medicamentomodal" >
-                                            Medicamentos </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#antecedente-Personalmodal" data-toggle="modal">
-                                            Antecedentes Personales</a>
                                     </li>
                                     <li>
                                         <a href="#antecedente_Familiarmodal" data-toggle="modal">
@@ -344,17 +236,20 @@
 
                                         </a>
                                     </li>
+
                                     <li>
-                                        <a href="#alergiamodal" data-toggle="modal">
-                                            Alergias
+                                        <a href="#antecedente-Personalmodal" data-toggle="modal">
+                                            Antecedentes Personales</a>
+                                    </li>
+                                    <li>
+                                        <a href="#evolucionmodal" data-toggle="modal">
+                                         Evolucion
 
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#vacunamodal" data-toggle="modal">
-                                            Vacunas
-
-                                        </a>
+                                        <a  id="medicamentomodal" >
+                                            Medicamentos </a>
                                     </li>
                                     {#                                    {% if request.user.state == 'doctor' or request.user.is_superuser == True %}#}
                                     <li>
@@ -365,14 +260,8 @@
                                     </li>
                                     {#                                    {% endif %}#}
                                     <li>
-                                        <a href="#seguromodal" data-toggle="modal">
-                                           Seguro
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#evolucionmodal" data-toggle="modal">
-                                         Evolucion
+                                        <a href="#padecimientomodal" data-toggle="modal">
+                                           Padecimiento
 
                                         </a>
                                     </li>
@@ -383,15 +272,28 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#padecimientomodal" data-toggle="modal">
-                                           Padecimiento
+                                        <a href="#seguromodal" data-toggle="modal">
+                                           Seguro
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#signos_vitalesmodal" data-toggle="modal">
+                                           Signos Vitales
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#vacunamodal" data-toggle="modal">
+                                            Vacunas
 
                                         </a>
                                     </li>
                                 </ul>
                             {% endblock %}
                             </nav>
-                            <div class="modal fade" id="signos_vitalesmodal" tabindex="-1" role="basic" aria-hidden="true">
+                           <div class="modal fade" id="signos_vitalesmodal" tabindex="-1" role="basic" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -447,17 +349,17 @@
                                                                id="notasSignosVitales" />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient12" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <!--  <input type="text" class="form-control"
-                                                                id="Parentesco" /> -->
-                                                        <select class="form-control" id="patient12">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient12" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <!--  <input type="text" class="form-control"#}
+{#                                                                id="Parentesco" /> -->#}
+{#                                                        <select class="form-control" id="patient12">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
                                             </form>
                                         </div>
@@ -534,15 +436,15 @@
                                                                id="temperaturaPaciente1" />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient11" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient11">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient11" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient11">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -583,15 +485,15 @@
                                                                id="antepersonalesdescripcion">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient13" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient13">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient13" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient13">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -632,21 +534,21 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label  class="col-sm-2 control-label"
-                                                            for="antefamiliarnota">AnteFamiliarNota</label>
+                                                            for="antefamiliarnota">Nota</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control"
                                                                id="antefamiliarnota">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient16" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient16">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient16" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient16">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label">Parentesco
@@ -739,15 +641,15 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient14" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient14">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient14" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient14">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -819,15 +721,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient15" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient15">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient15" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient15">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -938,15 +840,15 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label"
-                                                           for="patient17" >Patient</label>
-                                                    <div class="col-sm-4">
-                                                        <select class="form-control" id="patient17">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-4 control-label"#}
+{#                                                           for="patient17" >Patient</label>#}
+{#                                                    <div class="col-sm-4">#}
+{#                                                        <select class="form-control" id="patient17">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -1002,15 +904,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label"
-                                                           for="patient18" >Patient</label>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" id="patient18">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-md-3 control-label"#}
+{#                                                           for="patient18" >Patient</label>#}
+{#                                                    <div class="col-md-4">#}
+{#                                                        <select class="form-control" id="patient18">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -1057,15 +959,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label"
-                                                           for="patient19" >Patient</label>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" id="patient19">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-md-3 control-label"#}
+{#                                                           for="patient19" >Patient</label>#}
+{#                                                    <div class="col-md-4">#}
+{#                                                        <select class="form-control" id="patient19">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -1112,15 +1014,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label"
-                                                           for="patient20" >Patient</label>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" id="patient20">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-md-3 control-label"#}
+{#                                                           for="patient20" >Patient</label>#}
+{#                                                    <div class="col-md-4">#}
+{#                                                        <select class="form-control" id="patient20">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
 
@@ -1168,15 +1070,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label"
-                                                           for="patient21" >Patient</label>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" id="patient21">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-md-3 control-label"#}
+{#                                                           for="patient21" >Patient</label>#}
+{#                                                    <div class="col-md-4">#}
+{#                                                        <select class="form-control" id="patient21">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
 
@@ -1214,7 +1116,7 @@
 
                         </div>
                         <!-- END PAGE SIDEBAR -->
-                        <div class="page-content-col">
+                        <div class="page-content-col" style="position: relative;">
                             <!-- BEGIN PAGE BASE CONTENT -->
                             {% block containter %}
                             {% endblock %}
@@ -1304,16 +1206,17 @@
 
 
         $('#signosvitales_form').click( function() {
+            var id = location.href.split('#')[1];
             var tensionArterial = CryptoJS.AES.encrypt($('#tensionArterial').val(), "Secret Passphrase");
             var frecuenciaCardiaca = CryptoJS.AES.encrypt($('#frecuenciaCardiaca').val(), "Secret Passphrase");
             var frecuenciaRespiratoria = CryptoJS.AES.encrypt($('#frecuenciaRespiratoria').val(), "Secret Passphrase");
             var temperaturaPaciente = CryptoJS.AES.encrypt($('#temperaturaPaciente').val(), "Secret Passphrase");
             var notasSignosVitales = CryptoJS.AES.encrypt($('#notasSignosVitales').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/signos-vitales/agregar/', //this is the submit URL
+                url: '/api/paciente/signos-vitales/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id':$('#patient12').val(),
+                    'id':id,
                     'Tension_Arterial': tensionArterial.toString(),
                     'Frecuencia_Cardiaca':frecuenciaCardiaca.toString(),
                     'Frecuencia_Respiratoria': frecuenciaRespiratoria.toString(),
@@ -1334,30 +1237,31 @@
             });
         });
 
-        $(document).ready(function () {
-        var html1 = '';
-            {% for a in request.user|patient %}
+{#        $(document).ready(function () {#}
+{#        var html1 = '';#}
+{#            {% for a in request.user|patient %}#}
 {#                aa = "{{ a.nombre }}";#}
-                var nombre = CryptoJS.AES.decrypt("{{ a.nombre }}", "Secret Passphrase");
-               html1 += '<option value="{{ a.id }}" >'+nombre.toString((CryptoJS.enc.Utf8))+'</option>'
-            {% endfor %}
-        $('#patient11').append(html1);
-        $('#patient21').append(html1);
-        $('#patient20').append(html1);
-        $('#patient19').append(html1);
-        $('#patient18').append(html1);
-        $('#patient17').append(html1);
-        $('#patient15').append(html1);
-        $('#patient16').append(html1);
-        $('#patient14').append(html1);
-        $('#patient13').append(html1);
-        $('#patient12').append(html1);
-
-
-
-        });
+{#                var nombre = CryptoJS.AES.decrypt("{{ a.nombre }}", "Secret Passphrase");#}
+{#               html1 += '<option value="{{ a.id }}" >'+nombre.toString((CryptoJS.enc.Utf8))+'</option>'#}
+{#            {% endfor %}#}
+{#        $('#patient11').append(html1);#}
+{#        $('#patient21').append(html1);#}
+{#        $('#patient20').append(html1);#}
+{#        $('#patient19').append(html1);#}
+{#        $('#patient18').append(html1);#}
+{#        $('#patient17').append(html1);#}
+{#        $('#patient15').append(html1);#}
+{#        $('#patient16').append(html1);#}
+{#        $('#patient14').append(html1);#}
+{#        $('#patient13').append(html1);#}
+{#        $('#patient12').append(html1);#}
+{##}
+{##}
+{##}
+{#        });#}
 
         $('#medicamentomodal_form').click( function() {
+             var id = location.href.split('#')[1];
              var medicamentoNombre1 = CryptoJS.AES.encrypt($('#medicamentoNombre1').val(), "Secret Passphrase");
              var medicamentoDosis1 = CryptoJS.AES.encrypt($('#medicamentoDosis1').val(), "Secret Passphrase");
              var medicamentoFrecuencia1 = CryptoJS.AES.encrypt($('#medicamentoFrecuencia1').val(), "Secret Passphrase");
@@ -1365,10 +1269,10 @@
              var medicamentoVia1 = CryptoJS.AES.encrypt($('#medicamentoVia1').val(), "Secret Passphrase");
              var temperaturaPaciente1 = CryptoJS.AES.encrypt($('#temperaturaPaciente1').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/medicamentos/agregar/', //this is the submit URL
+                url: '/api/paciente/medicamentos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient11').val(),
+                    'id': id,
                     'Nombre': medicamentoNombre1.toString(),
                     'Dosis': medicamentoDosis1.toString(),
                     'Frecuencia': medicamentoFrecuencia1.toString(),
@@ -1391,12 +1295,13 @@
             });
         });
         $('#antecedente_Personalform_patologicos').click( function() {
+             var id = location.href.split('#')[1];
             var antepersonalesdescripcion = CryptoJS.AES.encrypt($('#antepersonalesdescripcion').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
+                url: '/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient13').val(),
+                    'id': id,
                     'antepersopatologico':antepersonalesdescripcion.toString(),
                 },
                 success: function (data) {
@@ -1412,14 +1317,15 @@
         });
 
         $('#antecedente_Personalform').click( function() {
+             var id = location.href.split('#')[1];
              var antefamiliarenfermedad = CryptoJS.AES.encrypt($('#antefamiliarenfermedad').val(), "Secret Passphrase");
             var parentesco1 = CryptoJS.AES.encrypt($('.parentesco1 .checked')[0].id, "Secret Passphrase");
             var antefamiliarnota = CryptoJS.AES.encrypt($('#antefamiliarnota').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
+                url: '/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient16').val(),
+                    'id': id,
                     'enfermedad': antefamiliarenfermedad.toString(),
                     'parentesco': parentesco1.toString(),
                     'antefamipatologicos':antefamiliarnota.toString(),
@@ -1439,14 +1345,15 @@
             });
         });
         $('#alergiamodal_form').click( function() {
+             var id = location.href.split('#')[1];
             var tipo = CryptoJS.AES.encrypt($('#tipoalergia').val(), "Secret Passphrase");
             var alergia1 = CryptoJS.AES.encrypt($('#alergia1').val(), "Secret Passphrase");
             var activo1 = CryptoJS.AES.encrypt($('#activo1').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/alergia/agregar/', //this is the submit URL
+                url: '/api/paciente/alergia/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient14').val(),
+                    'id': id,
                     'tipo': tipo.toString(),
                     'alergia': alergia1.toString(),
                     'activo': activo1.toString(),
@@ -1464,16 +1371,17 @@
             });
         });
         $('#vacunaform').click( function() {
+            var id = location.href.split('#')[1];
                var tareja = CryptoJS.AES.encrypt($('.tareja .checked').val(), "Secret Passphrase");
             var vacuna1 = CryptoJS.AES.encrypt($('#vacuna1').val(), "Secret Passphrase");
 {#            var dosisvacuna1 = CryptoJS.AES.encrypt($('#dosisvacuna1').val(), "Secret Passphrase");#}
 {#            var edad2 = CryptoJS.AES.encrypt($('#edad2').val(), "Secret Passphrase");#}
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/vacunas/agregar/', //this is the submit URL
+                url: '/api/paciente/vacunas/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient15').val(),
+                    'id': id,
                     'tarjeta_vacunacion': tareja.toString(),
                     'nombre_vacuna': vacuna1.toString(),
                     'dosis_aplicadas': $('#dosisvacuna1').val(),
@@ -1493,6 +1401,7 @@
             });
         });
         $('#otrasordenes_form').click( function() {
+            var id = location.href.split('#')[1];
              var dieta = CryptoJS.AES.encrypt($('#dieta').val(), "Secret Passphrase");
              var Oxigeno = CryptoJS.AES.encrypt($('#Oxigeno').val(), "Secret Passphrase");
 {#             var activo2 = CryptoJS.AES.encrypt($('#activo2').val(), "Secret Passphrase");#}
@@ -1503,10 +1412,10 @@
              var estudioslabdiagnostico = CryptoJS.AES.encrypt($('#estudioslabdiagnostico').val(), "Secret Passphrase");
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/otras-ordenes/agregar/', //this is the submit URL
+                url: '/api/paciente/otras-ordenes/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient17').val(),
+                    'id': id,
                     'dieta': dieta.toString(),
                     'Oxigeno': Oxigeno.toString(),
                     'activo': $('#activo2').val(),
@@ -1530,14 +1439,15 @@
         });
 
         $('#seguromodalform').click( function() {
+            var id = location.href.split('#')[1];
              var nombreseguro = CryptoJS.AES.encrypt($('#nombreseguro').val(), "Secret Passphrase");
             var numeroafiliado = CryptoJS.AES.encrypt($('#numeroafiliado').val(), "Secret Passphrase");
             console.log()
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/seguro/agregar/', //this is the submit URL
+                url: '/api/paciente/seguro/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient18').val(),
+                    'id': id,
                     'nombre_seguro': nombreseguro.toString(),
                     'numero_afiliado': numeroafiliado.toString(),
                 },
@@ -1554,13 +1464,14 @@
 
 
         $('#evolucionform1').click( function() {
+            var id = location.href.split('#')[1];
              var notaevolucion = CryptoJS.AES.encrypt($('#notaevolucion').val(), "Secret Passphrase");
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/evolucion/agregar/', //this is the submit URL
+                url: '/api/paciente/evolucion/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient19').val(),
+                    'id': id,
                     'notas': notaevolucion.toString(),
 
                 },
@@ -1576,12 +1487,13 @@
         });
 
         $('#revisionform').click( function() {
+            var id = location.href.split('#')[1];
              var cabeza = CryptoJS.AES.encrypt($('#cabeza').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/agregar/', //this is the submit URL
+                url: '/api/paciente/revision-sistema/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient20').val(),
+                    'id': id,
                     'cabeza': cabeza.toString(),
 
 
@@ -1597,13 +1509,14 @@
             });
         });
         $('#padecimientoform').click( function() {
+            var id = location.href.split('#')[1];
              var cabeza11 = CryptoJS.AES.encrypt($('#cabeza11').val(), "Secret Passphrase");
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/padecimiento-actual/agregar/', //this is the submit URL
+                url: '/api/paciente/padecimiento-actual/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient21').val(),
+                    'id': id,
                     'cabeza': cabeza11.toString(),
 
 
@@ -1651,7 +1564,7 @@
                 }
             });
         });
-        var IDLE_TIMEOUT = 100000; //seconds
+        var IDLE_TIMEOUT = 300; //seconds
         var _idleSecondsCounter = 0;
         document.onclick = function() {
             _idleSecondsCounter = 0;

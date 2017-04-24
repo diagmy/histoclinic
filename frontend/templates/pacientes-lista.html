@@ -39,7 +39,8 @@
                                                 <table class="table table-striped table-bordered table-hover table-checkable order-column pacientes" id="">
                                                     <thead>
                                                         <tr>
-                                                           <th>Nombre</th>
+                                                           <th>Nombres</th>
+                                                           <th>Apellidos</th>
                                                            <th>Edad</th>
                                                            <th>Telefono</th>
                                                            <th>Direccion</th>
@@ -47,45 +48,6 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="odd gradeX">
-                                                            <td> shuxer </td>
-                                                            <td>
-                                                                <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
-                                                            </td>
-                                                            <td>
-                                                                <span class="label label-sm label-success"> Approved </span>
-                                                            </td>
-                                                            <td class="center"> 12 Jan 2012 </td>
-                                                            <td>
-                                                                <div class="btn-group">
-                                                                    <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Accion
-                                                                        <i class="fa fa-angle-down"></i>
-                                                                    </button>
-                                                                    <ul class="dropdown-menu pull-left" role="menu">
-                                                                        <li>
-                                                                            <a href="javascript:;">
-                                                                                <i class="icon-docs"></i> New Post </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="javascript:;">
-                                                                                <i class="icon-tag"></i> New Comment </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="javascript:;">
-                                                                                <i class="icon-user"></i> New User </a>
-                                                                        </li>
-                                                                        <li class="divider"> </li>
-                                                                        <li>
-                                                                            <a href="javascript:;">
-                                                                                <i class="icon-flag"></i> Comments
-                                                                                <span class="badge badge-success">4</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                   
                                                         
              
                                                         
@@ -111,7 +73,7 @@
 
     function getData(){
     $.ajax({
-      url: ' http://127.0.0.1:8000/api/pacientes/',
+      url: ' /api/pacientes/',
       method: 'get',
       crossDomain: true,
       dataType: "json",
@@ -121,10 +83,11 @@
        $.each(data, function (i, item) {
                             console.log(item);
                             var nombre = CryptoJS.AES.decrypt(item.nombre, "Secret Passphrase");
-                             var edad = CryptoJS.AES.decrypt(item.edad, "Secret Passphrase");
+                            var apellido = CryptoJS.AES.decrypt(item.apellido, "Secret Passphrase");
+                             var edad = item.edad;
                              var telefono = CryptoJS.AES.decrypt(item.telefono, "Secret Passphrase");
                              var direccion = CryptoJS.AES.decrypt(item.direccion, "Secret Passphrase");
-                            html1 += '<tr><td>' + nombre.toString(CryptoJS.enc.Utf8) + '</td><td>' + edad.toString(CryptoJS.enc.Utf8) + '</td><td>' + telefono.toString(CryptoJS.enc.Utf8) + '</td><td>' + direccion.toString(CryptoJS.enc.Utf8) + '</td><td><a href="/profile/page/help/#'+ item.id +'">Ver</a></td>';
+                            html1 += '<tr><td>' + nombre.toString(CryptoJS.enc.Utf8) +'<td>' + apellido.toString(CryptoJS.enc.Utf8) + '</td><td>' + edad + '</td><td>' + telefono.toString(CryptoJS.enc.Utf8) + '</td><td>' + direccion.toString(CryptoJS.enc.Utf8) + '</td><td><a href="/perfil-paciente/#'+ item.id +'">Ver</a></td>';
 
        });
         $(".pacientes").append(html1)

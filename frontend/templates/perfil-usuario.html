@@ -1,0 +1,155 @@
+{% extends 'base1.html' %}
+{% load staticfiles %}
+{% block navbasic %} {% endblock %}
+{% block containter %}
+<div class="row">
+
+    <div class="col-md-12">
+        <!-- BEGIN PROFILE SIDEBAR -->
+        <div class="profile-sidebar">
+            <!-- PORTLET MAIN -->
+            <div class="portlet light profile-sidebar-portlet bordered">
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                     <label><img id="imgHolder" onclick="document.getElementById('filechooser').click()" src="{% static 'assets/pages/media/profile/profile_user.jpg' %}" class="img-responsive" alt="" name='love'>
+                  <a href="javascript:;" class="profile-edit" onclick="document.getElementById('filechooser').click()"> editar </a>  </label>
+                </div>
+    {% csrf_token %}
+
+
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name"> {{ request.user.first_name }} {{ request.user.last_name }} </div>
+                    <div class="profile-usertitle-job"> {{ request.user.role }} </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+             
+                <!-- SIDEBAR MENU -->
+   
+                                                                               
+            </div>
+            <!-- END PORTLET MAIN -->
+            <!-- PORTLET MAIN -->
+    
+            <!-- END PORTLET MAIN -->
+        </div>
+        <!-- END BEGIN PROFILE SIDEBAR -->
+        <!-- BEGIN PROFILE CONTENT -->
+<div class="profile-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light bordered">
+                        <div class="portlet-title tabbable-line">
+                            <div class="caption caption-md">
+                                <i class="icon-globe theme-font hide"></i>
+                                <span class="caption-subject font-blue-madison bold uppercase">Mi Perfil</span>
+                            </div>
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab_1_1" data-toggle="tab">Datos Personales </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#tab_1_3" data-toggle="tab">Cambiar Clave</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <!-- PERSONAL INFO TAB -->
+                                <div class="tab-pane active" id="tab_1_1">
+                                    <form role="form" action="" method='post' enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label class="control-label">Nombre</label>
+                                            <input type="text" placeholder="Nombres" class="form-control" name='nombre'/> </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Apellido</label>
+                                            <input type="text" placeholder="Apellidos" class="form-control" name="apellifo"/> </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Telefono</label>
+                                            <input type="text" placeholder="Telefono." class="form-control" name="telefono"/> </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Celular</label>
+                                            <input type="text" placeholder="Celular" class="form-control" name="celular"/> </div>
+                                            <input type="file" id="filechooser" accept="image/*;capture=camera" name="prof_img" style="display:none;">
+                                        
+                                        <div class="margiv-top-10">
+                                            
+                                            <input type="submit" value="Guardar" class="btn green">
+                                            <a href="javascript:;" class="btn default"> Cancelar </a>                               
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- END PERSONAL INFO TAB -->
+                                <!-- CHANGE AVATAR TAB -->
+                  
+                                <!-- END CHANGE AVATAR TAB -->
+                                <!-- CHANGE PASSWORD TAB -->
+                                <div class="tab-pane" id="tab_1_3">
+                                    <form action="#">
+                                        <div class="form-group">
+                                            <label class="control-label">Clave actual</label>
+                                            <input type="password" class="form-control" /> </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Nueva Clave</label>
+                                            <input type="password" class="form-control" /> </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Ingrese nevamente la Clave</label>
+                                            <input type="password" class="form-control" /> </div>
+                                        <div class="margin-top-10">
+                                            <a href="javascript:;" class="btn green"> Cambiar Clave </a>
+                                            <a href="javascript:;" class="btn default"> Cancelar </a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- END CHANGE PASSWORD TAB -->
+                                <!-- PRIVACY SETTINGS TAB -->
+  
+                                <!-- END PRIVACY SETTINGS TAB -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PROFILE CONTENT -->
+    </div>
+</div>
+<script>
+    $("#filechooser").on('change',function(event){
+        var path = URL.createObjectURL(event.target.files[0]);
+        console.log("Jesus"+path);
+        $("#imgHolder").attr('src',path);
+        var blobFile = $('#filechooser')[0].files[0];
+        file.append(blobFile);
+        var formData = new FormData();
+        formData.append("fileToUpload", blobFile);
+        var csrftoken = Cookies.get('csrftoken');
+        
+    });
+    $("#run").click(function() {
+        var blobFile = $('#filechooser')[0].files[0];
+        var formData = new FormData();
+        formData.append("fileToUpload", blobFile);
+        console.log("Send"+formData);
+        $.ajax({
+            url: "upload",
+            type: "GET",
+            data: formData,
+            datatype: 'json',
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                alert('success');
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage); // Optional
+            }
+        });
+    });
+</script>
+
+{% endblock %}
