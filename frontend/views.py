@@ -30,3 +30,13 @@ def form_wizard(request):
 
 def login1(request):
  return render(request,'page_user_login_1.html')
+
+# @requires_csrf_token
+def form_perfil(request):
+    if request.method == 'POST':
+        data = request.POST; image = request.FILES['prof_img']
+        nombre = data['nombre']; apellifo = data['apellifo']; telefono = data['telefono']; celular = data['celular']
+        fs = FileSystemStorage()
+        filename = fs.save("username.jpg", image)
+        #import your models here from obj = Paciente.objects.create(user=......) and so on then obj.save()
+    return render(request, 'perfil-usuario.html')

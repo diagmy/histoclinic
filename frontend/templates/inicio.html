@@ -1,7 +1,7 @@
 {% extends 'base1.html' %}
 {% block navbasic %} {% endblock %}
 {% block containter %}
-<div class="page-content-col">
+<div class="page-content-col" style="position: inherit;width: 7%;">
     <!-- BEGIN PAGE BASE CONTENT -->
     <div class="search-page search-content-2">
         <form>
@@ -20,6 +20,9 @@
                 </div>
             </div>
         </form>
+        <h2 class="search-title">
+            Resultados
+        </h2>
         <div class="search-result-cnt">
             <div class="row">
                 <div class="col-md-12">
@@ -27,10 +30,10 @@
                         <ul class="search-container">
                             <li class="search-item clearfix">
                                 <div class="search-content text-left">
-                                    <h2 class="search-title">
+                                    <!--<h2 class="search-title">
                                         <a href="javascript:;">Resultados</a>
-                                    </h2>
-                                    <p class="search-desc"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur pellentesque auctor. Morbi lobortis, leo in tristique scelerisque, mauris quam volutpat nunc </p>
+                                    </h2>-->
+                                    <p class="search-desc">No hay resultados para mostrar</p>
                                 </div>
                             </li>
 
@@ -58,7 +61,7 @@
                 };
 
                 if (formData['query'] == ''){
-                    $('.search-result-cnt').empty().append("<div class='search-result-cnt'> <div class='row'> <div class='col-md-12'> <div class='search-container bordered'><ul class='search-container'><li class='search-item clearfix'><div class='search-content text-left'><h2 class='search-title'><a href='javascript:;'>Resultados</a></h2><p class='search-desc'> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur pellentesque auctor. Morbi lobortis, leo in tristique scelerisque, mauris quam volutpat nunc </p></div></li> </ul> </div> </div> </div></div>");
+                    $('.search-result-cnt').empty().append("<div class='search-result-cnt'> <div class='row'> <div class='col-md-12'> <div class='search-container bordered'><ul class='search-container'><li class='search-item clearfix'><div class='search-content text-left'><p class='search-desc'>No hay resultados para mostrar</p></div></li> </ul> </div> </div> </div></div>");
                     return;
                 }
 
@@ -70,13 +73,18 @@
                 })
                 .done(function (data) {
                     console.log(data);
+                    console.log(data.length);
+
                     $.each(data, function (i, user) {
-                        console.log(user);
-                        html += "<div class='row'> <div class='col-md-12'> <div class='search-container bordered'> <ul class='search-container'>  <li class='search-item clearfix'> <div class='search-content text-left'> <h2 class='search-title'> <a href='/profile/page/help/#"+ user.id +"'>" + user.first_name + " " + user.last_name + "</a> </h2> <p class='search-desc'> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur pellentesque auctor. Morbi lobortis, leo in tristique scelerisque, mauris quam volutpat nunc </p>  </div> </li> </ul> </div> </div> </div>"
+                        //console.log(user);
+                        html += "<div class='row'> <div class='col-md-12'> <div class='search-container bordered'> <ul class='search-container'>  <li class='search-item clearfix'> <div class='search-content text-left'> <h2 class='search-title'> <a href='perfil-usuario/#"+ user.id +"'>" + user.first_name + " " + user.last_name + "</a> </h2> <p class='search-desc'> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur pellentesque auctor. Morbi lobortis, leo in tristique scelerisque, mauris quam volutpat nunc </p>  </div> </li> </ul> </div> </div> </div>"
                         //console.log(html);
                     });
                     //console.log(html);
                     $('.search-result-cnt').empty().append(html);
+                    if(data.length == 0)
+                            $('.search-result-cnt').empty().append("<div class='search-result-cnt'> <div class='row'> <div class='col-md-12'> <div class='search-container bordered'><ul class='search-container'><li class='search-item clearfix'><div class='search-content text-left'><p class='search-desc'>No hay resultados para mostrar</p></div></li> </ul> </div> </div> </div></div>");
+
 
                 });
             }

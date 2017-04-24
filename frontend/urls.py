@@ -9,7 +9,6 @@ url(r'^signup/$', views.signup, name='signup1'),
 url(r'^accounts/login/$', views.login1,name='login'),
 url(r'^paciente/$', views.patients, name='paciente'),
 url(r'^formulario-paciente/$', views.form_wizard, name='formulario-paciente'),
-
-
+url(r'^perfil-usuario/$', views.form_perfil, name='perfil-usuario'),
 
 ]
