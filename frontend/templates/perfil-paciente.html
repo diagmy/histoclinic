@@ -1673,34 +1673,9 @@
                 }
             });
         });
-=======
-{#        $('#alergiaform').click( function() {#}
-{#            var tipo = CryptoJS.AES.encrypt($('#tipo').val(), "Secret Passphrase");#}
-{#            var Alergia = CryptoJS.AES.encrypt($('#Alergia').val(), "Secret Passphrase");#}
-{#            var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");#}
-{#            console.log( $('#activo').val());#}
-{#            $.ajax({#}
-{#                url: 'http://127.0.0.1:8000/api/paciente/alergia/agregar/', //this is the submit URL#}
-{#                type: 'POST',#}
-{#                data: {#}
-{#                    'id': $('#id').val(),#}
-{#                    'tipo':  tipo.toString(),#}
-{#                    'alergia': Alergia.toString(),#}
-{#                    'activo': activo.toString(),#}
-{##}
-{##}
-{#                },#}
-{#                success: function (data) {#}
-{#                    $("#success-alertalergiamodal").removeClass('hide');#}
-{#                    $("#success-alertalergiamodal").fadeTo(2000, 500).slideUp(500, function () {#}
-{#                        $("#success-alertalergiamodal").slideUp(500);#}
-{#                    });#}
-{#                    $('#Alergia_modal').modal('toggle');#}
-{#                    location.reload();#}
-{#                }#}
-{#            });#}
-{#        });#}
->>>>>>> c9095c6... fix to the laterest version
+
+
+
         $('#vacunaform').click( function() {
             var tarjetavacuna = CryptoJS.AES.encrypt($('#tarjetavacuna').val(), "Secret Passphrase");
             var vacuna = CryptoJS.AES.encrypt($('#vacuna').val(), "Secret Passphrase");
@@ -1731,7 +1706,7 @@
         $('#otrasordenes_form12').click( function() {
             var dieta1 = CryptoJS.AES.encrypt($('#dieta1').val(), "Secret Passphrase");
             var Oxigeno1 = CryptoJS.AES.encrypt($('#Oxigeno1').val(), "Secret Passphrase");
-            {#             var activo21 = /CryptoJS.AES.encrypt($('#activo21').val(), "Secret Passphrase");#}
+            var activo21 = CryptoJS.AES.encrypt($('#activo21').val(), "Secret Passphrase");
             var actividadfisica1 = CryptoJS.AES.encrypt($('#actividadfisica1').val(), "Secret Passphrase");
             var curas1 = CryptoJS.AES.encrypt($('#curas1').val(), "Secret Passphrase");
             var fisioterapiarespiratoria1 = CryptoJS.AES.encrypt($('#fisioterapiarespiratoria1').val(), "Secret Passphrase");
@@ -2284,10 +2259,9 @@
                 crossDomain: true,
                 dataType: "json",
                 success: function (data) {
-{#                    alert(data);#}
-                    console.log(data);
+
                     var padecimientopaciente1 = CryptoJS.AES.decrypt(data[0].padecimiento, "Secret Passphrase");
-{#                    console.log(padecimientopaciente1);#}
+
                     $('#idss1').val(data[0].id);
                     $('#padecimientopaciente1').val(padecimientopaciente1.toString(CryptoJS.enc.Utf8));
 
@@ -2410,7 +2384,7 @@
                             {
                                 $('#imgHolder').attr('src','/static/assets/pages/media/profile/profile_user.png');
                             }
-{#                           $('#imgHolder').attr('src',item.image);#}
+// {#                           $('#imgHolder').attr('src',item.image);#}
                         $("#nombrePaciente12").text(nombre.toString(CryptoJS.enc.Utf8)+' '+apellido.toString(CryptoJS.enc.Utf8));
                         $("#fname").val(nombre.toString(CryptoJS.enc.Utf8));
                         $("#lname").val(apellido.toString(CryptoJS.enc.Utf8));
@@ -2890,7 +2864,7 @@
     <script type="text/javascript">
 
     </script>
-     <script>
+ <!--     <script>
 {#    $("#filechooser").on('change',function(event){#}
 {#        var id = location.href.split('#')[1];#}
 {#        var path = URL.createObjectURL(event.target.files[0]);#}
@@ -2945,7 +2919,7 @@
 {##}
 {#    });#}
 </script>
-
+ -->
 
 {% endblock %}
      {% block landing1 %}
