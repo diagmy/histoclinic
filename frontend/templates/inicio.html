@@ -1,45 +1,74 @@
 {% extends 'base1.html' %}
-{% block navbasic %} {% endblock %}
+{% block landing %} {% endblock %}
+
+{% block navbasic1 %}{% endblock %}
+{% block navbasic %}{% endblock %}
 {% block containter %}
-<div class="page-content-col">
-    <!-- BEGIN PAGE BASE CONTENT -->
-    <div class="search-page search-content-2">
-        <div class="search-bar bordered">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Buscar Pacientes...">
-                        <span class="input-group-btn">
-                            <button class="btn blue uppercase bold" type="button">  Buscar</button>
-                        </span>
+    <div class="portlet-body">
+{#        <div class="note note-info">#}
+{#            <p> Extend Bootstrap's grid system with the thumbnail component to easily display grids of images, videos, text, and more. </p>#}
+{#        </div>#}
+
+
+  
+        <div class="row" align="center">
+
+            <div class="col-sm-12 col-md-4">
+                <div class="thumbnail">
+                    <img src="/static/assets/pages/media/profile/hospital1.jpg" alt="" style="width: 100%; height: 200px;">
+                    <div class="caption">
+                        <h3><a href="{% url 'formulario-paciente' %}">
+                                            <i class="icon-user"></i>   Agregar Paciente </a></h3>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="thumbnail">
+                    <img src="/static/assets/pages/media/profile/patients.jpg" alt="" style="width: 100%; height: 200px;">
+                    <div class="caption">
+                        <h3><a href="{% url 'paciente' %}">
+                                            <i class="icon-note "></i>  Lista de Pacientes </a></h3>
+
+                    </div>
+                </div>
+            </div>
+            <div id="add_users12" class="col-sm-12 col-md-4 hide">
+                <div class="thumbnail">
+                    <img src="/static/assets/pages/media/profile/usuarios.jpg" alt="" style="width: 60%; height: 200px;">
+                    <div class="caption">
+                        <h3><a href="{% url 'add_user' %}"><i class="icon-user "></i>  Agregar Usuario</a></h3>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="search-container bordered">
-                    <ul class="search-container">
-                        <li class="search-item clearfix">
-                            <div class="search-content text-left">
-                                <h2 class="search-title">
-                                    <a href="javascript:;">Resultados</a>
-                                </h2>
-                                <p class="search-desc"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur pellentesque auctor. Morbi lobortis, leo in tristique scelerisque, mauris quam volutpat nunc </p>
-                            </div>
-                        </li>
-                        
-                    </ul>
-                 
-                </div>
-            </div>
-         
-        </div>
     </div>
-      
-                                <!-- END PAGE BASE CONTENT -->
-                            </div>
+    <script>
 
+        $(document).ready(function () {
+            username12 = window.localStorage.getItem('username');
+
+            state = window.localStorage.getItem('state');
+            user_type = window.localStorage.getItem('user');
+
+{#            $('#username1').text("Hola "+username12);#}
+            $('#user_name').text(username12.toUpperCase());
+        });
+        $(document).ready(function () {
+            state = window.localStorage.getItem('state');
+            user_type = window.localStorage.getItem('user');
+            if(user_type == 'true') {
+                $('#add_users12').removeClass('hide');
+                $('#add_users12').addClass('show');
+            }
+
+            else {
+
+                $('#add_users12').addClass('hide');
+            }
+        });
+    </script>
 
 {% endblock %}
 

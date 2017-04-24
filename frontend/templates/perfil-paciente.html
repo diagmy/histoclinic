@@ -6,6 +6,12 @@
 {#{% load getpatient %}#}
 {% block breadcrumbs_title %} {% endblock %}
 {% block navbasic %}
+     <div class="page-sidebar">
+                            <nav class="navbar" role="navigation">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+
+                               
     <h3>Agregar</h3>
     <ul class="nav navbar-nav">
        <li>
@@ -78,7 +84,8 @@
         </li>
         
     </ul>
-{% endblock %}
+    </nav>
+     {% endblock %}
 {% block containter %}
     <div class="page-content-col-12">
         <!-- BEGIN PAGE BASE CONTENT -->
@@ -91,19 +98,20 @@
                         <!-- SIDEBAR USERPIC -->
                         <div class="row">
                         <div class="profile-userpic">
-                            <img id="imgHolder" onclick="document.getElementById('filechooser').click()" src="{% static 'assets/pages/media/profile/profile_user.jpg' %}" class="img-responsive" alt="" name='love'>
+                            <img id="imgHolder" src="{% static 'assets/pages/media/profile/avatar.png' %}" class="img-responsive" alt="" name='love'>
 
                             </div>
-                              <a href="javascript:;" class="profile-edit" onclick="document.getElementById('filechooser').click()"> editar </a>
+{#                              <a href="javascript:;" class="profile-edit" onclick="document.getElementById('filechooser').click()"> editar </a>#}
                         <!-- END SIDEBAR USERPIC -->
                         <!-- SIDEBAR USER TITLE -->
                         <div class="col-xs-7" style="margin-top:10px;display: block; text-align: center;">
                             <i id="user_profile" role="button" class="glyphicon glyphicon-edit pull-right"></i>
-                        </div></div>
+                        </div>
+                        </div>
                         <div class="profile-usertitle">
 
                             <div class="profile-usertitle-name"><span id="nombrePaciente12"></span></div>
-                            <div class="profile-usertitle-job"> <div id="edadPaciente12"></div></div>
+                            <div class="profile-usertitle-job"> <div id="job"></div></div>
 
 
                         </div>
@@ -112,10 +120,10 @@
                         <div class="profile-userbuttons">
                             <p>Expendiente No: <span id="idPaciente"></span></p>
                             <p>Cedula Paciente: <span id="Cedula_Paciente"></span></p>
-                              <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}                               
-                                <input type="file" id="filechooser" accept="image/*;capture=camera" name="prof_img" style="display:none;">
-                                <input type="submit" value="Guardar" class="btn green">
-                            </form>
+{#                              <form id="form1" action=""  enctype="multipart/form-data">{% csrf_token %}#}
+{#                                <input type="file" id="filechooser" accept="image/*;capture=camera" name="prof_img" style="display:none;">#}
+{#                                <input type="submit" value="Guardar" class="btn green">#}
+{#                            </form>#}
                         </div>
 
                         <!-- END SIDEBAR BUTTONS -->
@@ -124,13 +132,13 @@
                         <!-- END MENU -->
                     </div>
                     <!-- END PORTLET MAIN -->
-                    <div class="portlet light bordered">
-                        <div>
+                    <!-- <div class="portlet light bordered"> -->
+                    <!--     <div>
                             <h4 class="profile-desc-title">Alergias</h4>
                             <span class="profile-desc-text"> <span id="alergia"></span> </span>
 
                         </div>
-                    </div>
+                    </div> -->
                     <!-- PORTLET MAIN -->
 
                     <!-- END PORTLET MAIN -->
@@ -730,7 +738,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" id="profile_form" class="btn btn-default">Editarr</button>
+                                <button type="submit" id="profile_form" class="btn btn-default">Editar</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
@@ -1119,12 +1127,12 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"
-                                   for="tipo" >Tipo</label>
+                                   for="tipo12" >Tipo</label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="tipo">
+                                <select class="form-control" id="tipo12">
                                     <option>Alimentos</option>
                                     <option>Ambiente</option>
-                                    <option>Medicamentos</option>
+                                    <option>Medicamento</option>
                                     <option>Otros</option>
                                 </select>
                             </div>
@@ -1638,32 +1646,32 @@
                 }
             });
         });
-        $('#alergiaform').click( function() {
-            var tipo = CryptoJS.AES.encrypt($('#tipo').val(), "Secret Passphrase");
-            var Alergia = CryptoJS.AES.encrypt($('#Alergia').val(), "Secret Passphrase");
-            var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");
-            console.log( $('#activo').val());
-            $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/alergia/agregar/', //this is the submit URL
-                type: 'POST',
-                data: {
-                    'id': $('#id').val(),
-                    'tipo':  tipo.toString(),
-                    'alergia': Alergia.toString(),
-                    'activo': activo.toString(),
-
-
-                },
-                success: function (data) {
-                    $("#success-alertalergiamodal").removeClass('hide');
-                    $("#success-alertalergiamodal").fadeTo(2000, 500).slideUp(500, function () {
-                        $("#success-alertalergiamodal").slideUp(500);
-                    });
-                    $('#Alergia_modal').modal('toggle');
-                    location.reload();
-                }
-            });
-        });
+{#        $('#alergiaform').click( function() {#}
+{#            var tipo = CryptoJS.AES.encrypt($('#tipo').val(), "Secret Passphrase");#}
+{#            var Alergia = CryptoJS.AES.encrypt($('#Alergia').val(), "Secret Passphrase");#}
+{#            var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");#}
+{#            console.log( $('#activo').val());#}
+{#            $.ajax({#}
+{#                url: 'http://127.0.0.1:8000/api/paciente/alergia/agregar/', //this is the submit URL#}
+{#                type: 'POST',#}
+{#                data: {#}
+{#                    'id': $('#id').val(),#}
+{#                    'tipo':  tipo.toString(),#}
+{#                    'alergia': Alergia.toString(),#}
+{#                    'activo': activo.toString(),#}
+{##}
+{##}
+{#                },#}
+{#                success: function (data) {#}
+{#                    $("#success-alertalergiamodal").removeClass('hide');#}
+{#                    $("#success-alertalergiamodal").fadeTo(2000, 500).slideUp(500, function () {#}
+{#                        $("#success-alertalergiamodal").slideUp(500);#}
+{#                    });#}
+{#                    $('#Alergia_modal').modal('toggle');#}
+{#                    location.reload();#}
+{#                }#}
+{#            });#}
+{#        });#}
         $('#vacunaform').click( function() {
             var tarjetavacuna = CryptoJS.AES.encrypt($('#tarjetavacuna').val(), "Secret Passphrase");
             var vacuna = CryptoJS.AES.encrypt($('#vacuna').val(), "Secret Passphrase");
@@ -1792,7 +1800,7 @@
         });
 
         $('#Alergia_form').click( function() {
-            var tipo = CryptoJS.AES.encrypt($('#tipo').val(), "Secret Passphrase");
+            var tipo = CryptoJS.AES.encrypt($('#tipo12').val(), "Secret Passphrase");
             var Alergia = CryptoJS.AES.encrypt($('#Alergia').val(), "Secret Passphrase");
             var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");
 
@@ -1956,8 +1964,7 @@
             var fname = CryptoJS.AES.encrypt($('#fname').val(), "Secret Passphrase");
             var lname = CryptoJS.AES.encrypt($('#lname').val(), "Secret Passphrase");
             var cedula_paciente21 = CryptoJS.AES.encrypt($('#cedula_paciente21').val(), "Secret Passphrase");
-            cedula_paciente21
-            {#            var job = CryptoJS.AES.encrypt($('#job').val(), "Secret Passphrase");#}
+
 
             $.ajax({
                 url: 'http://127.0.0.1:8000/api/paciente/edit/', //this is the submit URL
@@ -1967,7 +1974,7 @@
                     'fname': fname.toString(),
                     'cedula_paciente':cedula_paciente21.toString(),
                     'lname': lname.toString(),
-                    'job': $('#job').val(),
+                    'job': $('#job').text(),
                     'title': 'profile'
 
                 },
@@ -2119,7 +2126,6 @@
 
 
                     success: function (data) {
-                        console.log(data)
                         var html1 = '';
 
                         $.each(data, function (i, item) {
@@ -2218,7 +2224,6 @@
 
 
                     success: function (data) {
-                        console.log(data);
                         var html1 = '';
                         var time ;
                                 $.each(data, function (i, item) {
@@ -2286,7 +2291,7 @@
 
 
                     success: function (data) {
-                        console.log(data)
+
                         var html1 = '';
                         $.each(data, function (i, item) {
 
@@ -2349,11 +2354,13 @@
                     crossDomain: true,
                     dataType: "json",
                     success: function (data) {
-                        console.log(data);
+
 
                     var data1 = data[0].id;
-                        console.log(data1);
+
                        $.each(data, function (i, item) {
+
+
                            var nombre = CryptoJS.AES.decrypt(item.nombre, "Secret Passphrase");
                            var apellido = CryptoJS.AES.decrypt(item.apellido, "Secret Passphrase");
                            var telefono = CryptoJS.AES.decrypt(item.telefono, "Secret Passphrase");
@@ -2363,12 +2370,22 @@
                            var tutor = CryptoJS.AES.decrypt(item.tutor, "Secret Passphrase");
                            var cedula_paciente1 = CryptoJS.AES.decrypt(item.cedula_paciente, "Secret Passphrase");
                            $("#id").val(data[0].id);
-                        $("#nombrePaciente").text(nombre.toString(CryptoJS.enc.Utf8)+' '+apellido.toString(CryptoJS.enc.Utf8));
+                           console.log(sexo.toString(CryptoJS.enc.Utf8))
+                            if(sexo.toString(CryptoJS.enc.Utf8)=='F')
+                            {
+                                $('#imgHolder').attr('src','/static/assets/pages/media/profile/child.png');
+                            }
+                            else
+                            {
+                                $('#imgHolder').attr('src','/static/assets/pages/media/profile/profile_user.png');
+                            }
+{#                           $('#imgHolder').attr('src',item.image);#}
+                        $("#nombrePaciente12").text(nombre.toString(CryptoJS.enc.Utf8)+' '+apellido.toString(CryptoJS.enc.Utf8));
                         $("#fname").val(nombre.toString(CryptoJS.enc.Utf8));
                         $("#lname").val(apellido.toString(CryptoJS.enc.Utf8));
                         $("#Cedula_Paciente").text(cedula_paciente1.toString(CryptoJS.enc.Utf8));
                         $("#cedula_paciente21").val(cedula_paciente1.toString(CryptoJS.enc.Utf8));
-                        $("#job").val(data[0].edad);
+                        $("#job").text(data[0].edad);
                         $("#edadPaciente").text(data[0].edad+' años');
                         $(".telefonoPaciente").text(telefono.toString(CryptoJS.enc.Utf8));
                         $("#telefono").val(telefono.toString(CryptoJS.enc.Utf8));
@@ -2612,11 +2629,12 @@
         function func4(id) {
             state = window.localStorage.getItem('state');
             user_type = window.localStorage.getItem('user');
+            console.log(user_type);
             if(state == 'doctor' || user_type == 'true') {
                 console.log(id);
 
                 $.ajax({
-                    url: 'http://127   .0.0.1:8000/api/paciente/medicamentos/get/' + id,
+                    url: 'http://127.0.0.1:8000/api/paciente/medicamentos/get/' + id,
                     method: 'get',
                     crossDomain: true,
                     dataType: "json",
@@ -2818,12 +2836,13 @@
                 crossDomain: true,
                 dataType: "json",
                 success: function (data) {
+                    console.log(data);
                     var tipo = CryptoJS.AES.decrypt(data[0].tipo, "Secret Passphrase");
                     var nombre_alergia = CryptoJS.AES.decrypt(data[0].nombre_alergia, "Secret Passphrase");
                     var activo = CryptoJS.AES.decrypt(data[0].activo, "Secret Passphrase");
-
+                    console.log(tipo.toString(CryptoJS.enc.Utf8))
                     $('#id').val(data[0].id);
-                    $('#tipo').val(tipo.toString(CryptoJS.enc.Utf8));
+                    $('#tipo12').val(tipo.toString(CryptoJS.enc.Utf8));
                     $('#Alergia').val(nombre_alergia.toString(CryptoJS.enc.Utf8));
                     $('#activo').val(activo.toString(CryptoJS.enc.Utf8));
 
@@ -2841,38 +2860,63 @@
 
     </script>
      <script>
-    $("#filechooser").on('change',function(event){
-        var path = URL.createObjectURL(event.target.files[0]);
-        console.log("Jesus"+path);
-        $("#imgHolder").attr('src',path);
-        var blobFile = $('#filechooser')[0].files[0];
-        file.append(blobFile);
-        var formData = new FormData();
-        formData.append("fileToUpload", blobFile);
-        var csrftoken = Cookies.get('csrftoken');
+{#    $("#filechooser").on('change',function(event){#}
+{#        var id = location.href.split('#')[1];#}
+{#        var path = URL.createObjectURL(event.target.files[0]);#}
+{#        console.log("Jesus"+path);#}
+{#        $("#imgHolder").attr('src',path);#}
+{#        var blobFile = $('#filechooser')[0].files[0];#}
+{#        console.log($('#filechooser')[0].files)#}
+{#        var formData = new FormData($('#form1').get());#}
+{#        formData.append("fileToUpload", blobFile);#}
+{#        console.log(formData);#}
+{#        $.ajax({#}
+{#            url: 'http://127.0.0.1:8000/api/paciente/photo/upload/' + id,#}
+{#            type: "POST",#}
+{#            data:formData,#}
+{#            cache: false,#}
+{#            datatype: 'json',#}
+{#            processData: false,#}
+{#            contentType: false,#}
+{#            success: function (data) {#}
+{#                alert('success');#}
+{##}
+{#            },#}
+{#            error: function (jqXHR, textStatus, errorMessage) {#}
+{#                console.log(errorMessage); // Optional#}
+{#            }#}
+{#        });#}
         
-    });
-    $("#run").click(function() {
-        var blobFile = $('#filechooser')[0].files[0];
-        var formData = new FormData();
-        formData.append("fileToUpload", blobFile);
-        console.log("Send"+formData);
-        $.ajax({
-            url: "upload",
-            type: "GET",
-            data: formData,
-            datatype: 'json',
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                alert('success');
-            },
-            error: function (jqXHR, textStatus, errorMessage) {
-                console.log(errorMessage); // Optional
-            }
-        });
-    });
+{#    });#}
+
+{#      $.ajax({#}
+{#            url: 'http://127.0.0.1:8000/api/paciente/photo/getimage/' + id,#}
+{#            type: "GET",#}
+{##}
+{#            datatype: 'json',#}
+{#            processData: false,#}
+{#            contentType: false,#}
+{#            success: function (data) {#}
+{#                alert('success');#}
+{##}
+{#            },#}
+{#            error: function (jqXHR, textStatus, errorMessage) {#}
+{#                console.log(errorMessage); // Optional#}
+{#            }#}
+{#        });#}
+
+{#    $("#run").click(function() {#}
+{##}
+{#        var blobFile = $('#filechooser')[0].files[0];#}
+{#        var formData = new FormData();#}
+{#        formData.append("fileToUpload", blobFile);#}
+{#        console.log("Send"+formData);#}
+{##}
+{#    });#}
 </script>
 
 
+{% endblock %}
+     {% block landing1 %}
+     </div>
 {% endblock %}
