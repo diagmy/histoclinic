@@ -13,7 +13,7 @@ def landing_page(request):
 	print ("\n\n\n\n\n\n\n") 
 	print (request)
 	print ("\n\n\n\n\n\n\n")
-	return render_to_response(request,'inicio.html')
+	return render(request,'inicio.html', {})
 
 
 def page_profile_info(request):
