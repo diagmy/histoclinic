@@ -138,10 +138,7 @@
                                     </li>
 
                                     <li class="divider"> </li>
-                                    <li>
-                                        <a href="page_user_lock_1.html">
-                                            <i class="icon-lock"></i> Bloquear </a>
-                                    </li>
+                               
                                     <li>
                                         <a id="{% url 'logout' %}">
                                             <i class="icon-key"></i> Salir</a>
@@ -209,7 +206,7 @@
                                             <i class="icon-note "></i> Pacientes </a>
                                     </li>
 
-                                    <li id="Agregar_Paciente" class="">
+                                    <li>
                                         <a href="{% url 'formulario-paciente' %}">
                                             <i class="icon-user"></i>  Agregar Paciente </a>
                                     </li>
@@ -226,20 +223,10 @@
                                 <h3>Agregar</h3>
                                 <ul class="nav navbar-nav">
                                     <li>
-                                        <a href="#signos_vitalesmodal" data-toggle="modal">
-                                           Signos Vitales
+                                        <a href="#alergiamodal" data-toggle="modal">
+                                            Alergias
 
                                         </a>
-                                    </li>
-
-                                    <li>
-                                        <a  id="medicamentomodal" >
-                                            Medicamentos </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#antecedente-Personalmodal" data-toggle="modal">
-                                            Antecedentes Personales</a>
                                     </li>
                                     <li>
                                         <a href="#antecedente_Familiarmodal" data-toggle="modal">
@@ -247,17 +234,20 @@
 
                                         </a>
                                     </li>
+
                                     <li>
-                                        <a href="#alergiamodal" data-toggle="modal">
-                                            Alergias
+                                        <a href="#antecedente-Personalmodal" data-toggle="modal">
+                                            Antecedentes Personales</a>
+                                    </li>
+                                    <li>
+                                        <a href="#evolucionmodal" data-toggle="modal">
+                                         Evolucion
 
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#vacunamodal" data-toggle="modal">
-                                            Vacunas
-
-                                        </a>
+                                        <a  id="medicamentomodal" >
+                                            Medicamentos </a>
                                     </li>
                                     {#                                    {% if request.user.state == 'doctor' or request.user.is_superuser == True %}#}
                                     <li>
@@ -268,14 +258,8 @@
                                     </li>
                                     {#                                    {% endif %}#}
                                     <li>
-                                        <a href="#seguromodal" data-toggle="modal">
-                                           Seguro
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#evolucionmodal" data-toggle="modal">
-                                         Evolucion
+                                        <a href="#padecimientomodal" data-toggle="modal">
+                                           Padecimiento
 
                                         </a>
                                     </li>
@@ -286,15 +270,28 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#padecimientomodal" data-toggle="modal">
-                                           Padecimiento
+                                        <a href="#seguromodal" data-toggle="modal">
+                                           Seguro
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#signos_vitalesmodal" data-toggle="modal">
+                                           Signos Vitales
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#vacunamodal" data-toggle="modal">
+                                            Vacunas
 
                                         </a>
                                     </li>
                                 </ul>
                             {% endblock %}
                             </nav>
-                            <div class="modal fade" id="signos_vitalesmodal" tabindex="-1" role="basic" aria-hidden="true">
+                           <div class="modal fade" id="signos_vitalesmodal" tabindex="-1" role="basic" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -350,17 +347,17 @@
                                                                id="notasSignosVitales" />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient12" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <!--  <input type="text" class="form-control"
-                                                                id="Parentesco" /> -->
-                                                        <select class="form-control" id="patient12">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient12" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <!--  <input type="text" class="form-control"#}
+{#                                                                id="Parentesco" /> -->#}
+{#                                                        <select class="form-control" id="patient12">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
                                             </form>
                                         </div>
@@ -437,15 +434,15 @@
                                                                id="temperaturaPaciente1" />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient11" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient11">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient11" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient11">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -486,15 +483,15 @@
                                                                id="antepersonalesdescripcion">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient13" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient13">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient13" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient13">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -541,15 +538,15 @@
                                                                id="antefamiliarnota">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient16" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient16">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient16" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient16">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label">Parentesco
@@ -642,15 +639,15 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient14" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient14">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient14" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient14">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -722,15 +719,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label"
-                                                           for="patient15" >Patient</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="patient15">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-2 control-label"#}
+{#                                                           for="patient15" >Patient</label>#}
+{#                                                    <div class="col-sm-10">#}
+{#                                                        <select class="form-control" id="patient15">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -841,15 +838,15 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label"
-                                                           for="patient17" >Patient</label>
-                                                    <div class="col-sm-4">
-                                                        <select class="form-control" id="patient17">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-sm-4 control-label"#}
+{#                                                           for="patient17" >Patient</label>#}
+{#                                                    <div class="col-sm-4">#}
+{#                                                        <select class="form-control" id="patient17">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -905,15 +902,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label"
-                                                           for="patient18" >Patient</label>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" id="patient18">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-md-3 control-label"#}
+{#                                                           for="patient18" >Patient</label>#}
+{#                                                    <div class="col-md-4">#}
+{#                                                        <select class="form-control" id="patient18">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -960,15 +957,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label"
-                                                           for="patient19" >Patient</label>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" id="patient19">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-md-3 control-label"#}
+{#                                                           for="patient19" >Patient</label>#}
+{#                                                    <div class="col-md-4">#}
+{#                                                        <select class="form-control" id="patient19">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
                                             </form>
@@ -1015,15 +1012,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label"
-                                                           for="patient20" >Patient</label>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" id="patient20">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-md-3 control-label"#}
+{#                                                           for="patient20" >Patient</label>#}
+{#                                                    <div class="col-md-4">#}
+{#                                                        <select class="form-control" id="patient20">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
 
@@ -1071,15 +1068,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label"
-                                                           for="patient21" >Patient</label>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" id="patient21">
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+{#                                                <div class="form-group">#}
+{#                                                    <label class="col-md-3 control-label"#}
+{#                                                           for="patient21" >Patient</label>#}
+{#                                                    <div class="col-md-4">#}
+{#                                                        <select class="form-control" id="patient21">#}
+{##}
+{#                                                        </select>#}
+{#                                                    </div>#}
+{#                                                </div>#}
 
 
 
@@ -1183,10 +1180,10 @@
                 $('#Agregar_Paciente').addClass('show');
             }
 
-   /*         else {
+            else {
                 $('#Agregar_Paciente').addClass('hide');
 
-            }*/
+            }
             $('#username1').text("Hola "+username12);
         });
         $(document).ready(function () {
@@ -1207,6 +1204,7 @@
 
 
         $('#signosvitales_form').click( function() {
+            var id = location.href.split('#')[1];
             var tensionArterial = CryptoJS.AES.encrypt($('#tensionArterial').val(), "Secret Passphrase");
             var frecuenciaCardiaca = CryptoJS.AES.encrypt($('#frecuenciaCardiaca').val(), "Secret Passphrase");
             var frecuenciaRespiratoria = CryptoJS.AES.encrypt($('#frecuenciaRespiratoria').val(), "Secret Passphrase");
@@ -1216,7 +1214,7 @@
                 url: '/api/paciente/signos-vitales/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id':$('#patient12').val(),
+                    'id':id,
                     'Tension_Arterial': tensionArterial.toString(),
                     'Frecuencia_Cardiaca':frecuenciaCardiaca.toString(),
                     'Frecuencia_Respiratoria': frecuenciaRespiratoria.toString(),
@@ -1237,30 +1235,31 @@
             });
         });
 
-        $(document).ready(function () {
-        var html1 = '';
-            {% for a in request.user|patient %}
+{#        $(document).ready(function () {#}
+{#        var html1 = '';#}
+{#            {% for a in request.user|patient %}#}
 {#                aa = "{{ a.nombre }}";#}
-                var nombre = CryptoJS.AES.decrypt("{{ a.nombre }}", "Secret Passphrase");
-               html1 += '<option value="{{ a.id }}" >'+nombre.toString((CryptoJS.enc.Utf8))+'</option>'
-            {% endfor %}
-        $('#patient11').append(html1);
-        $('#patient21').append(html1);
-        $('#patient20').append(html1);
-        $('#patient19').append(html1);
-        $('#patient18').append(html1);
-        $('#patient17').append(html1);
-        $('#patient15').append(html1);
-        $('#patient16').append(html1);
-        $('#patient14').append(html1);
-        $('#patient13').append(html1);
-        $('#patient12').append(html1);
-
-
-
-        });
+{#                var nombre = CryptoJS.AES.decrypt("{{ a.nombre }}", "Secret Passphrase");#}
+{#               html1 += '<option value="{{ a.id }}" >'+nombre.toString((CryptoJS.enc.Utf8))+'</option>'#}
+{#            {% endfor %}#}
+{#        $('#patient11').append(html1);#}
+{#        $('#patient21').append(html1);#}
+{#        $('#patient20').append(html1);#}
+{#        $('#patient19').append(html1);#}
+{#        $('#patient18').append(html1);#}
+{#        $('#patient17').append(html1);#}
+{#        $('#patient15').append(html1);#}
+{#        $('#patient16').append(html1);#}
+{#        $('#patient14').append(html1);#}
+{#        $('#patient13').append(html1);#}
+{#        $('#patient12').append(html1);#}
+{##}
+{##}
+{##}
+{#        });#}
 
         $('#medicamentomodal_form').click( function() {
+             var id = location.href.split('#')[1];
              var medicamentoNombre1 = CryptoJS.AES.encrypt($('#medicamentoNombre1').val(), "Secret Passphrase");
              var medicamentoDosis1 = CryptoJS.AES.encrypt($('#medicamentoDosis1').val(), "Secret Passphrase");
              var medicamentoFrecuencia1 = CryptoJS.AES.encrypt($('#medicamentoFrecuencia1').val(), "Secret Passphrase");
@@ -1271,7 +1270,7 @@
                 url: '/api/paciente/medicamentos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient11').val(),
+                    'id': id,
                     'Nombre': medicamentoNombre1.toString(),
                     'Dosis': medicamentoDosis1.toString(),
                     'Frecuencia': medicamentoFrecuencia1.toString(),
@@ -1294,12 +1293,13 @@
             });
         });
         $('#antecedente_Personalform_patologicos').click( function() {
+             var id = location.href.split('#')[1];
             var antepersonalesdescripcion = CryptoJS.AES.encrypt($('#antepersonalesdescripcion').val(), "Secret Passphrase");
             $.ajax({
                 url: '/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient13').val(),
+                    'id': id,
                     'antepersopatologico':antepersonalesdescripcion.toString(),
                 },
                 success: function (data) {
@@ -1315,6 +1315,7 @@
         });
 
         $('#antecedente_Personalform').click( function() {
+             var id = location.href.split('#')[1];
              var antefamiliarenfermedad = CryptoJS.AES.encrypt($('#antefamiliarenfermedad').val(), "Secret Passphrase");
             var parentesco1 = CryptoJS.AES.encrypt($('.parentesco1 .checked')[0].id, "Secret Passphrase");
             var antefamiliarnota = CryptoJS.AES.encrypt($('#antefamiliarnota').val(), "Secret Passphrase");
@@ -1322,7 +1323,7 @@
                 url: '/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient16').val(),
+                    'id': id,
                     'enfermedad': antefamiliarenfermedad.toString(),
                     'parentesco': parentesco1.toString(),
                     'antefamipatologicos':antefamiliarnota.toString(),
@@ -1342,6 +1343,7 @@
             });
         });
         $('#alergiamodal_form').click( function() {
+             var id = location.href.split('#')[1];
             var tipo = CryptoJS.AES.encrypt($('#tipoalergia').val(), "Secret Passphrase");
             var alergia1 = CryptoJS.AES.encrypt($('#alergia1').val(), "Secret Passphrase");
             var activo1 = CryptoJS.AES.encrypt($('#activo1').val(), "Secret Passphrase");
@@ -1349,7 +1351,7 @@
                 url: '/api/paciente/alergia/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient14').val(),
+                    'id': id,
                     'tipo': tipo.toString(),
                     'alergia': alergia1.toString(),
                     'activo': activo1.toString(),
@@ -1367,6 +1369,7 @@
             });
         });
         $('#vacunaform').click( function() {
+            var id = location.href.split('#')[1];
                var tareja = CryptoJS.AES.encrypt($('.tareja .checked').val(), "Secret Passphrase");
             var vacuna1 = CryptoJS.AES.encrypt($('#vacuna1').val(), "Secret Passphrase");
 {#            var dosisvacuna1 = CryptoJS.AES.encrypt($('#dosisvacuna1').val(), "Secret Passphrase");#}
@@ -1376,7 +1379,7 @@
                 url: '/api/paciente/vacunas/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient15').val(),
+                    'id': id,
                     'tarjeta_vacunacion': tareja.toString(),
                     'nombre_vacuna': vacuna1.toString(),
                     'dosis_aplicadas': $('#dosisvacuna1').val(),
@@ -1396,6 +1399,7 @@
             });
         });
         $('#otrasordenes_form').click( function() {
+            var id = location.href.split('#')[1];
              var dieta = CryptoJS.AES.encrypt($('#dieta').val(), "Secret Passphrase");
              var Oxigeno = CryptoJS.AES.encrypt($('#Oxigeno').val(), "Secret Passphrase");
 {#             var activo2 = CryptoJS.AES.encrypt($('#activo2').val(), "Secret Passphrase");#}
@@ -1409,7 +1413,7 @@
                 url: '/api/paciente/otras-ordenes/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient17').val(),
+                    'id': id,
                     'dieta': dieta.toString(),
                     'Oxigeno': Oxigeno.toString(),
                     'activo': $('#activo2').val(),
@@ -1433,6 +1437,7 @@
         });
 
         $('#seguromodalform').click( function() {
+            var id = location.href.split('#')[1];
              var nombreseguro = CryptoJS.AES.encrypt($('#nombreseguro').val(), "Secret Passphrase");
             var numeroafiliado = CryptoJS.AES.encrypt($('#numeroafiliado').val(), "Secret Passphrase");
             console.log()
@@ -1440,7 +1445,7 @@
                 url: '/api/paciente/seguro/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient18').val(),
+                    'id': id,
                     'nombre_seguro': nombreseguro.toString(),
                     'numero_afiliado': numeroafiliado.toString(),
                 },
@@ -1457,13 +1462,14 @@
 
 
         $('#evolucionform1').click( function() {
+            var id = location.href.split('#')[1];
              var notaevolucion = CryptoJS.AES.encrypt($('#notaevolucion').val(), "Secret Passphrase");
 
             $.ajax({
                 url: '/api/paciente/evolucion/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient19').val(),
+                    'id': id,
                     'notas': notaevolucion.toString(),
 
                 },
@@ -1479,12 +1485,13 @@
         });
 
         $('#revisionform').click( function() {
+            var id = location.href.split('#')[1];
              var cabeza = CryptoJS.AES.encrypt($('#cabeza').val(), "Secret Passphrase");
             $.ajax({
                 url: '/api/paciente/revision-sistema/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient20').val(),
+                    'id': id,
                     'cabeza': cabeza.toString(),
 
 
@@ -1500,13 +1507,14 @@
             });
         });
         $('#padecimientoform').click( function() {
+            var id = location.href.split('#')[1];
              var cabeza11 = CryptoJS.AES.encrypt($('#cabeza11').val(), "Secret Passphrase");
 
             $.ajax({
                 url: '/api/paciente/padecimiento-actual/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
-                    'id': $('#patient21').val(),
+                    'id': id,
                     'cabeza': cabeza11.toString(),
 
 
@@ -1554,7 +1562,7 @@
                 }
             });
         });
-        var IDLE_TIMEOUT = 300; //seconds
+        var IDLE_TIMEOUT = 100000; //seconds
         var _idleSecondsCounter = 0;
         document.onclick = function() {
             _idleSecondsCounter = 0;

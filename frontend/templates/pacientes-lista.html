@@ -39,7 +39,8 @@
                                                 <table class="table table-striped table-bordered table-hover table-checkable order-column pacientes" id="">
                                                     <thead>
                                                         <tr>
-                                                           <th>Nombre</th>
+                                                           <th>Nombres</th>
+                                                           <th>Apellidos</th>
                                                            <th>Edad</th>
                                                            <th>Telefono</th>
                                                            <th>Direccion</th>
@@ -82,10 +83,11 @@
        $.each(data, function (i, item) {
                             console.log(item);
                             var nombre = CryptoJS.AES.decrypt(item.nombre, "Secret Passphrase");
-                             var edad = CryptoJS.AES.decrypt(item.edad, "Secret Passphrase");
+                            var apellido = CryptoJS.AES.decrypt(item.apellido, "Secret Passphrase");
+                             var edad = item.edad;
                              var telefono = CryptoJS.AES.decrypt(item.telefono, "Secret Passphrase");
                              var direccion = CryptoJS.AES.decrypt(item.direccion, "Secret Passphrase");
-                            html1 += '<tr><td>' + nombre.toString(CryptoJS.enc.Utf8) + '</td><td>' + edad.toString(CryptoJS.enc.Utf8) + '</td><td>' + telefono.toString(CryptoJS.enc.Utf8) + '</td><td>' + direccion.toString(CryptoJS.enc.Utf8) + '</td><td><a href="/perfil-paciente/#'+ item.id +'">Ver</a></td>';
+                            html1 += '<tr><td>' + nombre.toString(CryptoJS.enc.Utf8) +'<td>' + apellido.toString(CryptoJS.enc.Utf8) + '</td><td>' + edad + '</td><td>' + telefono.toString(CryptoJS.enc.Utf8) + '</td><td>' + direccion.toString(CryptoJS.enc.Utf8) + '</td><td><a href="/perfil-paciente/#'+ item.id +'">Ver</a></td>';
 
        });
         $(".pacientes").append(html1)
