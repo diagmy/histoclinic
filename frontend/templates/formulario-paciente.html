@@ -1,416 +1,236 @@
 {% extends 'base1.html' %}
+{% load patient %}
+{% block navbasic %}{% endblock %}
 {% block containter %}
 
-<div class="page-content-col-12">
-    <!-- BEGIN PAGE BASE CONTENT -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="portlet light bordered" id="form_wizard_1">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class=" icon-layers font-red"></i>
-                        <span class="caption-subject font-red bold uppercase"> Agregar Paciente -
+    <div class="page-content-col-12">
+        <!-- BEGIN PAGE BASE CONTENT -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success hide" id="success-alert1213">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+
+                </div>
+                <div class="portlet light bordered" id="form_wizard_1">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class=" icon-layers font-red"></i>
+                            <span class="caption-subject font-red bold uppercase"> Agregar Paciente -
                             <span class="step-title"> Paso 1 de 2 </span>
                         </span>
-                    </div>
-
-                </div>
-                <div class="portlet-body form">
-                    <form class="form-horizontal" action="#" id="submit_form" method="POST">
-                        <div class="form-wizard">
-                            <div class="form-body">
-                                <ul class="nav nav-pills nav-justified steps">
-                                    <li>
-                                        <a href="#tab1" data-toggle="tab" class="step">
-                                            <span class="number"> 1 </span>
-                                            <span class="desc">
-                                                <i class="fa fa-check"></i> Personales </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#tab2" data-toggle="tab" class="step">
-                                            <span class="number"> 2 </span>
-                                            <span class="desc">
-                                                <i class="fa fa-check"></i> Guardar Formulario  </span>
-                                        </a>
-                                    </li>
-{#                                    <li>#}
-{#                                        <a href="#tab3" data-toggle="tab" class="step active">#}
-{#                                            <span class="number"> 3 </span>#}
-{#                                            <span class="desc">#}
-{#                                                <i class="fa fa-check"></i> Antecedentes </span>#}
-{#                                        </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                        <a href="#tab4" data-toggle="tab" class="step">#}
-{#                                            <span class="number"> 4 </span>#}
-{#                                            <span class="desc">#}
-{#                                                <i class="fa fa-check"></i> Inmunizaciones </span>#}
-{#                                        </a>#}
-{#                                    </li>#}
-                                </ul>
-                                <div id="bar" class="progress progress-striped" role="progressbar">
-                                    <div class="progress-bar progress-bar-success"> </div>
-                                </div>
-                                <div class="tab-content">
-                                    <div class="alert alert-danger display-none">
-                                        <button class="close" data-dismiss="alert"></button> You have some form errors. Please check below. </div>
-                                    <div class="alert alert-success display-none">
-                                        <button class="close" data-dismiss="alert"></button> Your form validation is successful! </div>
-                                    <div class="tab-pane active" id="tab1">
-                                        <h3 class="block">Ingresar los datos personales del paciente</h3>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Nombres
-                                                <span class="required"> * </span>
-                                            </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente12"/>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Apellidos
-                                                <span class="required"> * </span>
-                                            </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="apellidoPaciente" id="apellidoPaciente12" />
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Sexo
-
-                                            </label>
-                                            <div class="col-md-4">
-                                                <div class="radio-list">
-                                                    <label>
-                                                        <input type="radio" name="sexo" id="sexoPaciente12" value="M" data-title="Male" /> Masculino </label>
-                                                    <label>
-                                                        <input type="radio" name="sexo" id= "sexoPaciente12" value="F" data-title="Female" /> Femenino </label>
-                                                </div>
-                                                <div id="form_gender_error"> </div>
-                                            </div>
-                                        </div>
-                                          <div class="form-group">
-                                            <label class="control-label col-md-3">Edad
-                                                <span class="required"> * </span>
-                                            </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="edadPaciente" id="edadPaciente12" />
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Peso
-                                                <span class="required"> * </span>
-                                            </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="PesoPaciente" id="PesoPaciente12" />
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Direccion
-
-                                            </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="direccion" id= "dirPaciente12" />
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Telefono
-
-                                            </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="telefono" id="telefono12"/>
-                                                 <span class="help-block"> Si tiene mas de un numero separar con coma.   </span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Celular
-
-                                            </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="celular" id="celular12" />
-                                                <span class="help-block"> Si tiene mas de un numero separar con coma.   </span>
-                                            </div>
-                                        </div>
-                                       <div class="form-group">
-                                            <label class="control-label col-md-3">Tutor
-
-                                            </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="tutorPaciente" id="tutorPaciente12" />
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Cedula Tutor
-
-                                            </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" name="cedulatutorPaciente" id="cedulatutorPaciente12" />
-
-                                            </div>
-                                        </div>
-{#                                         <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Seguro#}
-{##}
-{#                                            </label>#}
-{#                                            <div class="col-md-4">#}
-{#                                                <input type="text" class="form-control" name="seguro" id ="seguro12"/>#}
-{#                                                <input type="hidden" value="" name="paciente">#}
-{##}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                         <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Numero de Afiliado#}
-{##}
-{#                                            </label>#}
-{#                                            <div class="col-md-4">#}
-{#                                                <input type="text" class="form-control" name="numafiliado" id="numafiliado12" />#}
-{##}
-{#                                            </div>#}
-{#                                        </div>#}
-
-                                    </div>
-                                    <div class="tab-pane" id="tab2">
-                                     <h3 class="block">Confirma los datos</h3>
-                                                                    <h4 class="form-section">Datos Personales</h4>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Nombre:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="nombrePaciente12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Apellidos:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="apellidoPaciente12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                
-                                                               
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Sexo:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="sexoPaciente12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Edad:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="edadPaciente12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Peso:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="PesoPaciente12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Direccion:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="dirPaciente12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Telefono:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="telefono12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Celular:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="celular12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                
-                                                                    <h4 class="form-section">Tutor</h4>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Nombre tutor:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="tutorPaciente12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">Cedula:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static" data-display="cedulatutorPaciente12"> </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    
-
-{#                                        <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Motivo de Consulta</label>#}
-{#                                            <div class="col-md-6">#}
-{#                                                <textarea class="form-control" rows="3" name="motivoconsulta" id ="motivoconsulta"></textarea>#}
-{#                                            </div>#}
-{#                                        </div>#}
-
-                                    </div>
-{#                                    <div class="tab-pane" id="tab3">#}
-{#                                        <h4 class="form-section">Antecedentes Personales</h4>#}
-{#                                        <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Notas#}
-{##}
-{#                                            </label>#}
-{#                                            <div class="col-md-4">#}
-{#                                                <input type="text" class="form-control" name="antepersonales" id="antepersonales"/>#}
-{##}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <h4 class="form-section">Antecedentes Familiares</h4>#}
-{#                                        <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Enfermedad#}
-{##}
-{#                                            </label>#}
-{#                                            <div class="col-md-4">#}
-{#                                                <input type="text" class="form-control" name="enfermedad" id="enfermedad" />#}
-{#                                                <span class="help-block"> </span>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Parentesco#}
-{#                                                <span class="required"> * </span>#}
-{#                                            </label>#}
-{#                                            <div class="col-md-4">#}
-{#                                                <div class="checkbox-list">#}
-{#                                                    <label>#}
-{#                                                        <input type="checkbox" name="parentesco" id="parentesco" value="1" data-title="padre." /> Padre </label>#}
-{##}
-{#                                                    <label>#}
-{#                                                        <input type="checkbox" name="parentesco" id="parentesco" value="2" data-title="padre." /> Madre </label>#}
-{#                                                    <label>#}
-{##}
-{#                                                        <input type="checkbox" name="parentesco" id="parentesco" value="3" data-title="hermanos." />Hermanos</label>#}
-{#                                                    <label>#}
-{##}
-{#                                                        <input type="checkbox" name="parentesco" id="parentesco" value="4" data-title="abuelos." />Abuelos</label>#}
-{#                                                </div>#}
-{#                                                <div id="form_payment_error"> </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                    <div class="tab-pane" id="tab4">#}
-{#                                        <h3 class="block">Inmunizaciones</h3>#}
-{#                                        <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Tarjeta de Vacuna#}
-{##}
-{#                                            </label>#}
-{#                                            <div class="col-md-4">#}
-{#                                                <div class="radio-list">#}
-{#                                                    <label>#}
-{#                                                        <input type="radio" name="tarjetavacuna" id="tarjetavacuna" value="Si" data-title="Si" /> Si </label>#}
-{#                                                    <label>#}
-{#                                                        <input type="radio" name="tarjetavacuna" id= "tarjetavacuna" value="No" data-title="No" /> No </label>#}
-{#                                                </div>#}
-{#                                                <div id="form_vacuna_error"> </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Vacuna#}
-{#                                                <span class="required"> * </span>#}
-{#                                            </label>#}
-{#                                            <div class="col-md-4">#}
-{#                                                <input type="text" class="form-control" name="vacuna" id="vacuna" />#}
-{##}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                        <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Dosis#}
-{#                                                <span class="required"> * </span>#}
-{#                                            </label>#}
-{#                                            <div class="col-md-4">#}
-{#                                                <input type="text" class="form-control" name="dosisvacuna" id="dosisvacuna" />#}
-{##}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                        <div class="form-group">#}
-{#                                            <label class="control-label col-md-3">Edad Aplicacion#}
-{#                                                <span class="required"> * </span>#}
-{#                                            </label>#}
-{#                                            <div class="col-md-4">#}
-{#                                                <input type="text" class="form-control" name="edadvacuna" id="edadvacuna" />#}
-{##}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-
-                                              
-                                                                   
-                                                                 
-                                                                </div>
-
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <div class="row">
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <a href="javascript:;" class="btn default button-previous">
-                                            <i class="fa fa-angle-left"></i> Atras </a>
-                                        <a href="javascript:;" class="btn btn-outline green button-next"> Continuar
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
-                                        <a  id="saveData" href="javascript:;" class="btn green button-submit"> Ingresar
-                                            <i class="fa fa-check"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </form>
+
+                    </div>
+                    <div class="portlet-body form">
+                        <form class="form-horizontal" action="#" id="submit_form" method="POST">
+                            <div class="form-wizard">
+                                <div class="form-body">
+                                    <ul class="nav nav-pills nav-justified steps">
+                                        <li>
+                                            <a href="#tab1" data-toggle="tab" class="step">
+                                                <span class="number"> 1 </span>
+                                                <span class="desc">
+                                                <i class="fa fa-check"></i> Personales </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#tab2" data-toggle="tab" class="step">
+                                                <span class="number"> 2 </span>
+                                                <span class="desc">
+                                                <i class="fa fa-check"></i> Guardar Formulario  </span>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                    <div id="bar" class="progress progress-striped" role="progressbar">
+                                        <div class="progress-bar progress-bar-success"> </div>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="alert alert-danger display-none">
+                                            <button class="close" data-dismiss="alert"></button> You have some form errors. Please check below. </div>
+                                        <div class="alert alert-success display-none">
+                                            <button class="close" data-dismiss="alert"></button> Your form validation is successful! </div>
+                                        <div class="tab-pane active" id="tab1">
+                                            <h3 class="block">Ingresar los datos personales del paciente</h3>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Nombres
+                                                    <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente12"/>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Apellidos
+                                                    <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="apellidoPaciente" id="apellidoPaciente12" />
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Cedula Paciente
+                                                    <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="cedula_paciente12" id="cedula_paciente12" />
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Sexo
+
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <div class="radio-list">
+                                                        <label>
+                                                            <input type="radio" name="sexo" id="sexoPaciente12" value="M" data-title="Male" /> Masculino </label>
+                                                        <label>
+                                                            <input type="radio" name="sexo" id= "sexoPaciente12" value="F" data-title="Female" /> Femenino </label>
+                                                    </div>
+                                                    <div id="form_gender_error"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Edad
+                                                    <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="edadPaciente" id="edadPaciente12" />
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Peso
+                                                    <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="PesoPaciente" id="PesoPaciente12" />
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Direccion
+
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="direccion" id= "dirPaciente12" />
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Telefono
+
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="telefono" id="telefono12"/>
+                                                    <span class="help-block"> Si tiene mas de un numero separar con coma.   </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Celular
+
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="celular" id="celular12" />
+                                                    <span class="help-block"> Si tiene mas de un numero separar con coma.   </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Tutor
+
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="tutorPaciente" id="tutorPaciente12" />
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Cedula Tutor
+
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" name="cedulatutorPaciente" id="cedulatutorPaciente12" />
+
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="tab-pane" id="tab2">
+
+                                          
+
+                                        </div>
+                                       
+
+
+
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <a href="javascript:;" class="btn default button-previous">
+                                                <i class="fa fa-angle-left"></i> Atras </a>
+                                            <a href="javascript:;" class="btn btn-outline green button-next"> Continuar
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                            <a  id="saveData" href="javascript:;" class="btn green button-submit"> Ingresar
+                                                <i class="fa fa-check"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- BEGIN FOOTER -->
+            <!-- BEGIN FOOTER -->
 
-<a href="#index" class="go2top">
-    <i class="icon-arrow-up"></i>
-</a>
+            <a href="#index" class="go2top">
+                <i class="icon-arrow-up"></i>
+            </a>
 
             <script>
                 $( document ).ready(function() {
 
 
                     function postData(){
-                         var nombrePaciente = CryptoJS.AES.encrypt($("#nombrePaciente12").val(), "Secret Passphrase");
-                    var apellidoPaciente = CryptoJS.AES.encrypt($("#apellidoPaciente12").val(), "Secret Passphrase");
-                    var telefono = CryptoJS.AES.encrypt($("#telefono12").val(), "Secret Passphrase");
-                    var celular = CryptoJS.AES.encrypt($("#celular12").val(), "Secret Passphrase");
-                    var dirPaciente = CryptoJS.AES.encrypt($("#dirPaciente12").val(), "Secret Passphrase");
-                    var tutorPaciente = CryptoJS.AES.encrypt($("#tutorPaciente12").val(), "Secret Passphrase");
-                    var cedulatutorPaciente = CryptoJS.AES.encrypt($("#cedulatutorPaciente12").val(), "Secret Passphrase");
+                        var nombrePaciente = CryptoJS.AES.encrypt($("#nombrePaciente12").val(), "Secret Passphrase");
+                        var apellidoPaciente = CryptoJS.AES.encrypt($("#apellidoPaciente12").val(), "Secret Passphrase");
+                        var telefono = CryptoJS.AES.encrypt($("#telefono12").val(), "Secret Passphrase");
+                        var celular = CryptoJS.AES.encrypt($("#celular12").val(), "Secret Passphrase");
+                        var dirPaciente = CryptoJS.AES.encrypt($("#dirPaciente12").val(), "Secret Passphrase");
+                        var tutorPaciente = CryptoJS.AES.encrypt($("#tutorPaciente12").val(), "Secret Passphrase");
+                        var cedulatutorPaciente = CryptoJS.AES.encrypt($("#cedulatutorPaciente12").val(), "Secret Passphrase");
+                        var cedula_paciente = CryptoJS.AES.encrypt($("#cedula_paciente12").val(), "Secret Passphrase");
+
                         $.ajax({
                             url: 'http://localhost:8000/api/paciente/agregar/',
                             method: 'POST',
                             data: {
-                                     'nombre': nombrePaciente.toString(),
-                            'apellido': apellidoPaciente.toString(),
-                            'telefono': telefono.toString(),
-                            'celular': celular.toString(),
-                            'direccion': dirPaciente.toString(),
-                            'peso':  $("#PesoPaciente12").val(),
-                            'sexo': $("#sexoPaciente12").val(),
-                            'edad': $("#edadPaciente12").val(),
-                            'tutor': tutorPaciente.toString(),
-                            'cedula_tutor': cedulatutorPaciente.toString()
+                                'nombre': nombrePaciente.toString(),
+                                'apellido': apellidoPaciente.toString(),
+                                'telefono': telefono.toString(),
+                                'celular': celular.toString(),
+                                'direccion': dirPaciente.toString(),
+                                'peso':  $("#PesoPaciente12").val(),
+                                'sexo': $("#sexoPaciente12").val(),
+                                'edad': $("#edadPaciente12").val(),
+                                'cedula_paciente': cedula_paciente.toString(),
+                                'tutor': tutorPaciente.toString(),
+                                'cedula_tutor': cedulatutorPaciente.toString()
                             },
 
                             success: function(success) {
+                                
                               location.href = "{% url 'paciente' %}"
-{#                                console.log(success);#}
-{#                                postDataAlergia(success.id);#}
-
                             },
                             error: function(error) {
                                 console.log(error);
@@ -419,7 +239,44 @@
                     }
 
                     $("#saveData").click(function(){
-                        postData();
+                        {#                        var nombrePaciente = CryptoJS.AES.encrypt($("#cedula_paciente12").val(), "Secret Passphrase");#}
+                        {#                         var name = nombrePaciente.toString();#}
+                        $.ajax({
+                            url: 'http://localhost:8000/api/pacientes/',
+                            method: 'GET',
+                            crossDomain: true,
+
+                            success: function (data) {
+                                var temp=1;
+                                $.each(data, function (i, item) {
+                                    var cedula_paciente = CryptoJS.AES.decrypt(item.cedula_paciente, "Secret Passphrase");
+                                    var cedula_paciente1 = cedula_paciente.toString(CryptoJS.enc.Utf8)
+                                    if(cedula_paciente1 == $("#cedula_paciente12").val())
+                                    {
+                                        console.log('exist');
+                                        $("#success-alert1213").text("Patient Exist");
+                                        $("#success-alert1213").removeClass('hide');
+                                        $("#success-alert1213").fadeTo(2000, 500).slideUp(500, function () {
+                                            $("#success-alert1213").slideUp(500);
+                                            temp = 0;
+                                        });
+                                        }
+                                    else {
+
+                                    }
+                                    });
+                                if(temp == 1)
+                                {
+                                    postData();
+                                }
+
+
+                            }
+
+                        });
+
+
+
                     });
 
 
@@ -456,14 +313,14 @@
                             method: 'POST',
                             crossDomain: true,
                             data:{
-                            'id':pacienteId,
-                            'alergia' : alergia.toString(),
-                            'tipo' : tipoaalergia.toString(),
+                                'id':pacienteId,
+                                'alergia' : alergia.toString(),
+                                'tipo' : tipoaalergia.toString(),
 
-                        },
+                            },
                             success: function(success) {
                                 console.log(success);
-{#                                location.href = 'http://localhost:8080/admin-5/table-datatables-managed.html';#}
+                                {#                                location.href = 'http://localhost:8080/admin-5/table-datatables-managed.html';#}
                             },
                             error: function(error) {
                                 console.log(error);
@@ -579,7 +436,7 @@
                             contentType: "application/json",
                             success: function(success) {
                                 console.log(success);
-{#                                location.href = 'http://localhost:8080/admin-5/table-datatables-managed.html';#}
+                                {#                                location.href = 'http://localhost:8080/admin-5/table-datatables-managed.html';#}
                             },
                             error: function(error) {
                                 console.log(error);
@@ -592,3 +449,4 @@
             </script>
 
 {% endblock %}
+
