@@ -927,7 +927,7 @@
 
      $('#signosvitales_form').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/signos-vitales/agregar/', //this is the submit URL
+            url: '/api/paciente/signos-vitales/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),
@@ -953,7 +953,7 @@
 
    $('#medicamentoform').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/medicamentos/agregar/', //this is the submit URL
+            url: '/api/paciente/medicamentos/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),
@@ -978,7 +978,7 @@
     });
    $('#antecedente-Personalform').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
+            url: '/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),
@@ -1000,7 +1000,7 @@
 
    $('#antecedente-Personalform').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
+            url: '/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),
@@ -1024,7 +1024,7 @@
     });
    $('#alergiaform').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/alergia/agregar/', //this is the submit URL
+            url: '/api/paciente/alergia/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),
@@ -1046,7 +1046,7 @@
     });
       $('#vacunaform').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/vacuna/agregar/', //this is the submit URL
+            url: '/api/paciente/vacuna/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),
@@ -1069,7 +1069,7 @@
     });
     $('#otrasordenes_form').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/otras-ordenes/agregar/', //this is the submit URL
+            url: '/api/paciente/otras-ordenes/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),
@@ -1095,7 +1095,7 @@
 
     $('#seguromodalform').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/seguro/agregar/', //this is the submit URL
+            url: '/api/paciente/seguro/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),
@@ -1119,7 +1119,7 @@
 
     $('#evolucionform').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/evolucion/agregar/', //this is the submit URL
+            url: '/api/paciente/evolucion/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),
@@ -1139,7 +1139,7 @@
 
     $('#revisionform').click( function() {
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/agregar/', //this is the submit URL
+            url: '/api/paciente/revision-sistema/agregar/', //this is the submit URL
             type: 'POST',
             data: {
                 'id': $('#id').val(),

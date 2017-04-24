@@ -15,3 +15,8 @@ urlpatterns = [
 
 
 ]
+
+heroku_url = "https://histoclinic.herokuapp.com"
+local_url = ""
+
+# api_url = local_url
