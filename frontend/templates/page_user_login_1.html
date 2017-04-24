@@ -7,16 +7,15 @@
     <!-- BEGIN LOGO -->
     <div class="logo">
         <a href="">
-            <img src="{% static 'assets/pages/img/logo-big.png' %}" alt="" /> </a>
+            <img src="{% static 'assets/layouts/layout5/img/logo.png' %}" alt="" /> </a>
     </div>
     <!-- END LOGO -->
     <!-- BEGIN LOGIN -->
-    <div class="content">
-        {% block messages %}
-            <div class="messages-holder" style="position: relative;">
-                {% include "messages.html" %}
-            </div>
-        {% endblock %}
+   <div class="content">
+         <div class="alert alert-success hide" id="success-alert1212">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+
+          </div>
         <!-- BEGIN LOGIN FORM -->
         <form>
             {% csrf_token %}
@@ -35,7 +34,7 @@
             <div class="form-actions">
                 <button type="submit"   class="btn green uppercase">Entrar</button>
                 
-                <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+             <!--    <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a> -->
             </div>
             
 
@@ -80,6 +79,20 @@
                                 window.localStorage.setItem('user',data.is_superuser)
                                 window.location.href = "{% url 'landing_page' %}";
                             }
+                            else {
+
+                                $("#success-alert1212").text(data.errors);
+                                     $("#success-alert1212").removeClass('hide');
+                $("#success-alert1212").fadeTo(2000, 500).slideUp(500, function () {
+                    $("#success-alert10").slideUp(500);
+                });
+
+                            }
+
+
+
+
+
 
 
 
