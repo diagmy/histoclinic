@@ -40,16 +40,16 @@ def add_user(request):
         username = request.POST.get('username')
         password1 = str(request.POST.get('password'))
         if User.objects.filter(username=username).exists():
-            messages.info(request, "This user already exist.")
+            messages.info(request, "Este usuario ya existe.")
             return redirect('add_user')
         elif username == request.POST.get('password'):
-            messages.info(request, "Username and password was too similar.")
+            messages.info(request, "El usuario y la clave son muy similares.")
             return redirect('add_user')
         elif password1.__len__() < 7:
-            messages.info(request, "Password must contain 6 characters.")
+            messages.info(request, "Clave debe contener al menos 6 caracteres.")
             return redirect('add_user')
         elif User.objects.filter(email=request.POST.get('email')).exists():
-            messages.info(request, "This Email already exist.")
+            messages.info(request, "Este correo ya existe.")
             return redirect('add_user')
         else:
             user1 = User.objects.create(username=request.POST.get('username'),
@@ -61,7 +61,7 @@ def add_user(request):
             user2 = UserProfile.objects.create(user=user1,
                                                state=request.POST.get('state'))
             user2.save()
-            messages.info(request, "Your Account is Successfully Created.")
+            messages.info(request, "La cuenta fue creada exitosamente.")
             return redirect(reverse('add_user'))
 
 
@@ -79,7 +79,7 @@ class SigninView(APIView):
         data = request.data
         if not data['username'] or not data['password']:
             # messages.info(request, 'Email or password was incorrect.')
-            return Response({'errors': 'Username and Password are required'},
+            return Response({'errors': 'Usuario y clave son requeridos'},
                             status=status.HTTP_200_OK)
 
         check_user = User.objects.filter(username__iexact=data['username'])
@@ -98,11 +98,11 @@ class SigninView(APIView):
                                 status=status.HTTP_200_OK)
             else:
                 # messages.info(request,'Email or password was incorrect.')
-                return Response({'errors':'Username and Password are not matched'},
+                return Response({'errors':'Usuario y Clave no coinciden'},
                                 status=status.HTTP_200_OK)
         else:
             # messages.info(request, 'Email or password was incorrect.')
-            return Response({'errors': 'Username and Password are not matched'},
+            return Response({'errors': 'Usuario y Clave no coinciden'},
                             status=status.HTTP_200_OK)
 
 
@@ -117,7 +117,7 @@ def create_user1(request):
             login(request, user)
             return redirect('landing_page')
         else:
-            messages.info(request,'Your username or password is incorrect.')
+            messages.info(request,'Tu usuario o clave es incorrecta.')
             return redirect('login')
     else:
         user_form = SignupForm()
