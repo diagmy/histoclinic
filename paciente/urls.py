@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^accounts/signin$', views.SigninView.as_view(),name='login'),
     url(r'^add/user/$', views.add_user,{},name='add_user'),
     url(r'^logout/', views.LogoutView.as_view(), name='logout'),
+    url(r'^search/', views.Search.as_view(), name='Search'),
 
     url(r'^api/paciente/agregar/$', views.PacienteAgregar.as_view()),
     url(r'^api/pacientes/$', views.PacienteLista.as_view()),

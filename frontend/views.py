@@ -7,16 +7,13 @@ from paciente.models import Paciente
 from paciente.models import UserProfile
 from django.views.decorators.http import require_POST, require_GET
 
-# Create your views here.
-
-
 
 
 def landing_page(request):
 	print ("\n\n\n\n\n\n\n") 
 	print (request)
 	print ("\n\n\n\n\n\n\n")
-	return render(request,'inicio.html',{})
+	return render(request,'inicio.html', {})
 
 
 def page_profile_info(request):

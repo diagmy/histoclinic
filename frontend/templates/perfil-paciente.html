@@ -1440,7 +1440,7 @@
              var notasSignosVitales1 = CryptoJS.AES.encrypt($('#notasSignosVitales1').val(), "Secret Passphrase");
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/signos-vitales/agregar/edit/',
+                url: '/api/paciente/signos-vitales/agregar/edit/',
                 type: 'POST',
                 data: {
                     'id': $('#id1').val(),
@@ -1469,7 +1469,7 @@
              var medicamentoVia = CryptoJS.AES.encrypt($('#medicamentoVia').val(), "Secret Passphrase");
              var medicamentoNota = CryptoJS.AES.encrypt($('#medicamentoNota').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/medicamentos/agregar/', //this is the submit URL
+                url: '/api/paciente/medicamentos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1495,7 +1495,7 @@
         $('#antecedente-Personalform').click( function() {
             var antepersonalesdescripcion = CryptoJS.AES.encrypt($('#antepersonalesdescripcion').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
+                url: '/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1520,7 +1520,7 @@
             var parentesco = CryptoJS.AES.encrypt($('#parentesco').val(), "Secret Passphrase");
             var antefamiliarnota = CryptoJS.AES.encrypt($('#antefamiliarnota').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
+                url: '/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1548,7 +1548,7 @@
               var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");
             console.log( $('#activo').val());
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/alergia/agregar/', //this is the submit URL
+                url: '/api/paciente/alergia/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1574,7 +1574,7 @@
 {#             var dosisvacuna = CryptoJS.AES.encrypt($('#dosisvacuna').val(), "Secret Passphrase");#}
 {#             var edadvacuna = CryptoJS.AES.encrypt($('#edadvacuna').val(), "Secret Passphrase");#}
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/vacuna/agregar/', //this is the submit URL
+                url: '/api/paciente/vacuna/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1605,7 +1605,7 @@
              var sondas1 = CryptoJS.AES.encrypt($('#sondas1').val(), "Secret Passphrase");
             var estudioslabdiagnostico1 = CryptoJS.AES.encrypt($('#estudioslabdiagnostico1').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/otras-ordenes/agregar/edit/', //this is the submit URL
+                url: '/api/paciente/otras-ordenes/agregar/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id':$('#id2').val(),
@@ -1635,7 +1635,7 @@
         $('#evolucionform').click( function() {
             var notaevolucion1 = CryptoJS.AES.encrypt($('#notaevolucion1').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/evolucion/agregar/edit/', //this is the submit URL
+                url: '/api/paciente/evolucion/agregar/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#ids').val(),
@@ -1656,7 +1656,7 @@
         $('#revisionform1').click( function() {
             var cabeza1 = CryptoJS.AES.encrypt($('#cabeza1').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/edit/', //this is the submit URL
+                url: '/api/paciente/revision-sistema/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#idss').val(),
@@ -1677,7 +1677,7 @@
         $('#padecimiento_form').click( function() {
             var padecimientopaciente1 = CryptoJS.AES.encrypt($('#padecimientopaciente1').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/padecimiento-actual/edit/', //this is the submit URL
+                url: '/api/paciente/padecimiento-actual/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#idss1').val(),
@@ -1701,7 +1701,7 @@
             var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/alergias/edit/', //this is the submit URL
+                url: '/api/paciente/alergias/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1727,7 +1727,7 @@
             var Asegurado = CryptoJS.AES.encrypt($('#Asegurado').val(), "Secret Passphrase");
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/seguro/edit/', //this is the submit URL
+                url: '/api/paciente/seguro/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1762,7 +1762,7 @@
              var Frecuencia = CryptoJS.AES.encrypt($('#Frecuencia').val(), "Secret Passphrase");
              var Via = CryptoJS.AES.encrypt($('#Via').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/medicamentos/edit/', //this is the submit URL
+                url: '/api/paciente/medicamentos/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1789,7 +1789,7 @@
 {#            var Dosis_Aplicadas = CryptoJS.AES.encrypt($('#Dosis_Aplicadas').val(), "Secret Passphrase");#}
 {#            var Edad = CryptoJS.AES.encrypt($('#Edad').val(), "Secret Passphrase");#}
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/vacunas/edit/', //this is the submit URL
+                url: '/api/paciente/vacunas/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1814,7 +1814,7 @@
             var Parentesco = CryptoJS.AES.encrypt($('#Parentesco').val(), "Secret Passphrase");
             var Notas = CryptoJS.AES.encrypt($('#Notas').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/edit/', //this is the submit URL
+                url: '/api/paciente/antecendentes-familiares-patologicos/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1837,7 +1837,7 @@
 
             var detail = CryptoJS.AES.encrypt($('#detail').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/edit/', //this is the submit URL
+                url: '/api/paciente/antecendentes-personales-patologicos/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1863,7 +1863,7 @@
 {#            var job = CryptoJS.AES.encrypt($('#job').val(), "Secret Passphrase");#}
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/edit/', //this is the submit URL
+                url: '/api/paciente/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': $('#id').val(),
@@ -1895,7 +1895,7 @@
             var celularPat = CryptoJS.AES.encrypt($('#celularPat').val(), "Secret Passphrase");
             var TutorPaciente = CryptoJS.AES.encrypt($('#TutorPaciente').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/edit/', //this is the submit URL
+                url: '/api/paciente/edit/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id':$('#id').val(),
@@ -1929,7 +1929,7 @@
             function getData(id){
 
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/api/paciente/signos_vitales/' + id,
+                    url: '/api/paciente/signos_vitales/' + id,
                     method: 'get',
                     crossDomain: true,
                     dataType: "json",
@@ -1975,7 +1975,7 @@
         function funct1(id) {
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/signos_vitales_get/' + id,
+                url: '/api/paciente/signos_vitales_get/' + id,
                 method: 'get',
                 crossDomain: true,
                 dataType: "json",
@@ -2012,7 +2012,7 @@
             function getData(id){
 
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/api/paciente/otras-ordenes/' + id,
+                    url: '/api/paciente/otras-ordenes/' + id,
                     method: 'get',
                     crossDomain: true,
                     dataType: "json",
@@ -2063,7 +2063,7 @@
         user_type = window.localStorage.getItem('user');
              if(state == 'doctor' || user_type == 'true') {
                  $.ajax({
-                     url: 'http://127.0.0.1:8000/api/paciente/Otras_Ordenes_get/' + id,
+                     url: '/api/paciente/Otras_Ordenes_get/' + id,
                      method: 'get',
                      crossDomain: true,
                      dataType: "json",
@@ -2112,7 +2112,7 @@
             function getData(id){
 
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/api/paciente/padecimiento-actual/' + id,
+                    url: '/api/paciente/padecimiento-actual/' + id,
                     method: 'get',
                     crossDomain: true,
                     dataType: "json",
@@ -2146,7 +2146,7 @@
         function funct6(id) {
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/padecimiento-actual/get/' + id,
+                url: '/api/paciente/padecimiento-actual/get/' + id,
                 method: 'get',
                 crossDomain: true,
                 dataType: "json",
@@ -2179,7 +2179,7 @@
             function getData(id){
 
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/' + id,
+                    url: '/api/paciente/revision-sistema/' + id,
                     method: 'get',
                     crossDomain: true,
                     dataType: "json",
@@ -2211,7 +2211,7 @@
         function funct5(id) {
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/get/' + id,
+                url: '/api/paciente/revision-sistema/get/' + id,
                 method: 'get',
                 crossDomain: true,
                 dataType: "json",
@@ -2245,7 +2245,7 @@
             function getData(id){
 
                 $.ajax({
-                            url: 'http://127.0.0.1:8000/api/paciente/' + id,
+                            url: '/api/paciente/' + id,
                             method: 'get',
                             crossDomain: true,
                             dataType: "json",
@@ -2307,7 +2307,7 @@
 
             function getData(id){
                 $.ajax({
-                            url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/' + id,
+                            url: '/api/paciente/antecendentes-familiares-patologicos/' + id,
                             method: 'get',
                             crossDomain: true,
                             dataType: "json",
@@ -2337,7 +2337,7 @@
         function func2(id) {
             console.log(id);
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-get/' + id,
+                url: '/api/paciente/antecendentes-familiares-get/' + id,
                 method: 'get',
                 crossDomain: true,
                 dataType: "json",
@@ -2371,7 +2371,7 @@
 
             function getData(id){
                 $.ajax({
-                            url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/' + id,
+                            url: '/api/paciente/antecendentes-personales-patologicos/' + id,
                             method: 'get',
                             crossDomain: true,
                             dataType: "json",
@@ -2399,7 +2399,7 @@
 
             console.log(id);
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-get/' + id,
+                url: '/api/paciente/antecendentes-personales-get/' + id,
                 method: 'get',
                 crossDomain: true,
                 dataType: "json",
@@ -2430,7 +2430,7 @@
 
             function getData(id){
                 $.ajax({
-                            url: 'http://127.0.0.1:8000/api/paciente/vacunas/' + id,
+                            url: '/api/paciente/vacunas/' + id,
                             method: 'get',
                             crossDomain: true,
                             dataType: "json",
@@ -2457,7 +2457,7 @@
         function func3(id) {
             console.log(id);
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/vacunas-get/' + id,
+                url: '/api/paciente/vacunas-get/' + id,
                 method: 'get',
                 crossDomain: true,
                 dataType: "json",
@@ -2487,7 +2487,7 @@
 
             function getData(id){
                 $.ajax({
-                            url: 'http://127.0.0.1:8000/api/paciente/medicamentos/' + id,
+                            url: '/api/paciente/medicamentos/' + id,
                             method: 'get',
                             crossDomain: true,
                             dataType: "json",
@@ -2560,7 +2560,7 @@
 
             function getData(id){
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/api/paciente/seguro/' + id,
+                    url: '/api/paciente/seguro/' + id,
                     method: 'get',
                     crossDomain: true,
                     dataType: "json",
@@ -2588,7 +2588,7 @@
         function func5(id) {
             console.log(id);
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/seguro/get/' + id,
+                url: '/api/paciente/seguro/get/' + id,
                 method: 'get',
                 crossDomain: true,
                 dataType: "json",
@@ -2621,7 +2621,7 @@
 
             function getData(id){
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/api/paciente/evolucion/' + id,
+                    url: '/api/paciente/evolucion/' + id,
                     method: 'get',
                     crossDomain: true,
                     dataType: "json",
@@ -2650,7 +2650,7 @@
         function funct4(id) {
             console.log(id);
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/evolucion/get/' + id,
+                url: '/api/paciente/evolucion/get/' + id,
                 method: 'get',
                 crossDomain: true,
                 dataType: "json",
@@ -2683,7 +2683,7 @@
 
             function getData(id){
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/api/paciente/alergias/' + id,
+                    url: '/api/paciente/alergias/' + id,
                     method: 'get',
                     crossDomain: true,
                     dataType: "json",
@@ -2714,7 +2714,7 @@
         function func6(id) {
             console.log(id);
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/alergias/get/' + id,
+                url: '/api/paciente/alergias/get/' + id,
                 method: 'get',
                 crossDomain: true,
                 dataType: "json",

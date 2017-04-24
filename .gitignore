@@ -109,3 +109,5 @@ ENV/
 *.swp
 *.swo
 *.swl
+
+.idea/*

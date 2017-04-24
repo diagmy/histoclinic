@@ -87,7 +87,7 @@
         else {
             console.log(window.localStorage.getItem('access_token'));
             {#                ev.preventDefault();#}
-            window.location.href="http://127.0.0.1:8000/accounts/login/";
+            window.location.href="/accounts/login/";
         }
     </script>
     <body class="page-header-fixed page-sidebar-closed-hide-logo">
@@ -1114,7 +1114,7 @@
 
                         </div>
                         <!-- END PAGE SIDEBAR -->
-                        <div class="page-content-col">
+                        <div class="page-content-col" style="position: relative;">
                             <!-- BEGIN PAGE BASE CONTENT -->
                             {% block containter %}
                             {% endblock %}
@@ -1211,7 +1211,7 @@
             var temperaturaPaciente = CryptoJS.AES.encrypt($('#temperaturaPaciente').val(), "Secret Passphrase");
             var notasSignosVitales = CryptoJS.AES.encrypt($('#notasSignosVitales').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/signos-vitales/agregar/', //this is the submit URL
+                url: '/api/paciente/signos-vitales/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id':id,
@@ -1267,7 +1267,7 @@
              var medicamentoVia1 = CryptoJS.AES.encrypt($('#medicamentoVia1').val(), "Secret Passphrase");
              var temperaturaPaciente1 = CryptoJS.AES.encrypt($('#temperaturaPaciente1').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/medicamentos/agregar/', //this is the submit URL
+                url: '/api/paciente/medicamentos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
@@ -1296,7 +1296,7 @@
              var id = location.href.split('#')[1];
             var antepersonalesdescripcion = CryptoJS.AES.encrypt($('#antepersonalesdescripcion').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
+                url: '/api/paciente/antecendentes-personales-patologicos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
@@ -1320,7 +1320,7 @@
             var parentesco1 = CryptoJS.AES.encrypt($('.parentesco1 .checked')[0].id, "Secret Passphrase");
             var antefamiliarnota = CryptoJS.AES.encrypt($('#antefamiliarnota').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
+                url: '/api/paciente/antecendentes-familiares-patologicos/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
@@ -1348,7 +1348,7 @@
             var alergia1 = CryptoJS.AES.encrypt($('#alergia1').val(), "Secret Passphrase");
             var activo1 = CryptoJS.AES.encrypt($('#activo1').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/alergia/agregar/', //this is the submit URL
+                url: '/api/paciente/alergia/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
@@ -1376,7 +1376,7 @@
 {#            var edad2 = CryptoJS.AES.encrypt($('#edad2').val(), "Secret Passphrase");#}
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/vacunas/agregar/', //this is the submit URL
+                url: '/api/paciente/vacunas/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
@@ -1410,7 +1410,7 @@
              var estudioslabdiagnostico = CryptoJS.AES.encrypt($('#estudioslabdiagnostico').val(), "Secret Passphrase");
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/otras-ordenes/agregar/', //this is the submit URL
+                url: '/api/paciente/otras-ordenes/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
@@ -1442,7 +1442,7 @@
             var numeroafiliado = CryptoJS.AES.encrypt($('#numeroafiliado').val(), "Secret Passphrase");
             console.log()
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/seguro/agregar/', //this is the submit URL
+                url: '/api/paciente/seguro/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
@@ -1466,7 +1466,7 @@
              var notaevolucion = CryptoJS.AES.encrypt($('#notaevolucion').val(), "Secret Passphrase");
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/evolucion/agregar/', //this is the submit URL
+                url: '/api/paciente/evolucion/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
@@ -1488,7 +1488,7 @@
             var id = location.href.split('#')[1];
              var cabeza = CryptoJS.AES.encrypt($('#cabeza').val(), "Secret Passphrase");
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/revision-sistema/agregar/', //this is the submit URL
+                url: '/api/paciente/revision-sistema/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
@@ -1511,7 +1511,7 @@
              var cabeza11 = CryptoJS.AES.encrypt($('#cabeza11').val(), "Secret Passphrase");
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/paciente/padecimiento-actual/agregar/', //this is the submit URL
+                url: '/api/paciente/padecimiento-actual/agregar/', //this is the submit URL
                 type: 'POST',
                 data: {
                     'id': id,
