@@ -103,7 +103,6 @@ ENV/
 
 # End of https://www.gitignore.io/api/python
 
-*.sqlite3
 *.swm
 *.swn
 *.swp
