@@ -91,7 +91,10 @@
                         <!-- SIDEBAR USERPIC -->
                         <div class="row">
                         <div class="profile-userpic">
-                            <img src="{% static 'assets/pages/media/profile/profile_user.jpg' %}" class="img-responsive" alt=""> </div>
+                            <img id="imgHolder" onclick="document.getElementById('filechooser').click()" src="{% static 'assets/pages/media/profile/profile_user.jpg' %}" class="img-responsive" alt="" name='love'>
+
+                            </div>
+                              <a href="javascript:;" class="profile-edit" onclick="document.getElementById('filechooser').click()"> editar </a>
                         <!-- END SIDEBAR USERPIC -->
                         <!-- SIDEBAR USER TITLE -->
                         <div class="col-xs-7" style="margin-top:10px;display: block; text-align: center;">
@@ -99,8 +102,9 @@
                         </div></div>
                         <div class="profile-usertitle">
 
-                            <div class="profile-usertitle-name"><span id="nombrePaciente"></span></div>
-                            <div class="profile-usertitle-job"> <div id="edadPaciente"></div></div>
+                            <div class="profile-usertitle-name"><span id="nombrePaciente12"></span></div>
+                            <div class="profile-usertitle-job"> <div id="edadPaciente12"></div></div>
+
 
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
@@ -108,6 +112,10 @@
                         <div class="profile-userbuttons">
                             <p>Expendiente No: <span id="idPaciente"></span></p>
                             <p>Cedula Paciente: <span id="Cedula_Paciente"></span></p>
+                              <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}                               
+                                <input type="file" id="filechooser" accept="image/*;capture=camera" name="prof_img" style="display:none;">
+                                <input type="submit" value="Guardar" class="btn green">
+                            </form>
                         </div>
 
                         <!-- END SIDEBAR BUTTONS -->
@@ -2832,6 +2840,39 @@
     <script type="text/javascript">
 
     </script>
+     <script>
+    $("#filechooser").on('change',function(event){
+        var path = URL.createObjectURL(event.target.files[0]);
+        console.log("Jesus"+path);
+        $("#imgHolder").attr('src',path);
+        var blobFile = $('#filechooser')[0].files[0];
+        file.append(blobFile);
+        var formData = new FormData();
+        formData.append("fileToUpload", blobFile);
+        var csrftoken = Cookies.get('csrftoken');
+        
+    });
+    $("#run").click(function() {
+        var blobFile = $('#filechooser')[0].files[0];
+        var formData = new FormData();
+        formData.append("fileToUpload", blobFile);
+        console.log("Send"+formData);
+        $.ajax({
+            url: "upload",
+            type: "GET",
+            data: formData,
+            datatype: 'json',
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                alert('success');
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage); // Optional
+            }
+        });
+    });
+</script>
 
 
 {% endblock %}
