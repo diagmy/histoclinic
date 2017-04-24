@@ -89,7 +89,7 @@ CORS_ALLOW_HEADERS = (
 ROOT_URLCONF = 'front.urls'
 SESSION_COOKIE_AGE = 36
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
 #     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework.authentication.TokenAuthentication',),
