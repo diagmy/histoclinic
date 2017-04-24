@@ -1,9 +1,86 @@
 {#<!DOCTYPE html>#}
 {% extends 'base1.html' %}
 {% load staticfiles %}
+
+{% load patient %}
+{#{% load getpatient %}#}
 {% block breadcrumbs_title %} {% endblock %}
+{% block navbasic %}
+    <h3>Agregar</h3>
+    <ul class="nav navbar-nav">
+       <li>
+            <a href="#alergiamodal" data-toggle="modal">
+                 Alergias
+
+            </a>
+        </li>
+        <li>
+            <a href="#antecedente_Familiarmodal" data-toggle="modal">
+                Antecedentes Familiares
+
+            </a>
+        </li>
+        <li>
+            <a href="#antecedente-Personalmodal" data-toggle="modal">
+                Antecedente Personales</a>
+        </li>
+        <li>
+            <a href="#evolucionmodal" data-toggle="modal">
+                Evolucion
+
+            </a>
+        </li>
+
+        <li>
+            <a  id="medicamentomodal" >
+                Medicamentos </a>
+        </li>
+
+
+        {#                                    {% if request.user.state == 'doctor' or request.user.is_superuser == True %}#}
+        <li>
+            <a id="otrasordernesmodal" >
+               Otras Ordenes Terapeuticas
+
+            </a>
+        </li>
+        {#                                    {% endif %}#}
+        <li>
+            <a href="#padecimientomodal" data-toggle="modal">
+              Padecimiento
+
+            </a>
+        </li>
+
+        <li>
+            <a href="#revisionmodal" data-toggle="modal">
+                Revision por Sistema
+
+            </a>
+        </li>
+        <li>
+            <a href="#seguromodal" data-toggle="modal">
+               Seguro
+
+            </a>
+        </li>
+        <li>
+            <a href="#signos_vitalesmodal" data-toggle="modal">
+              Signos Vitales
+
+            </a>
+        </li>
+        <li>
+            <a href="#vacunamodal" data-toggle="modal">
+               Vacunas
+
+            </a>
+        </li>
+        
+    </ul>
+{% endblock %}
 {% block containter %}
-    <div class="page-content-col">
+    <div class="page-content-col-12">
         <!-- BEGIN PAGE BASE CONTENT -->
         <div class="row">
             <div class="col-md-12">
@@ -12,10 +89,9 @@
                     <!-- PORTLET MAIN -->
                     <div class="portlet light profile-sidebar-portlet bordered">
                         <!-- SIDEBAR USERPIC -->
-                        <div class ="row">
+                        <div class="row">
                         <div class="profile-userpic">
                             <img src="{% static 'assets/pages/media/profile/profile_user.jpg' %}" class="img-responsive" alt=""> </div>
-                           
                         <!-- END SIDEBAR USERPIC -->
                         <!-- SIDEBAR USER TITLE -->
                         <div class="col-xs-7" style="margin-top:10px;display: block; text-align: center;">
@@ -25,12 +101,13 @@
 
                             <div class="profile-usertitle-name"><span id="nombrePaciente"></span></div>
                             <div class="profile-usertitle-job"> <div id="edadPaciente"></div></div>
+
                         </div>
                         <!-- END SIDEBAR USER TITLE -->
                         <!-- SIDEBAR BUTTONS -->
                         <div class="profile-userbuttons">
                             <p>Expendiente No: <span id="idPaciente"></span></p>
-
+                            <p>Cedula Paciente: <span id="Cedula_Paciente"></span></p>
                         </div>
 
                         <!-- END SIDEBAR BUTTONS -->
@@ -71,7 +148,7 @@
                                         <li>
                                             <a href="#tab_1_3" data-toggle="tab">Historia</a>
                                         </li>
-                                     
+
                                     </ul>
                                 </div>
                                 <div class="portlet-body">
@@ -340,7 +417,7 @@
                                                                     <th class="none"> Sondas /  Drenajes</th>
                                                                     <th class="none"> Estudios Laboratorio / Diagnostico</th>
                                                                     <th class="none"> Activo</th>
-                                                                    <th class="none">Editar</th>
+                                                                    <th class="none">Edit</th>
 
                                                                 </tr>
                                                                 </thead>
@@ -386,7 +463,7 @@
                                                                         Notas
                                                                     </th>
                                                                     <th class="none">
-                                                                        Editar
+                                                                        Edit
                                                                     </th>
 
                                                                 </tr>
@@ -470,7 +547,11 @@
                                         </div>
                                         <!-- END MEMBERSHIP TAB -->
                                         <!-- TERMS OF USE TAB -->
-                                        
+                                        <div class="tab-pane" id="tab_1_4">
+
+
+
+                                        </div>
                                     </div>
                                     <!-- END TERMS OF USE TAB -->
                                 </div>
@@ -564,8 +645,8 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" id="paciente_form" class="btn btn-default">Agregar</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" id="paciente_form" class="btn btn-default">Submit</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </form>
@@ -617,6 +698,14 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"
                                        id="lname" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="cedula_paciente" >Cedula Paciente</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="cedula_paciente21" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -1166,20 +1255,20 @@
                                        id="frecuenciaCardiaca1">
                             </div>
                         </div>
+                        {#                        <div class="form-group">#}
+                        {#                            <label class="col-sm-2 control-label"#}
+                        {#                                   for="frecuenciaRespiratoria1" >Frecuencia Respiratoria</label>#}
+                        {#                            <div class="col-sm-10">#}
+                        {#                                <input type="text" class="form-control"#}
+                        {#                                       id="frecuenciaRespiratoria1" />#}
+                        {#                            </div>#}
+                        {#                        </div>#}
                         <div class="form-group">
                             <label class="col-sm-2 control-label"
-                                   for="frecuenciaRespiratoria1" >Frecuencia Respiratoria</label>
+                                   for="temperaturaPaciente11" >Temperatura</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"
-                                       id="frecuenciaRespiratoria1" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"
-                                   for="temperaturaPaciente1" >Temperatura</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control"
-                                       id="temperaturaPaciente1" />
+                                       id="temperaturaPaciente11" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -1430,10 +1519,10 @@
         });
         $('#signosvitales_form1').click( function() {
             var tensionArterial1 = CryptoJS.AES.encrypt($('#tensionArterial1').val(), "Secret Passphrase");
-             var frecuenciaCardiaca1 = CryptoJS.AES.encrypt($('#frecuenciaCardiaca1').val(), "Secret Passphrase");
-             var frecuenciaRespiratoria1 = CryptoJS.AES.encrypt($('#frecuenciaRespiratoria1').val(), "Secret Passphrase");
-             var temperaturaPaciente1 = CryptoJS.AES.encrypt($('#temperaturaPaciente1').val(), "Secret Passphrase");
-             var notasSignosVitales1 = CryptoJS.AES.encrypt($('#notasSignosVitales1').val(), "Secret Passphrase");
+            var frecuenciaCardiaca1 = CryptoJS.AES.encrypt($('#frecuenciaCardiaca1').val(), "Secret Passphrase");
+            {#             var frecuenciaRespiratoria1 = CryptoJS.AES.encrypt($('#frecuenciaRespiratoria1').val(), "Secret Passphrase");#}
+            var temperaturaPaciente11 = CryptoJS.AES.encrypt($('#temperaturaPaciente11').val(), "Secret Passphrase");
+            var notasSignosVitales1 = CryptoJS.AES.encrypt($('#notasSignosVitales1').val(), "Secret Passphrase");
 
             $.ajax({
                 url: '/api/paciente/signos-vitales/agregar/edit/',
@@ -1442,8 +1531,8 @@
                     'id': $('#id1').val(),
                     'Tension_Arterial': tensionArterial1.toString(),
                     'Frecuencia_Cardiaca': frecuenciaCardiaca1.toString(),
-                    'Frecuencia_Respiratoria': frecuenciaRespiratoria1.toString(),
-                    'Temperatura':temperaturaPaciente1.toString(),
+                    {#                    'Frecuencia_Respiratoria': frecuenciaRespiratoria1.toString(),#}
+                    'Temperatura':temperaturaPaciente11.toString(),
                     'Notas': notasSignosVitales1.toString(),
                 },
                 success: function (data) {
@@ -1459,11 +1548,11 @@
         });
 
         $('#medicamentoform').click( function() {
-             var medicamentoNombre = CryptoJS.AES.encrypt($('#medicamentoNombre').val(), "Secret Passphrase");
-             var medicamentoDosis = CryptoJS.AES.encrypt($('#medicamentoDosis').val(), "Secret Passphrase");
-             var medicamentoFrecuencia = CryptoJS.AES.encrypt($('#medicamentoFrecuencia').val(), "Secret Passphrase");
-             var medicamentoVia = CryptoJS.AES.encrypt($('#medicamentoVia').val(), "Secret Passphrase");
-             var medicamentoNota = CryptoJS.AES.encrypt($('#medicamentoNota').val(), "Secret Passphrase");
+            var medicamentoNombre = CryptoJS.AES.encrypt($('#medicamentoNombre').val(), "Secret Passphrase");
+            var medicamentoDosis = CryptoJS.AES.encrypt($('#medicamentoDosis').val(), "Secret Passphrase");
+            var medicamentoFrecuencia = CryptoJS.AES.encrypt($('#medicamentoFrecuencia').val(), "Secret Passphrase");
+            var medicamentoVia = CryptoJS.AES.encrypt($('#medicamentoVia').val(), "Secret Passphrase");
+            var medicamentoNota = CryptoJS.AES.encrypt($('#medicamentoNota').val(), "Secret Passphrase");
             $.ajax({
                 url: '/api/paciente/medicamentos/agregar/', //this is the submit URL
                 type: 'POST',
@@ -1539,9 +1628,9 @@
             });
         });
         $('#alergiaform').click( function() {
-              var tipo = CryptoJS.AES.encrypt($('#tipo').val(), "Secret Passphrase");
-              var Alergia = CryptoJS.AES.encrypt($('#Alergia').val(), "Secret Passphrase");
-              var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");
+            var tipo = CryptoJS.AES.encrypt($('#tipo').val(), "Secret Passphrase");
+            var Alergia = CryptoJS.AES.encrypt($('#Alergia').val(), "Secret Passphrase");
+            var activo = CryptoJS.AES.encrypt($('#activo').val(), "Secret Passphrase");
             console.log( $('#activo').val());
             $.ajax({
                 url: '/api/paciente/alergia/agregar/', //this is the submit URL
@@ -1565,10 +1654,10 @@
             });
         });
         $('#vacunaform').click( function() {
-             var tarjetavacuna = CryptoJS.AES.encrypt($('#tarjetavacuna').val(), "Secret Passphrase");
-             var vacuna = CryptoJS.AES.encrypt($('#vacuna').val(), "Secret Passphrase");
-{#             var dosisvacuna = CryptoJS.AES.encrypt($('#dosisvacuna').val(), "Secret Passphrase");#}
-{#             var edadvacuna = CryptoJS.AES.encrypt($('#edadvacuna').val(), "Secret Passphrase");#}
+            var tarjetavacuna = CryptoJS.AES.encrypt($('#tarjetavacuna').val(), "Secret Passphrase");
+            var vacuna = CryptoJS.AES.encrypt($('#vacuna').val(), "Secret Passphrase");
+            {#             var dosisvacuna = CryptoJS.AES.encrypt($('#dosisvacuna').val(), "Secret Passphrase");#}
+            {#             var edadvacuna = CryptoJS.AES.encrypt($('#edadvacuna').val(), "Secret Passphrase");#}
             $.ajax({
                 url: '/api/paciente/vacuna/agregar/', //this is the submit URL
                 type: 'POST',
@@ -1592,13 +1681,13 @@
             });
         });
         $('#otrasordenes_form12').click( function() {
-             var dieta1 = CryptoJS.AES.encrypt($('#dieta1').val(), "Secret Passphrase");
-             var Oxigeno1 = CryptoJS.AES.encrypt($('#Oxigeno1').val(), "Secret Passphrase");
-{#             var activo21 = /CryptoJS.AES.encrypt($('#activo21').val(), "Secret Passphrase");#}
-             var actividadfisica1 = CryptoJS.AES.encrypt($('#actividadfisica1').val(), "Secret Passphrase");
-             var curas1 = CryptoJS.AES.encrypt($('#curas1').val(), "Secret Passphrase");
-             var fisioterapiarespiratoria1 = CryptoJS.AES.encrypt($('#fisioterapiarespiratoria1').val(), "Secret Passphrase");
-             var sondas1 = CryptoJS.AES.encrypt($('#sondas1').val(), "Secret Passphrase");
+            var dieta1 = CryptoJS.AES.encrypt($('#dieta1').val(), "Secret Passphrase");
+            var Oxigeno1 = CryptoJS.AES.encrypt($('#Oxigeno1').val(), "Secret Passphrase");
+            {#             var activo21 = /CryptoJS.AES.encrypt($('#activo21').val(), "Secret Passphrase");#}
+            var actividadfisica1 = CryptoJS.AES.encrypt($('#actividadfisica1').val(), "Secret Passphrase");
+            var curas1 = CryptoJS.AES.encrypt($('#curas1').val(), "Secret Passphrase");
+            var fisioterapiarespiratoria1 = CryptoJS.AES.encrypt($('#fisioterapiarespiratoria1').val(), "Secret Passphrase");
+            var sondas1 = CryptoJS.AES.encrypt($('#sondas1').val(), "Secret Passphrase");
             var estudioslabdiagnostico1 = CryptoJS.AES.encrypt($('#estudioslabdiagnostico1').val(), "Secret Passphrase");
             $.ajax({
                 url: '/api/paciente/otras-ordenes/agregar/edit/', //this is the submit URL
@@ -1719,7 +1808,7 @@
         });
 
         $('#Seguro_form').click( function() {
-             var nombre = CryptoJS.AES.encrypt($('#nombre').val(), "Secret Passphrase");
+            var nombre = CryptoJS.AES.encrypt($('#nombre').val(), "Secret Passphrase");
             var Asegurado = CryptoJS.AES.encrypt($('#Asegurado').val(), "Secret Passphrase");
 
             $.ajax({
@@ -1753,10 +1842,10 @@
 
         $('#Medicamentos_form').click( function() {
 
-             var Nombre = CryptoJS.AES.encrypt($('#Nombre').val(), "Secret Passphrase");
-             var Dosis = CryptoJS.AES.encrypt($('#Dosis').val(), "Secret Passphrase");
-             var Frecuencia = CryptoJS.AES.encrypt($('#Frecuencia').val(), "Secret Passphrase");
-             var Via = CryptoJS.AES.encrypt($('#Via').val(), "Secret Passphrase");
+            var Nombre = CryptoJS.AES.encrypt($('#Nombre').val(), "Secret Passphrase");
+            var Dosis = CryptoJS.AES.encrypt($('#Dosis').val(), "Secret Passphrase");
+            var Frecuencia = CryptoJS.AES.encrypt($('#Frecuencia').val(), "Secret Passphrase");
+            var Via = CryptoJS.AES.encrypt($('#Via').val(), "Secret Passphrase");
             $.ajax({
                 url: '/api/paciente/medicamentos/edit/', //this is the submit URL
                 type: 'POST',
@@ -1782,8 +1871,8 @@
 
         $('#vacunas_form').click( function() {
             var Vacunas = CryptoJS.AES.encrypt($('#Vacunas').val(), "Secret Passphrase");
-{#            var Dosis_Aplicadas = CryptoJS.AES.encrypt($('#Dosis_Aplicadas').val(), "Secret Passphrase");#}
-{#            var Edad = CryptoJS.AES.encrypt($('#Edad').val(), "Secret Passphrase");#}
+            {#            var Dosis_Aplicadas = CryptoJS.AES.encrypt($('#Dosis_Aplicadas').val(), "Secret Passphrase");#}
+            {#            var Edad = CryptoJS.AES.encrypt($('#Edad').val(), "Secret Passphrase");#}
             $.ajax({
                 url: '/api/paciente/vacunas/edit/', //this is the submit URL
                 type: 'POST',
@@ -1856,7 +1945,9 @@
         $('#profile_form').click( function() {
             var fname = CryptoJS.AES.encrypt($('#fname').val(), "Secret Passphrase");
             var lname = CryptoJS.AES.encrypt($('#lname').val(), "Secret Passphrase");
-{#            var job = CryptoJS.AES.encrypt($('#job').val(), "Secret Passphrase");#}
+            var cedula_paciente21 = CryptoJS.AES.encrypt($('#cedula_paciente21').val(), "Secret Passphrase");
+            cedula_paciente21
+            {#            var job = CryptoJS.AES.encrypt($('#job').val(), "Secret Passphrase");#}
 
             $.ajax({
                 url: '/api/paciente/edit/', //this is the submit URL
@@ -1864,6 +1955,7 @@
                 data: {
                     'id': $('#id').val(),
                     'fname': fname.toString(),
+                    'cedula_paciente':cedula_paciente21.toString(),
                     'lname': lname.toString(),
                     'job': $('#job').val(),
                     'title': 'profile'
@@ -1885,7 +1977,7 @@
 
 
             var sexo = CryptoJS.AES.encrypt($('#sexo').val(), "Secret Passphrase");
-{#            var peso = CryptoJS.AES.encrypt($('#peso').val(), "Secret Passphrase");#}
+            {#            var peso = CryptoJS.AES.encrypt($('#peso').val(), "Secret Passphrase");#}
             var dirPaciente = CryptoJS.AES.encrypt($('#dirPaciente').val(), "Secret Passphrase");
             var telefono = CryptoJS.AES.encrypt($('#telefono').val(), "Secret Passphrase");
             var celularPat = CryptoJS.AES.encrypt($('#celularPat').val(), "Secret Passphrase");
@@ -1939,21 +2031,13 @@
                         $.each(data, function (i, item) {
                             var tension_arterial = CryptoJS.AES.decrypt(item.tension_arterial, "Secret Passphrase");
                             var frecuencia_cardiaca = CryptoJS.AES.decrypt(item.frecuencia_cardiaca, "Secret Passphrase");
+                            {#                            var frecuencia_respiratoria = CryptoJS.AES.decrypt(item.frecuencia_respiratoria, "Secret Passphrase");#}
                             var temperatura = CryptoJS.AES.decrypt(item.temperatura, "Secret Passphrase");
                             var notas = CryptoJS.AES.decrypt(item.notas, "Secret Passphrase");
                             html1 += '<tr><td>' + item.fecha + '</td><td>' + tension_arterial.toString(CryptoJS.enc.Utf8) + '</td><td>' + frecuencia_cardiaca.toString(CryptoJS.enc.Utf8) + '</td><td>' + temperatura.toString(CryptoJS.enc.Utf8) + '</td><td>' + notas.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=funct1('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
                         });
                         $('#sample_123').append(html1)
                         $('#sample_123').dataTable({
-                               "language": {
-            "lengthMenu": "Mostrar _MENU_ por pagina",
-            "zeroRecords": "Nothing found - sorry",
-            "info": "Mostrando pagina _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay data que mostrar",
-            "infoFiltered": "(filtered from _MAX_ total records)",
-            "search": "Buscar",
-        }
-                            
 
                         });
 
@@ -1976,17 +2060,18 @@
                 crossDomain: true,
                 dataType: "json",
                 success: function (data) {
+                    console.log(data)
                     var tension_arterial = CryptoJS.AES.decrypt(data[0].tension_arterial, "Secret Passphrase");
                     var frecuencia_cardiaca = CryptoJS.AES.decrypt(data[0].frecuencia_cardiaca, "Secret Passphrase");
-                    var frecuencia_respiratoria = CryptoJS.AES.decrypt(data[0].frecuencia_respiratoria, "Secret Passphrase");
+                    {#                    var frecuencia_respiratoria = CryptoJS.AES.decrypt(data[0].frecuencia_respiratoria, "Secret Passphrase");#}
                     var temperatura = CryptoJS.AES.decrypt(data[0].temperatura, "Secret Passphrase");
                     var notas = CryptoJS.AES.decrypt(data[0].notas, "Secret Passphrase");
-
+                    console.log(temperatura.toString(CryptoJS.enc.Utf8));
                     $('#id1').val(data[0].id);
                     $('#tensionArterial1').val(tension_arterial.toString(CryptoJS.enc.Utf8));
                     $('#frecuenciaCardiaca1').val(frecuencia_cardiaca.toString(CryptoJS.enc.Utf8));
-                    $('#frecuenciaRespiratoria1').val(frecuencia_respiratoria.toString(CryptoJS.enc.Utf8));
-                    $('#temperaturaPaciente1').val(temperatura.toString(CryptoJS.enc.Utf8));
+                    {#                    $('#frecuenciaRespiratoria1').val(frecuencia_respiratoria.toString(CryptoJS.enc.Utf8));#}
+                    $('#temperaturaPaciente11').val(temperatura.toString(CryptoJS.enc.Utf8));
                     $('#notasSignosVitales1').val(notas.toString(CryptoJS.enc.Utf8));
                     $('#signos_vitalesmodaledit').modal();
                 },
@@ -2021,25 +2106,17 @@
 
                         $.each(data, function (i, item) {
                             var dieta = CryptoJS.AES.decrypt(item.dieta, "Secret Passphrase");
-                             var actividad_fisica = CryptoJS.AES.decrypt(item.actividad_fisica, "Secret Passphrase");
-                             var curas = CryptoJS.AES.decrypt(item.curas, "Secret Passphrase");
-                             var oxigeno = CryptoJS.AES.decrypt(item.oxigeno, "Secret Passphrase");
-                             var fisioterapia_respiratoria = CryptoJS.AES.decrypt(item.fisioterapia_respiratoria, "Secret Passphrase");
-                             var sondas_drenajes = CryptoJS.AES.decrypt(item.sondas_drenajes, "Secret Passphrase");
+                            var actividad_fisica = CryptoJS.AES.decrypt(item.actividad_fisica, "Secret Passphrase");
+                            var curas = CryptoJS.AES.decrypt(item.curas, "Secret Passphrase");
+                            var oxigeno = CryptoJS.AES.decrypt(item.oxigeno, "Secret Passphrase");
+                            var fisioterapia_respiratoria = CryptoJS.AES.decrypt(item.fisioterapia_respiratoria, "Secret Passphrase");
+                            var sondas_drenajes = CryptoJS.AES.decrypt(item.sondas_drenajes, "Secret Passphrase");
                             var estudios_lab_diagnostico = CryptoJS.AES.decrypt(item.estudios_lab_diagnostico, "Secret Passphrase");
-{#                             var activo = CryptoJS.AES.decrypt(, "Secret Passphrase");#}
+                            {#                             var activo = CryptoJS.AES.decrypt(, "Secret Passphrase");#}
                             html1 += '<tr><td>' + dieta.toString(CryptoJS.enc.Utf8) + '</td><td>' + actividad_fisica.toString(CryptoJS.enc.Utf8) + '</td><td>' + curas.toString(CryptoJS.enc.Utf8) + '</td><td>' + oxigeno.toString(CryptoJS.enc.Utf8) + '</td><td>' + fisioterapia_respiratoria.toString(CryptoJS.enc.Utf8) + '</td><td>' + sondas_drenajes.toString(CryptoJS.enc.Utf8) + '</td><td>' + estudios_lab_diagnostico.toString(CryptoJS.enc.Utf8) + '</td><td>' + item.activo + '</td><td><i  role="button" onclick=funct3('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
                         });
                         $('#Otras_Ordenes_Terapeuticas').append(html1)
                         $('#Otras_Ordenes_Terapeuticas').dataTable({
-                                                    "language": {
-            "lengthMenu": "Mostrar _MENU_ por pagina",
-            "zeroRecords": "Nothing found - sorry",
-            "info": "Mostrando pagina _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay data que mostrar",
-            "infoFiltered": "(filtered from _MAX_ total records)",
-            "search": "Buscar",
-        }
 
                         });
                     },
@@ -2055,50 +2132,50 @@
         });
         function funct3(id) {
 
-                 state = window.localStorage.getItem('state');
-        user_type = window.localStorage.getItem('user');
-             if(state == 'doctor' || user_type == 'true') {
-                 $.ajax({
-                     url: '/api/paciente/Otras_Ordenes_get/' + id,
-                     method: 'get',
-                     crossDomain: true,
-                     dataType: "json",
-                     success: function (data) {
-                          var dieta = CryptoJS.AES.decrypt(data[0].dieta, "Secret Passphrase");
-                          var oxigeno = CryptoJS.AES.decrypt(data[0].oxigeno, "Secret Passphrase");
-{#                          var activo = CryptoJS.AES.decrypt(data[0].activo, "Secret Passphrase");#}
-                          var actividad_fisica = CryptoJS.AES.decrypt(data[0].actividad_fisica, "Secret Passphrase");
-                          var curas = CryptoJS.AES.decrypt(data[0].curas, "Secret Passphrase");
-                          var fisioterapia_respiratoria = CryptoJS.AES.decrypt(data[0].fisioterapia_respiratoria, "Secret Passphrase");
-                          var sondas_drenajes = CryptoJS.AES.decrypt(data[0].sondas_drenajes, "Secret Passphrase");
-                          var estudios_lab_diagnostico = CryptoJS.AES.decrypt(data[0].estudios_lab_diagnostico, "Secret Passphrase");
+            state = window.localStorage.getItem('state');
+            user_type = window.localStorage.getItem('user');
+            if(state == 'doctor' || user_type == 'true') {
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/paciente/Otras_Ordenes_get/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+                    success: function (data) {
+                        var dieta = CryptoJS.AES.decrypt(data[0].dieta, "Secret Passphrase");
+                        var oxigeno = CryptoJS.AES.decrypt(data[0].oxigeno, "Secret Passphrase");
+                        {#                          var activo = CryptoJS.AES.decrypt(data[0].activo, "Secret Passphrase");#}
+                        var actividad_fisica = CryptoJS.AES.decrypt(data[0].actividad_fisica, "Secret Passphrase");
+                        var curas = CryptoJS.AES.decrypt(data[0].curas, "Secret Passphrase");
+                        var fisioterapia_respiratoria = CryptoJS.AES.decrypt(data[0].fisioterapia_respiratoria, "Secret Passphrase");
+                        var sondas_drenajes = CryptoJS.AES.decrypt(data[0].sondas_drenajes, "Secret Passphrase");
+                        var estudios_lab_diagnostico = CryptoJS.AES.decrypt(data[0].estudios_lab_diagnostico, "Secret Passphrase");
 
-                         $('#id2').val(data[0].id);
-                         $('#dieta1').val(dieta.toString(CryptoJS.enc.Utf8));
-                         $('#Oxigeno1').val(oxigeno.toString(CryptoJS.enc.Utf8));
-                         $('#activo21').val(data[0].activo);
-                         $('#actividadfisica1').val(actividad_fisica.toString(CryptoJS.enc.Utf8));
-                         $('#curas1').val(curas.toString(CryptoJS.enc.Utf8));
-                         $('#fisioterapiarespiratoria1').val(fisioterapia_respiratoria.toString(CryptoJS.enc.Utf8));
-                         $('#sondas1').val(sondas_drenajes.toString(CryptoJS.enc.Utf8));
-                         $('#estudioslabdiagnostico1').val(estudios_lab_diagnostico.toString(CryptoJS.enc.Utf8));
-                         $('#otrasordernesmodal1').modal();
-                     },
+                        $('#id2').val(data[0].id);
+                        $('#dieta1').val(dieta.toString(CryptoJS.enc.Utf8));
+                        $('#Oxigeno1').val(oxigeno.toString(CryptoJS.enc.Utf8));
+                        $('#activo21').val(data[0].activo);
+                        $('#actividadfisica1').val(actividad_fisica.toString(CryptoJS.enc.Utf8));
+                        $('#curas1').val(curas.toString(CryptoJS.enc.Utf8));
+                        $('#fisioterapiarespiratoria1').val(fisioterapia_respiratoria.toString(CryptoJS.enc.Utf8));
+                        $('#sondas1').val(sondas_drenajes.toString(CryptoJS.enc.Utf8));
+                        $('#estudioslabdiagnostico1').val(estudios_lab_diagnostico.toString(CryptoJS.enc.Utf8));
+                        $('#otrasordernesmodal1').modal();
+                    },
 
 
-                     error: function (res, status, eror) {
-                         console.log(res, status, eror);
-                     }
-                 });
-             }
+                    error: function (res, status, eror) {
+                        console.log(res, status, eror);
+                    }
+                });
+            }
+
             else{
-                  $('#myModal8').modal();
-             }
+                $('#myModal8').modal();
+            }
 
 
 
         }
-
 
 
         $( document ).ready(function() {
@@ -2118,14 +2195,14 @@
                     success: function (data) {
                         console.log(data);
                         var html1 = '';
-                        var time =
-                        $.each(data, function (i, item) {
-                            var time1  = item.hora;
-                            var hr = time1.split(':')[0];
-                            var min = time1.split(':')[1];
-                            var padecimiento = CryptoJS.AES.decrypt(item.padecimiento, "Secret Passphrase");
-                            html1 += '<tr><td>' + item.fecha + '</td><td>' + hr+':'+min + '</td><td>' + padecimiento.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=funct6('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
-                        });
+                        var time ;
+                                $.each(data, function (i, item) {
+                                    var time1  = item.hora;
+                                    var hr = time1.split(':')[0];
+                                    var min = time1.split(':')[1];
+                                    var padecimiento = CryptoJS.AES.decrypt(item.padecimiento, "Secret Passphrase");
+                                    html1 += '<tr><td>' + item.fecha + '</td><td>' + hr+':'+min + '</td><td>' + padecimiento.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=funct6('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                                });
                         $('#padecimientotable').append(html1)
 
                     },
@@ -2147,9 +2224,10 @@
                 crossDomain: true,
                 dataType: "json",
                 success: function (data) {
+{#                    alert(data);#}
                     console.log(data);
-                    var padecimientopaciente1 = CryptoJS.AES.decrypt(data[0].padecimientopaciente1, "Secret Passphrase");
-
+                    var padecimientopaciente1 = CryptoJS.AES.decrypt(data[0].padecimiento, "Secret Passphrase");
+{#                    console.log(padecimientopaciente1);#}
                     $('#idss1').val(data[0].id);
                     $('#padecimientopaciente1').val(padecimientopaciente1.toString(CryptoJS.enc.Utf8));
 
@@ -2187,7 +2265,7 @@
                         var html1 = '';
                         $.each(data, function (i, item) {
 
-                             var cabeza = CryptoJS.AES.decrypt(item.cabeza, "Secret Passphrase");
+                            var cabeza = CryptoJS.AES.decrypt(item.cabeza, "Secret Passphrase");
 
                             html1 += '<tr><td>' + item.fecha + '</td><td>' + cabeza.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=funct5('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
                         });
@@ -2241,55 +2319,62 @@
             function getData(id){
 
                 $.ajax({
+<<<<<<< 4346c3144ff5090b32e17175432bc0522df0ba11
                             url: '/api/paciente/' + id,
                             method: 'get',
                             crossDomain: true,
                             dataType: "json",
 
+=======
+                    url: 'http://127.0.0.1:8000/api/paciente/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+>>>>>>> change perfil paciente page
+
+                    var data1 = data[0].id;
+                        console.log(data1);
+                       $.each(data, function (i, item) {
+                           var nombre = CryptoJS.AES.decrypt(item.nombre, "Secret Passphrase");
+                           var apellido = CryptoJS.AES.decrypt(item.apellido, "Secret Passphrase");
+                           var telefono = CryptoJS.AES.decrypt(item.telefono, "Secret Passphrase");
+                           var celular = CryptoJS.AES.decrypt(item.celular, "Secret Passphrase");
+                           var direccion = CryptoJS.AES.decrypt(item.direccion, "Secret Passphrase");
+                           var sexo = CryptoJS.AES.decrypt(item.sexo, "Secret Passphrase");
+                           var tutor = CryptoJS.AES.decrypt(item.tutor, "Secret Passphrase");
+                           var cedula_paciente1 = CryptoJS.AES.decrypt(item.cedula_paciente, "Secret Passphrase");
+                           $("#id").val(data[0].id);
+                        $("#nombrePaciente").text(nombre.toString(CryptoJS.enc.Utf8)+' '+apellido.toString(CryptoJS.enc.Utf8));
+                        $("#fname").val(nombre.toString(CryptoJS.enc.Utf8));
+                        $("#lname").val(apellido.toString(CryptoJS.enc.Utf8));
+                        $("#Cedula_Paciente").text(cedula_paciente1.toString(CryptoJS.enc.Utf8));
+                        $("#cedula_paciente21").val(cedula_paciente1.toString(CryptoJS.enc.Utf8));
+                        $("#job").val(data[0].edad);
+                        $("#edadPaciente").text(data[0].edad+' años');
+                        $(".telefonoPaciente").text(telefono.toString(CryptoJS.enc.Utf8));
+                        $("#telefono").val(telefono.toString(CryptoJS.enc.Utf8));
+                        $("#celularPat").val(celular.toString(CryptoJS.enc.Utf8));
+                        $(".celularPaciente").text(celular.toString(CryptoJS.enc.Utf8));
+                        $("#idPaciente").text(data[0].id);
+                        $(".dirPaciente").text(direccion.toString(CryptoJS.enc.Utf8));
+                        $("#dirPaciente").val(direccion.toString(CryptoJS.enc.Utf8));
+                        $(".sexoPaciente").text(sexo.toString(CryptoJS.enc.Utf8));
+                        $("#sexo").val(sexo.toString(CryptoJS.enc.Utf8));
+                        $(".PesoPaciente").text(data[0].peso);
+                        $("#peso").val(data[0].peso);
+                        $("#FechaIngPaciente").text(data[0].fecha_ingreso);
+                        $(".TutorPaciente").text(tutor.toString(CryptoJS.enc.Utf8));
+                        $("#TutorPaciente").val(tutor.toString(CryptoJS.enc.Utf8));
+                       });
 
 
-                            success: function (data) {
-                            var nombre = CryptoJS.AES.decrypt(data.nombre, "Secret Passphrase");
-                                var apellido = CryptoJS.AES.decrypt(data.apellido, "Secret Passphrase");
-{#                                var edad = CryptoJS.AES.decrypt(data.edad, "Secret Passphrase");#}
-                                var telefono = CryptoJS.AES.decrypt(data.telefono, "Secret Passphrase");
-                                var celular = CryptoJS.AES.decrypt(data.celular, "Secret Passphrase");
-                                var direccion = CryptoJS.AES.decrypt(data.direccion, "Secret Passphrase");
-                                var sexo = CryptoJS.AES.decrypt(data.sexo, "Secret Passphrase");
-{#                                var peso = CryptoJS.AES.decrypt(data.peso, "Secret Passphrase");#}
-{#                                var fecha_ingreso = CryptoJS.AES.decrypt(data.fecha_ingreso, "Secret Passphrase");#}
-                                var tutor = CryptoJS.AES.decrypt(data.tutor, "Secret Passphrase");
-
-
-
-
-                            $("#id").val(data.id);
-                            $("#nombrePaciente").text(nombre.toString(CryptoJS.enc.Utf8)+' '+apellido.toString(CryptoJS.enc.Utf8));
-                            $("#fname").val(nombre.toString(CryptoJS.enc.Utf8));
-                            $("#lname").val(apellido.toString(CryptoJS.enc.Utf8));
-                            $("#job").val(data.edad);
-{#                            $("#apellido").text(apellido.toString(CryptoJS.enc.Utf8));#}
-                            $("#edadPaciente").text(data.edad+' años');
-                            $(".telefonoPaciente").text(telefono.toString(CryptoJS.enc.Utf8));
-                            $("#telefono").val(telefono.toString(CryptoJS.enc.Utf8));
-                            $("#celularPat").val(celular.toString(CryptoJS.enc.Utf8));
-                            $(".celularPaciente").text(celular.toString(CryptoJS.enc.Utf8));
-                            $("#idPaciente").text(data.id);
-                            $(".dirPaciente").text(direccion.toString(CryptoJS.enc.Utf8));
-                            $("#dirPaciente").val(direccion.toString(CryptoJS.enc.Utf8));
-                            $(".sexoPaciente").text(sexo.toString(CryptoJS.enc.Utf8));
-                            $("#sexo").val(sexo.toString(CryptoJS.enc.Utf8));
-                            $(".PesoPaciente").text(data.peso);
-                            $("#peso").val(data.peso);
-                            $("#FechaIngPaciente").text(data.fecha_ingreso);
-                            $(".TutorPaciente").text(tutor.toString(CryptoJS.enc.Utf8));
-                            $("#TutorPaciente").val(tutor.toString(CryptoJS.enc.Utf8));
-
-            },
-                error: function(res, status, eror) {
-                    console.log(res, status, eror);
-                }
-            });
+                    },
+                    error: function(res, status, eror) {
+                        console.log(res, status, eror);
+                    }
+                });
             }
         });
 
@@ -2314,9 +2399,9 @@
 
                             var trHTML = '';
                 $.each(data, function (i, item) {
-                     var enfermedad = CryptoJS.AES.decrypt(item.enfermedad, "Secret Passphrase");
-                     var parentesco = CryptoJS.AES.decrypt(item.parentesco, "Secret Passphrase");
-                     var antefamipatologicos = CryptoJS.AES.decrypt(item.antefamipatologicos, "Secret Passphrase");
+                    var enfermedad = CryptoJS.AES.decrypt(item.enfermedad, "Secret Passphrase");
+                    var parentesco = CryptoJS.AES.decrypt(item.parentesco, "Secret Passphrase");
+                    var antefamipatologicos = CryptoJS.AES.decrypt(item.antefamipatologicos, "Secret Passphrase");
                     trHTML += '<tr><td>' + enfermedad.toString(CryptoJS.enc.Utf8) + '</td><td>' + parentesco.toString(CryptoJS.enc.Utf8) + '</td><td>' + antefamipatologicos.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=func2('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
                 });
 
@@ -2338,9 +2423,9 @@
                 crossDomain: true,
                 dataType: "json",
                 success: function (data) {
-                       var enfermedad = CryptoJS.AES.decrypt(data[0].enfermedad, "Secret Passphrase");
-                       var parentesco = CryptoJS.AES.decrypt(data[0].parentesco, "Secret Passphrase");
-                       var antefamipatologicos = CryptoJS.AES.decrypt(data[0].antefamipatologicos, "Secret Passphrase");
+                    var enfermedad = CryptoJS.AES.decrypt(data[0].enfermedad, "Secret Passphrase");
+                    var parentesco = CryptoJS.AES.decrypt(data[0].parentesco, "Secret Passphrase");
+                    var antefamipatologicos = CryptoJS.AES.decrypt(data[0].antefamipatologicos, "Secret Passphrase");
 
                     $('#id').val(data[0].id);
                     $('#Enfermedad').val(enfermedad.toString(CryptoJS.enc.Utf8));
@@ -2378,7 +2463,7 @@
                             var trHTML = '';
                 $.each(data, function (i, item) {
 
-                     var antepersopatologico = CryptoJS.AES.decrypt(item.antepersopatologico, "Secret Passphrase");
+                    var antepersopatologico = CryptoJS.AES.decrypt(item.antepersopatologico, "Secret Passphrase");
                     trHTML += '<tr><td>' + item.fecha + '</td><td>' + antepersopatologico.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=func1('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
 
                 });
@@ -2401,7 +2486,7 @@
                 dataType: "json",
                 success: function (data) {
 
-              var antepersopatologico = CryptoJS.AES.decrypt(data[0].antepersopatologico, "Secret Passphrase");
+                    var antepersopatologico = CryptoJS.AES.decrypt(data[0].antepersopatologico, "Secret Passphrase");
 
                     console.log()
                     $('#id').val(data[0].id);
@@ -2435,8 +2520,8 @@
                             var trHTML = '';
                 $.each(data, function (i, item) {
                     var nombre_vacuna = CryptoJS.AES.decrypt(item.nombre_vacuna, "Secret Passphrase");
-{#                     var dosis_aplicadas = CryptoJS.AES.decrypt(item.dosis_aplicadas, "Secret Passphrase");#}
-{#                     var edad_aplicacion = CryptoJS.AES.decrypt(item.edad_aplicacion, "Secret Passphrase");#}
+                    {#                     var dosis_aplicadas = CryptoJS.AES.decrypt(item.dosis_aplicadas, "Secret Passphrase");#}
+                    {#                     var edad_aplicacion = CryptoJS.AES.decrypt(item.edad_aplicacion, "Secret Passphrase");#}
                     trHTML += '<tr><td>' + nombre_vacuna.toString(CryptoJS.enc.Utf8) + '</td><td>' + item.dosis_aplicadas + '</td><td>' + item.edad_aplicacion + " años" + '</td><td><i  role="button" onclick=func3('+item.id+') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
                 });
 
@@ -2458,9 +2543,9 @@
                 crossDomain: true,
                 dataType: "json",
                 success: function (data) {
-                     var nombre_vacuna = CryptoJS.AES.decrypt(data[0].nombre_vacuna, "Secret Passphrase");
-{#                     var dosis_aplicadas = CryptoJS.AES.decrypt(data[0].dosis_aplicadas, "Secret Passphrase");#}
-{#                     var edad_aplicacion = CryptoJS.AES.decrypt(data[0].edad_aplicacion, "Secret Passphrase");#}
+                    var nombre_vacuna = CryptoJS.AES.decrypt(data[0].nombre_vacuna, "Secret Passphrase");
+                    {#                     var dosis_aplicadas = CryptoJS.AES.decrypt(data[0].dosis_aplicadas, "Secret Passphrase");#}
+                    {#                     var edad_aplicacion = CryptoJS.AES.decrypt(data[0].edad_aplicacion, "Secret Passphrase");#}
 
                     $('#id').val(data[0].id);
                     $('#Vacunas').val(nombre_vacuna.toString(CryptoJS.enc.Utf8));
@@ -2508,39 +2593,39 @@
         });
 
         function func4(id) {
-              state = window.localStorage.getItem('state');
-        user_type = window.localStorage.getItem('user');
-             if(state == 'doctor' || user_type == 'true') {
-                 console.log(id);
+            state = window.localStorage.getItem('state');
+            user_type = window.localStorage.getItem('user');
+            if(state == 'doctor' || user_type == 'true') {
+                console.log(id);
 
-                 $.ajax({
-                     url: 'http://127   .0.0.1:8000/api/paciente/medicamentos/get/' + id,
-                     method: 'get',
-                     crossDomain: true,
-                     dataType: "json",
-                     success: function (data) {
+                $.ajax({
+                    url: 'http://127   .0.0.1:8000/api/paciente/medicamentos/get/' + id,
+                    method: 'get',
+                    crossDomain: true,
+                    dataType: "json",
+                    success: function (data) {
 
-                          var nombre = CryptoJS.AES.decrypt(data[0].nombre, "Secret Passphrase");
-                          var dosis = CryptoJS.AES.decrypt(data[0].dosis, "Secret Passphrase");
-                          var frecuencia = CryptoJS.AES.decrypt(data[0].frecuencia, "Secret Passphrase");
-                          var via = CryptoJS.AES.decrypt(data[0].via, "Secret Passphrase");
+                        var nombre = CryptoJS.AES.decrypt(data[0].nombre, "Secret Passphrase");
+                        var dosis = CryptoJS.AES.decrypt(data[0].dosis, "Secret Passphrase");
+                        var frecuencia = CryptoJS.AES.decrypt(data[0].frecuencia, "Secret Passphrase");
+                        var via = CryptoJS.AES.decrypt(data[0].via, "Secret Passphrase");
 
-                         console.log(data);
-                         $('#id').val(data[0].id);
-                         $('#Fecha1').val(data[0].fecha);
-                         $('#Nombre').val(nombre.toString(CryptoJS.enc.Utf8));
-                         $('#Dosis').val(dosis.toString(CryptoJS.enc.Utf8));
-                         $('#Frecuencia').val(frecuencia.toString(CryptoJS.enc.Utf8));
-                         $('#Via').val(via.toString(CryptoJS.enc.Utf8));
+                        console.log(data);
+                        $('#id').val(data[0].id);
+                        $('#Fecha1').val(data[0].fecha);
+                        $('#Nombre').val(nombre.toString(CryptoJS.enc.Utf8));
+                        $('#Dosis').val(dosis.toString(CryptoJS.enc.Utf8));
+                        $('#Frecuencia').val(frecuencia.toString(CryptoJS.enc.Utf8));
+                        $('#Via').val(via.toString(CryptoJS.enc.Utf8));
 
-                         $('#myModal5').modal();
-                     }
+                        $('#myModal5').modal();
+                    }
 
-                 })
-             }
-             else {
-                 $('#myModal8').modal();
-             }
+                })
+            }
+            else {
+                $('#myModal8').modal();
+            }
 
 
 
@@ -2567,7 +2652,7 @@
                         $.each(data, function (i, item) {
                             var nombre_seguro = CryptoJS.AES.decrypt(item.nombre_seguro, "Secret Passphrase");
                             var numero_afiliado = CryptoJS.AES.decrypt(item.numero_afiliado, "Secret Passphrase");
-                            html1+= '<ul class="list-group"><li class="list-group-item"> <span> Nombre ARS: </span><span >'+nombre_seguro.toString(CryptoJS.enc.Utf8)+' </span><i onclick=func5('+item.id+') role="button" class="glyphicon glyphicon-edit pull-right"></i> </li> <li class="list-group-item"> <span>No. Asegurado: </span> <p id="NumAfiliado"> '+ numero_afiliado.toString(CryptoJS.enc.Utf8) +' </p> </li> </ul>'
+                            html1+= '<ul class="list-group"><li class="list-group-item"> <span><strong> Nombre ARS: </strong></span><span >'+nombre_seguro.toString(CryptoJS.enc.Utf8)+' </span><i onclick=func5('+item.id+') role="button" class="glyphicon glyphicon-edit pull-right"></i> </li> <li class="list-group-item"> <span><strong>No. Asegurado: </strong></span> <span id="NumAfiliado"> '+ numero_afiliado.toString(CryptoJS.enc.Utf8) +' </span> </li> </ul>'
                         });
                         $('#sergue1').append(html1);
 
@@ -2590,8 +2675,8 @@
                 dataType: "json",
                 success: function (data) {
                     console.log(data);
-                     var nombre_seguro = CryptoJS.AES.decrypt(data[0].nombre_seguro, "Secret Passphrase");
-                     var numero_afiliado = CryptoJS.AES.decrypt(data[0].numero_afiliado, "Secret Passphrase");
+                    var nombre_seguro = CryptoJS.AES.decrypt(data[0].nombre_seguro, "Secret Passphrase");
+                    var numero_afiliado = CryptoJS.AES.decrypt(data[0].numero_afiliado, "Secret Passphrase");
                     $('#id').val(data[0].id);
                     $('#nombre').val(nombre_seguro.toString(CryptoJS.enc.Utf8));
                     $('#Asegurado').val(numero_afiliado.toString(CryptoJS.enc.Utf8));
@@ -2651,7 +2736,7 @@
                 crossDomain: true,
                 dataType: "json",
                 success: function (data) {
-                     var notas = CryptoJS.AES.decrypt(data[0].notas, "Secret Passphrase");
+                    var notas = CryptoJS.AES.decrypt(data[0].notas, "Secret Passphrase");
 
                     console.log(data);
                     $('#ids').val(data[0].id);
@@ -2685,17 +2770,18 @@
                     dataType: "json",
 
                     success: function (data) {
-                        console.log(data)
+                        console.log(data);
                         var alergiastest = '';
 
                         $.each(data, function (i, item) {
-                             var tipo = CryptoJS.AES.decrypt(item.tipo, "Secret Passphrase");
+                            var tipo = CryptoJS.AES.decrypt(item.tipo, "Secret Passphrase");
+                            console.log(tipo);
                             var nombre_alergia = CryptoJS.AES.decrypt(item.nombre_alergia, "Secret Passphrase");
                             var activo = CryptoJS.AES.decrypt(item.activo, "Secret Passphrase");
 
-                                alergiastest += '<tr><td>' + tipo.toString(CryptoJS.enc.Utf8) + '</td><td>' + nombre_alergia.toString(CryptoJS.enc.Utf8) + '</td><td>' + activo.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=func6(' + item.id + ') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
+                            alergiastest += '<tr><td>' + tipo.toString(CryptoJS.enc.Utf8) + '</td><td>' + nombre_alergia.toString(CryptoJS.enc.Utf8) + '</td><td>' + activo.toString(CryptoJS.enc.Utf8) + '</td><td><i  role="button" onclick=func6(' + item.id + ') class=" glyphicon glyphicon-edit pull-right"></i></td></tr>';
 
-                            });
+                        });
                         $('#alergia12').append(alergiastest);
 
                     },
