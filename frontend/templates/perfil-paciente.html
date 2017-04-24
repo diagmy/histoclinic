@@ -417,7 +417,7 @@
                                                                     <th class="none"> Sondas /  Drenajes</th>
                                                                     <th class="none"> Estudios Laboratorio / Diagnostico</th>
                                                                     <th class="none"> Activo</th>
-                                                                    <th class="none">Edit</th>
+                                                                    <th class="none">Editar</th>
 
                                                                 </tr>
                                                                 </thead>
@@ -463,7 +463,7 @@
                                                                         Notas
                                                                     </th>
                                                                     <th class="none">
-                                                                        Edit
+                                                                        Editar
                                                                     </th>
 
                                                                 </tr>
@@ -2038,6 +2038,14 @@
                         });
                         $('#sample_123').append(html1)
                         $('#sample_123').dataTable({
+                             "language": {
+            "lengthMenu": "Mostrar _MENU_ pacientes por pagina",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay data que mostrar",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Buscar",
+        },
 
                         });
 
@@ -2117,6 +2125,14 @@
                         });
                         $('#Otras_Ordenes_Terapeuticas').append(html1)
                         $('#Otras_Ordenes_Terapeuticas').dataTable({
+                             "language": {
+            "lengthMenu": "Mostrar _MENU_ pacientes por pagina",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay data que mostrar",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Buscar",
+        },
 
                         });
                     },
