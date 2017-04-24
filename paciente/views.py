@@ -1,5 +1,6 @@
+from django.contrib.contenttypes.models import ContentType
 from django.core.mail import message
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
@@ -37,11 +38,18 @@ jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 def add_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
+        password1 = str(request.POST.get('password'))
         if User.objects.filter(username=username).exists():
-            messages.info(request, "This user already exist.")
+            messages.info(request, "Este usuario ya existe.")
+            return redirect('add_user')
+        elif username == request.POST.get('password'):
+            messages.info(request, "El usuario y la clave son muy similares.")
+            return redirect('add_user')
+        elif password1.__len__() < 7:
+            messages.info(request, "Clave debe contener al menos 6 caracteres.")
             return redirect('add_user')
         elif User.objects.filter(email=request.POST.get('email')).exists():
-            messages.info(request, "This Email already exist.")
+            messages.info(request, "Este correo ya existe.")
             return redirect('add_user')
         else:
             user1 = User.objects.create(username=request.POST.get('username'),
@@ -53,7 +61,7 @@ def add_user(request):
             user2 = UserProfile.objects.create(user=user1,
                                                state=request.POST.get('state'))
             user2.save()
-            messages.info(request, "Your Account is Successfully Created.")
+            messages.info(request, "La cuenta fue creada exitosamente.")
             return redirect(reverse('add_user'))
 
 
@@ -70,7 +78,8 @@ class SigninView(APIView):
     def post(self, request):
         data = request.data
         if not data['username'] or not data['password']:
-            return Response({'errors': {'__all__': ['Email and Password are required']}},
+            # messages.info(request, 'Email or password was incorrect.')
+            return Response({'errors': 'Usuario y clave son requeridos'},
                             status=status.HTTP_200_OK)
 
         check_user = User.objects.filter(username__iexact=data['username'])
@@ -88,10 +97,12 @@ class SigninView(APIView):
                                  'state':user1.state,'is_superuser':user.is_superuser},
                                 status=status.HTTP_200_OK)
             else:
-                return Response({'errors': {'__all__': ['Email and Password are not matched']}},
+                # messages.info(request,'Email or password was incorrect.')
+                return Response({'errors':'Usuario y Clave no coinciden'},
                                 status=status.HTTP_200_OK)
         else:
-            return Response({'errors': {'__all__': ['Email and Password are not matched']}},
+            # messages.info(request, 'Email or password was incorrect.')
+            return Response({'errors': 'Usuario y Clave no coinciden'},
                             status=status.HTTP_200_OK)
 
 
@@ -106,7 +117,7 @@ def create_user1(request):
             login(request, user)
             return redirect('landing_page')
         else:
-            messages.info(request,'Your username or password is incorrect.')
+            messages.info(request,'Tu usuario o clave es incorrecta.')
             return redirect('login')
     else:
         user_form = SignupForm()
@@ -173,16 +184,38 @@ class PacienteLista(APIView):
         return Response(serializer.data)
 
 
-class PacienteDetalle(generics.RetrieveUpdateDestroyAPIView):
+class PacienteDetalle(generics.ListAPIView):
     serializer_class = PacienteSerializer
 
     def get_queryset(self):
         return Paciente.objects.filter(id=self.kwargs['pk'])
 
 
-class PacienteAgregar(generics.CreateAPIView):
-    queryset = Paciente.objects.all()
-    serializer_class = PacienteSerializer
+class PacienteAgregar(FormView):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(PacienteAgregar, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        get_data = request.POST
+        get_obj = Paciente.objects.create(nombre=get_data['nombre'],
+                                          apellido=get_data['apellido'],
+                                          telefono=get_data['telefono'],
+                                          celular=get_data['celular'],
+                                          direccion=get_data['direccion'],
+                                          peso=get_data['peso'],
+                                          cedula_paciente=get_data['cedula_paciente'],
+                                          sexo=get_data['sexo'],
+                                          edad=get_data['edad'],
+                                          tutor=get_data['tutor'],
+                                          cedula_tutor=get_data['cedula_tutor'],
+
+
+
+                                                      )
+        get_obj.save()
+        get_id=get_obj.id
+        return JsonResponse({'success':'sucess','id':get_id})
 
 
 class PacienteEditar(generics.UpdateAPIView):
@@ -201,6 +234,7 @@ class PacienteEditarr(FormView):
         if get_data['title'] == 'profile':
             get_obj.apellido = get_data['lname']
             get_obj.nombre = get_data['fname']
+            get_obj.cedula_paciente = get_data['cedula_paciente']
             get_obj.edad = get_data['job']
             get_obj.save()
         else:
@@ -268,19 +302,16 @@ class PadecimientoActual(generics.ListAPIView):
         pass
 
 
-class PadecimientoActualAgregar(FormView):
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        return super(PadecimientoActualAgregar, self).dispatch(request, *args, **kwargs)
+class PadecimientoActualAgregar(APIView):
 
     def post(self, request, *args, **kwargs):
-        get_data = request.POST
+        get_data = request.data
         pat = Paciente.objects.get(id=get_data['id'])
         get_obj = PadecimientoActuales.objects.create(padecimiento=get_data['cabeza'],
                                                       paciente=pat,
 
                                                       )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
 
 
@@ -309,6 +340,7 @@ class PadecimientoActualGet(generics.ListAPIView):
 
     def get_queryset(self):
         return PadecimientoActuales.objects.filter(id=self.kwargs['pk'])
+
 
 
 class PadecimientoActualEdit(FormView):
@@ -350,8 +382,26 @@ class AlergiaAgregar1(FormView):
                                           paciente=pat,
 
                                           )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
+
+class AlergiaAgregar2(FormView):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(AlergiaAgregar2, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        get_data = request.POST
+        pat = Paciente.objects.get(id=get_data['id'])
+        get_obj = Alergias.objects.create(tipo=get_data['tipo'],
+                                          nombre_alergia=get_data['alergia'],
+                                          paciente=pat,
+
+
+                                          )
+        # get_obj.save()
+        return HttpResponse('success')
+
 
 
 
@@ -422,7 +472,7 @@ class SeguroAgregar(FormView):
                                          numero_afiliado=get_data['numero_afiliado'],
                                          paciente=pat,
                                          )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
 
 
@@ -509,7 +559,7 @@ class InmunizacionAgregar(FormView):
                                                 nombre_vacuna=get_data['nombre_vacuna'],
                                                 paciente=pat,
                                                 )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
 
 class InmunizacionGet(generics.ListAPIView):
@@ -562,7 +612,7 @@ class AntecendentePersonalPatologicoAgregar(FormView):
         get_obj = AntecendentesPersonalesPatologicos.objects.create(antepersopatologico=get_data['antepersopatologico'],
                                                                     paciente=pat,
                                                                     )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
 
 
@@ -656,7 +706,7 @@ class AntecendenteFamiliarPatologicoAgregar(FormView):
                                                                    paciente=pat,
 
                                                                    )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
 
 
@@ -708,7 +758,7 @@ class SignoVitalAgregarEdit(FormView):
         get_obj = Signos_Vitales.objects.get(id=get_data['id'])
         get_obj.tension_arterial = get_data['Tension_Arterial']
         get_obj.frecuencia_cardiaca = get_data['Frecuencia_Cardiaca']
-        get_obj.frecuencia_respiratoria = get_data['Frecuencia_Respiratoria']
+        # get_obj.frecuencia_respiratoria = get_data['Frecuencia_Respiratoria']
         get_obj.temperatura = get_data['Temperatura']
         get_obj.notas = get_data['Notas']
         get_obj.save()
@@ -732,7 +782,7 @@ class SignoVitalAgregar(FormView):
                                                 paciente =pat ,
 
                                                 )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
 
 #########
@@ -786,7 +836,7 @@ class MedicamentoAgregar(FormView):
                                               paciente=pat,
 
                                               )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
 
 ###########
@@ -816,7 +866,7 @@ class OtraOrdenTerapeuticaoAgregar(FormView):
                                                             estudios_lab_diagnostico=get_data['estudios_lab_diagnostico'],
                                                             paciente=pat,
                                                             )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
 
 class OtraOrdenTerapeuticaoAgregarEdit(FormView):
@@ -884,7 +934,7 @@ class EvolucionAgregar(FormView):
         get_obj = Evoluciones.objects.create(notas=get_data['notas'],
                                              paciente=pat,
                                              )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
 
 
@@ -929,27 +979,5 @@ class RevisionPorSistemaAgregar(FormView):
         get_obj = RevisionesporSistema.objects.create(cabeza=get_data['cabeza'],
                                                       paciente=pat,
                                                       )
-        get_obj.save()
+        # get_obj.save()
         return HttpResponse('success')
-
-
-# class BlogSearchListView(BlogListView):
-#     """
-#     Display a Blog List page filtered by the search query.
-#     """
-#     paginate_by = 10
-
-#     def get_queryset(self):
-#         result = super(BlogSearchListView, self).get_queryset()
-
-#         query = self.request.GET.get('q')
-#         if query:
-#             query_list = query.split()
-#             result = result.filter(
-#                 reduce(operator.and_,
-#                        (Q(title__icontains=q) for q in query_list)) |
-#                 reduce(operator.and_,
-#                        (Q(content__icontains=q) for q in query_list))
-#             )
-
-#         return result

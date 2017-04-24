@@ -11,8 +11,8 @@ urlpatterns = [
     url(r'^api/paciente/motivoconsultas/(?P<pk>\d+)/editar/$', views.MotivoConsultaEditar.as_view()),
     url(r'^api/paciente/motivoconsultas/(?P<pk>\d+)/borrar/$', views.MotivoConsultaBorrar.as_view()),
     url(r'^api/paciente/motivoconsultas/$', views.MotivoConsulta.as_view()),
-    # url(r'^login/$', views.create_user1,{},name='login'),
-    # url(r'^accounts/login/$', views.create_user1,{},name='login'),
+    url(r'^login/$', views.create_user1,{},name='login'),
+    url(r'^accounts/login/$', views.create_user1,{},name='login'),
     url(r'^accounts/signin$', views.SigninView.as_view(),name='login'),
     url(r'^add/user/$', views.add_user,{},name='add_user'),
     url(r'^logout/', views.LogoutView.as_view(), name='logout'),
@@ -25,7 +25,10 @@ urlpatterns = [
     url(r'^api/paciente/(?P<pk>\d+)/editar/$', views.PacienteEditar.as_view()),
     url(r'^api/paciente/(?P<pk>\d+)/borrar/$', views.PacienteBorrar.as_view()),
 
+
+
     url(r'^api/paciente/alergia/agregar/$', views.AlergiaAgregar1.as_view()),
+url(r'^api/paciente/alergia/agregar1/$', views.AlergiaAgregar2.as_view()),
     url(r'^api/paciente/alergias/$', views.Alergia.as_view()),
     url(r'^api/paciente/alergias/(?P<pk>\d+)/$', views.AlergiaDetalle.as_view()),
 
@@ -42,13 +45,14 @@ urlpatterns = [
     url(r'^api/paciente/seguro/(?P<pk>\d+)/borrar/$', views.SeguroBorrar.as_view()),
     url(r'^api/paciente/seguro/$', views.Seguro.as_view()),
 
+url(r'^api/paciente/vacunas/$', views.Inmunizacion.as_view()),
     url(r'^api/paciente/vacunas/agregar/$', views.InmunizacionAgregar.as_view()),
     url(r'^api/paciente/vacunas/(?P<pk>\d+)/$', views.InmunizacionDetalle.as_view()),
     url(r'^api/paciente/vacunas/edit/$', views.InmunizacionEdit.as_view()),
     url(r'^api/paciente/vacunas/(?P<pk>\d+)/borrar/$', views.InmunizacionBorrar.as_view()),
     url(r'^api/paciente/vacunas-get/(?P<pk>\d+)/$', views.InmunizacionGet.as_view()),
     url(r'^api/paciente/vacunas/(?P<pk>\d+)/editar/$', views.InmunizacionEditar.as_view()),
-    url(r'^api/paciente/vacunas/$', views.Inmunizacion.as_view()),
+
 
     url(r'^api/paciente/antecendentes-personales-patologicos/agregar/$', views.AntecendentePersonalPatologicoAgregar.as_view()),
     url(r'^api/paciente/antecendentes-personales-patologicos/(?P<pk>\d+)/$', views.AntecendentePersonalPatologicoDetalle.as_view()),
@@ -105,5 +109,5 @@ urlpatterns = [
     url(r'^api/paciente/revision-sistema/get/(?P<pk>\d+)/$', views.RevisionPorSistemaGet.as_view()),
     url(r'^api/paciente/revision-sistema/edit/$', views.RevisionPorSistemaEdit.as_view()),
     url(r'^api/paciente/revision-sistema/agregar/$', views.RevisionPorSistemaAgregar.as_view()),
-]
 
+]
