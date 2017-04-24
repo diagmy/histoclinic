@@ -84,12 +84,13 @@
 
                                                 </label>
                                                 <div class="col-md-4">
-                                                    <div class="radio-list">
+                                                    <div class="radio-list tareja1">
                                                         <label>
-                                                            <input type="radio" name="sexoPaciente12" id="sexoPaciente12" value="M" data-title="Male" /> Masculino </label>
+                                                            <input type="radio" name="sexoPaciente12" id="M" value="M" onchange="radiob1(id,'F')"  /> Masculino </label>
                                                         <label>
-                                                            <input type="radio" name="sexoPaciente12" id= "sexoPaciente12" value="F" data-title="Female" /> Femenino </label>
+                                                            <input type="radio" name="sexoPaciente12" id="F" value="F"  onchange="radiob1(id,'M')" /> Femenino </label>
                                                     </div>
+
                                                     <div id="form_gender_error"> </div>
                                                 </div>
                                             </div>
@@ -210,7 +211,8 @@
                         var tutorPaciente = CryptoJS.AES.encrypt($("#tutorPaciente12").val(), "Secret Passphrase");
                         var cedulatutorPaciente = CryptoJS.AES.encrypt($("#cedulatutorPaciente12").val(), "Secret Passphrase");
                         var cedula_paciente = CryptoJS.AES.encrypt($("#cedula_paciente12").val(), "Secret Passphrase");
-
+                        var sexo = CryptoJS.AES.encrypt($('.tareja1 .checked').val(), "Secret Passphrase");
+                        console.log($('.tareja1 .checked').val());
                         $.ajax({
                             url: 'http://localhost:8000/api/paciente/agregar/',
                             method: 'POST',
@@ -221,7 +223,8 @@
                                 'celular': celular.toString(),
                                 'direccion': dirPaciente.toString(),
                                 'peso':  $("#PesoPaciente12").val(),
-                                'sexo': $("#sexoPaciente12").val(),
+                                'sexo': sexo.toString(),
+
                                 'edad': $("#edadPaciente12").val(),
                                 'cedula_paciente': cedula_paciente.toString(),
                                 'tutor': tutorPaciente.toString(),
@@ -253,12 +256,13 @@
                                     var cedula_paciente1 = cedula_paciente.toString(CryptoJS.enc.Utf8)
                                     if(cedula_paciente1 == $("#cedula_paciente12").val())
                                     {
-                                        console.log('exist');
-                                        $("#success-alert1213").text("Patient Exist");
+
+                                         temp = 0;
+                                        $("#success-alert1213").text("El paciente existe");
                                         $("#success-alert1213").removeClass('hide');
                                         $("#success-alert1213").fadeTo(2000, 500).slideUp(500, function () {
-                                            $("#success-alert1213").slideUp(500);
-                                            temp = 0;
+                                            $("#success-alert1213").slideUp(5000000);
+
                                         });
                                         }
                                     else {
@@ -444,6 +448,10 @@
                         });
                     }
                 });
+            function radiob1(value1,value2){
+            $('#'+value1).addClass('checked', 'checked');
+            $('#'+value2).removeClass('checked');
+        }
 
 
             </script>
